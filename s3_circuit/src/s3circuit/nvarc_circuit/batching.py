@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+DEFAULT_COMPUTE_MICROBATCH_CAP = 1
 ADAPTIVE_REPLAY_POLICY = "replay_length_buckets_v1"
 ADAPTIVE_REPLAY_DOWNSHIFT_POLICY = "replay_length_buckets_v1_downshift"
 HIGH_UTIL_REPLAY_POLICY = "replay_length_buckets_high_util_v2"
@@ -62,10 +63,12 @@ def resolve_attribution_batching(
     logical_row_batch_size: int,
     update_interval: int,
     compute_microbatch_policy: str,
-    compute_microbatch_cap: int,
+    compute_microbatch_cap: int | None = None,
 ) -> AttributionBatchingPlan:
     """Resolve GPU execution size without changing CodeCircuit queue semantics."""
 
+    if compute_microbatch_cap is None:
+        compute_microbatch_cap = DEFAULT_COMPUTE_MICROBATCH_CAP
     if (
         min(
             replay_length,

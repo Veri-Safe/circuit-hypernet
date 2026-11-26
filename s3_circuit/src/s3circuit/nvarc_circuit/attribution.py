@@ -420,9 +420,7 @@ def attribute_joint_span_streaming_exact(
         logical_row_batch_size=row_batch_size,
         update_interval=update_interval,
         compute_microbatch_policy=compute_microbatch_policy,
-        compute_microbatch_cap=(
-            row_batch_size if compute_microbatch_cap is None else compute_microbatch_cap
-        ),
+        compute_microbatch_cap=compute_microbatch_cap,
     )
     provider = CodeCircuitRowProvider(
         model,
@@ -655,9 +653,7 @@ def _attribute_joint_span_cached_exact(
         logical_row_batch_size=row_batch_size,
         update_interval=update_interval,
         compute_microbatch_policy=compute_microbatch_policy,
-        compute_microbatch_cap=(
-            row_batch_size if compute_microbatch_cap is None else compute_microbatch_cap
-        ),
+        compute_microbatch_cap=compute_microbatch_cap,
     )
     provider = CodeCircuitRowProvider(
         model,
@@ -734,9 +730,7 @@ def _prepare_joint_span_cached_exact(
         logical_row_batch_size=row_batch_size,
         update_interval=update_interval,
         compute_microbatch_policy=compute_microbatch_policy,
-        compute_microbatch_cap=(
-            row_batch_size if compute_microbatch_cap is None else compute_microbatch_cap
-        ),
+        compute_microbatch_cap=compute_microbatch_cap,
     )
     executor = CODECIRCUIT_ROW_EXECUTOR
     if optimized_exact_vjp:
@@ -944,9 +938,7 @@ def attribute_joint_span_dense_reference(
         logical_row_batch_size=row_batch_size,
         update_interval=update_interval,
         compute_microbatch_policy=compute_microbatch_policy,
-        compute_microbatch_cap=(
-            row_batch_size if compute_microbatch_cap is None else compute_microbatch_cap
-        ),
+        compute_microbatch_cap=compute_microbatch_cap,
     )
     device = torch.device(model.cfg.device)
     input_ids = torch.tensor(replay_ids, dtype=torch.long, device=device)

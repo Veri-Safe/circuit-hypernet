@@ -56,6 +56,10 @@ Full execution requires the original base weights and tokenizer, transcoders, pa
 
 ## ARC-AGI-1
 
+ARC circuit extraction defaults to **one attribution row per backward pass**. This limits the replay activations held at once. Feature selection still uses the logical row batch and update interval in the Stage-B configuration. To trade memory for throughput, pass an explicit row limit such as `--compute-microbatch-cap 4` to either extraction command. The input policy supplies the upper bound. [Single-work-unit extractor](../s3_circuit/scripts/extract_nvarc_circuit_payloads.py) · [Worker extractor](../s3_circuit/scripts/extract_nvarc_circuit_payload_worker.py)
+
+Use a fresh output directory when changing the effective cap. Both commands verify the input policy and save the effective policy at `policies/<policy_sha256>.json` inside their output directory. Use that file as `--policy` for subsequent materialization and finalization. The worker passes it automatically when a compatible `--materializer` is supplied and automatic materialization is enabled. The scores below come from the archived evaluations.
+
 The direct experiment uses a Qwen3-4B backbone trained on RE-ARC, a 59-dimensional descriptor and a rank-16 generated adapter. TTFT uses the generated adapter from the first test input’s canonical view to initialize one adapter per task. The [original warm-start implementation](../s4_circuit/src/s4_circuit/ttft/warmstart.py) embeds the rank-16 update into the rank-256 rsLoRA adapter used for fine-tuning. The three TTFT rows below share the learning rate of 2e-5 and 128 optimizer calls per task.
 
 | Experiment | Original per-task result |

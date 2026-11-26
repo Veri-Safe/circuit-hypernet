@@ -47,7 +47,10 @@ from s3circuit.nvarc_circuit.payload import (
     read_payload_chunk,
     write_payload_chunk,
 )
-from s3circuit.nvarc_circuit.policy import load_production_policy
+from s3circuit.nvarc_circuit.policy import (
+    add_compute_microbatch_argument,
+    load_production_policy,
+)
 from s3circuit.nvarc_circuit.repair_schedule import (
     scheduled_work_units,
     validate_repair_schedule,
@@ -57,7 +60,6 @@ from s3circuit.nvarc_circuit.production_schedule import (
     validate_production_schedule,
 )
 from s3circuit.nvarc_circuit.storage import write_json_atomic
-from s3circuit.nvarc_circuit.tl_bridge import build_local_qwen3_replacement_model
 from s3circuit.nvarc_circuit.transcoder_adapter import (
     build_codecircuit_transcoder_set,
     load_canonical_bank,
@@ -84,6 +86,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--policy", type=Path, required=True)
+    add_compute_microbatch_argument(parser)
     parser.add_argument("--catalog", type=Path, required=True)
     parser.add_argument("--generations_root", type=Path, required=True)
     parser.add_argument("--worker_index", type=int, required=True)
@@ -138,7 +141,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--storage_poll_seconds", type=float, default=60.0)
     parser.add_argument(
         "--numerics_backend",
-        default="tl_sdpa_direct_effect_numerics_v1",
+        help="Defaults to the backend in the input policy when specified.",
     )
     parser.add_argument(
         "--materialize_final_artifacts",
@@ -151,6 +154,7 @@ def parse_args() -> argparse.Namespace:
         "--materializer",
         type=Path,
         default=S3_ROOT / "scripts" / "materialize_nvarc_circuit_artifacts.py",
+        help="Supply the compatible materialization script when enabling automatic final artifacts.",
     )
     parser.add_argument("--materializer_log_root", type=Path)
     parser.add_argument(
@@ -670,6 +674,13 @@ def _extract_work_unit(
     return manifest
 
 
+def _schedule_policy_sha256(schedule, source_policy, effective_policy) -> str:
+    recorded = schedule.get("production_policy_sha256")
+    if recorded not in (source_policy.semantic_sha256, effective_policy.semantic_sha256):
+        raise ValueError("Schedule was issued for a different production policy")
+    return recorded
+
+
 def main() -> None:
     args = parse_args()
     if (
@@ -684,8 +695,11 @@ def main() -> None:
     torch.set_num_threads(args.cpu_threads)
     torch.set_num_interop_threads(1)
     config = load_config(args.config)
-    policy = load_production_policy(args.policy, config=config)
+    source_policy = load_production_policy(args.policy, config=config)
+    policy = source_policy.with_compute_microbatch_cap(args.compute_microbatch_cap)
     policy_numerics_backend = getattr(policy, "numerics_backend", None)
+    if args.numerics_backend is None:
+        args.numerics_backend = policy_numerics_backend or "tl_sdpa_direct_effect_numerics_v1"
     if (
         policy_numerics_backend is not None
         and args.numerics_backend != policy_numerics_backend
@@ -706,7 +720,9 @@ def main() -> None:
         validate_production_schedule(
             production_schedule,
             config_sha256=config.semantic_sha256,
-            production_policy_sha256=policy.semantic_sha256,
+            production_policy_sha256=_schedule_policy_sha256(
+                production_schedule, source_policy, policy
+            ),
             catalog_manifest_sha256=sha256_file(
                 args.catalog.resolve() / "manifest.json"
             ),
@@ -726,7 +742,9 @@ def main() -> None:
         validate_repair_schedule(
             repair_schedule,
             config_sha256=config.semantic_sha256,
-            production_policy_sha256=policy.semantic_sha256,
+            production_policy_sha256=_schedule_policy_sha256(
+                repair_schedule, source_policy, policy
+            ),
             catalog_manifest_sha256=sha256_file(
                 args.catalog.resolve() / "manifest.json"
             ),
@@ -751,6 +769,7 @@ def main() -> None:
         args.catalog.resolve(), work_units, config_sha256=config.semantic_sha256
     )
     args.output_root.resolve().mkdir(parents=True, exist_ok=True)
+    effective_policy_path = policy.save_for_extraction(args.output_root.resolve())
     final_root = (
         args.final_root.resolve()
         if args.final_root
@@ -790,6 +809,8 @@ def main() -> None:
     bridge = None
     token_contract = None
     if pending_work_units:
+        from s3circuit.nvarc_circuit.tl_bridge import build_local_qwen3_replacement_model
+
         device = torch.device(args.device)
         bank = load_canonical_bank(
             config.stage_a.canonical_export_manifest,
@@ -870,7 +891,7 @@ def main() -> None:
             "--config",
             str(args.config.resolve()),
             "--policy",
-            str(args.policy.resolve()),
+            str(effective_policy_path),
             "--payload_work_unit",
             str(args.output_root.resolve() / f"work_unit_{work_unit:04d}"),
             "--output",

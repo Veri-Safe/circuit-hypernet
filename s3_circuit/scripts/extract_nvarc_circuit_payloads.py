@@ -36,9 +36,11 @@ from s3circuit.nvarc_circuit.payload import (
     read_payload_chunk,
     write_payload_chunk,
 )
-from s3circuit.nvarc_circuit.policy import load_production_policy
+from s3circuit.nvarc_circuit.policy import (
+    add_compute_microbatch_argument,
+    load_production_policy,
+)
 from s3circuit.nvarc_circuit.storage import write_json_atomic
-from s3circuit.nvarc_circuit.tl_bridge import build_local_qwen3_replacement_model
 from s3circuit.nvarc_circuit.transcoder_adapter import (
     build_codecircuit_transcoder_set,
     load_canonical_bank,
@@ -56,6 +58,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--policy", type=Path, required=True)
+    add_compute_microbatch_argument(parser)
     parser.add_argument("--catalog", type=Path, required=True)
     parser.add_argument("--generations", type=Path, required=True)
     parser.add_argument("--work_unit", type=int, required=True)
@@ -114,7 +117,8 @@ def main() -> None:
     torch.set_num_threads(args.cpu_threads)
     torch.set_num_interop_threads(1)
     config = load_config(args.config)
-    policy = load_production_policy(args.policy, config=config)
+    source_policy = load_production_policy(args.policy, config=config)
+    policy = source_policy.with_compute_microbatch_cap(args.compute_microbatch_cap)
     if not 0 <= args.work_unit < config.artifacts.num_work_units:
         raise ValueError("work_unit is outside the frozen range")
     catalog_manifest, events = _load_events(args.catalog.resolve(), args.work_unit)
@@ -146,6 +150,7 @@ def main() -> None:
         / f"work_unit_{args.work_unit:04d}"
     )
     output.mkdir(parents=True, exist_ok=True)
+    policy.save_for_extraction(output)
     manifest_path = output / "manifest.json"
     manifest = {
         "format": "nvarc_rearc_payload_work_unit_v1",
@@ -203,13 +208,15 @@ def main() -> None:
     if bank.identity_sha256 != policy.transcoder_identity_sha256:
         raise ValueError("Canonical transcoder identity differs from production policy")
     transcoders = build_codecircuit_transcoder_set(bank, device=device)
+    from s3circuit.nvarc_circuit.tl_bridge import build_local_qwen3_replacement_model
+
     bridge = build_local_qwen3_replacement_model(
         checkpoint=config.stage_a_config.base.hf_checkpoint,
         tokenizer_path=config.stage_a_config.base.tokenizer,
         transcoders=transcoders,
         device=device,
         manifest_path=output / "tl_conversion_manifest.json",
-        numerics_backend=policy.numerics_backend,
+        numerics_backend=getattr(policy, "numerics_backend", "tl_sdpa_direct_effect_numerics_v1"),
     )
     token_contract = TokenContract(
         digit_token_ids=tuple(range(10)),

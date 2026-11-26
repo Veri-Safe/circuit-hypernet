@@ -408,7 +408,9 @@ def _replacement_model_class() -> type:
             )
             logits = self.run_with_hooks(tokens, fwd_hooks=mlp_in_hooks + mlp_out_hooks)
             mlp_inputs = torch.cat(list(mlp_in_cache.values()), dim=0)
+            mlp_in_cache.clear()
             mlp_outputs = torch.cat(list(mlp_out_cache.values()), dim=0)
+            mlp_out_cache.clear()
             components = _compute_attribution_components_preserving_position_zero(
                 self.transcoders, mlp_inputs
             )

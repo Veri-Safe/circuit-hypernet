@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import argparse
 import json
 from collections.abc import Mapping
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
+from tempfile import TemporaryDirectory
+from typing import ClassVar
 
-from .batching import SUPPORTED_COMPUTE_MICROBATCH_POLICIES
+from .batching import DEFAULT_COMPUTE_MICROBATCH_CAP, SUPPORTED_COMPUTE_MICROBATCH_POLICIES
 from .config import (
     NvarcCircuitConfig,
     OUTSIDE_B0_DATA_CONTRACT,
@@ -40,6 +43,7 @@ REARC128_OUTSIDE_REQUIRED_GATES = frozenset(
 
 @dataclass(frozen=True)
 class ProductionPolicy:
+    format: ClassVar[str] = POLICY_FORMAT
     config_sha256: str
     model_identity_sha256: str
     tokenizer_identity_sha256: str
@@ -62,7 +66,37 @@ class ProductionPolicy:
 
     @property
     def semantic_sha256(self) -> str:
-        return semantic_sha256({"format": POLICY_FORMAT, **asdict(self)})
+        return semantic_sha256({"format": self.format, **asdict(self)})
+
+    def with_compute_microbatch_cap(self, cap: int) -> ProductionPolicy:
+        if type(cap) is not int or cap < 1:
+            raise ValueError("Compute microbatch cap must be a positive integer")
+        return replace(self, compute_microbatch_cap=min(cap, self.compute_microbatch_cap))
+
+    def save_for_extraction(self, output: Path) -> Path:
+        """Persist the effective policy used by payload, resume and finalization."""
+        identity = self.semantic_sha256
+        destination = output / "policies" / f"{identity}.json"
+        record = {"format": self.format, **asdict(self), "policy_sha256": identity}
+        data = (json.dumps(record, indent=2, sort_keys=True) + "\n").encode("utf-8")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if destination.exists():
+            if destination.read_bytes() != data:
+                raise ValueError(f"Effective policy contents changed: {destination}")
+            return destination
+        # Workers with the same identity publish identical bytes. Each stages
+        # a complete file on the destination filesystem before atomic replace.
+        with TemporaryDirectory(dir=destination.parent) as staging:
+            staged = Path(staging) / "policy.json"
+            staged.write_bytes(data)
+            try:
+                staged.replace(destination)
+            except PermissionError:
+                # Windows may deny replacement while a concurrent reader holds
+                # the already published copy open.
+                if not destination.is_file() or destination.read_bytes() != data:
+                    raise
+        return destination
 
     def validate(self, config: NvarcCircuitConfig) -> None:
         validate_policy_settings(self, config)
@@ -93,11 +127,8 @@ class ProductionPolicy:
 
 @dataclass(frozen=True)
 class Rearc8ProductionPolicy(ProductionPolicy):
+    format: ClassVar[str] = REARC8_POLICY_FORMAT
     numerics_backend: str
-
-    @property
-    def semantic_sha256(self) -> str:
-        return semantic_sha256({"format": REARC8_POLICY_FORMAT, **asdict(self)})
 
     def validate(self, config: NvarcCircuitConfig) -> None:
         validate_policy_settings(self, config)
@@ -132,15 +163,10 @@ class Rearc8ProductionPolicy(ProductionPolicy):
 class Rearc128OutsideProductionPolicy(ProductionPolicy):
     """Checkpoint-specific policy unlocked only by the RE-ARC128 gate pack."""
 
+    format: ClassVar[str] = REARC128_OUTSIDE_POLICY_FORMAT
     numerics_backend: str
     execution_mode: str
     validation_manifest_sha256: str
-
-    @property
-    def semantic_sha256(self) -> str:
-        return semantic_sha256(
-            {"format": REARC128_OUTSIDE_POLICY_FORMAT, **asdict(self)}
-        )
 
     def validate(self, config: NvarcCircuitConfig) -> None:
         validate_policy_settings(self, config)
@@ -213,6 +239,25 @@ def validate_policy_settings(
         raise ValueError("Diagnostic replay tolerances must be nonnegative")
     if policy.max_node_selected_dense_bytes <= 0:
         raise ValueError("Materialization capacity must be positive")
+
+
+def add_compute_microbatch_argument(parser: argparse.ArgumentParser) -> None:
+    def positive_int(text: str) -> int:
+        cap = int(text)
+        if cap < 1:
+            raise argparse.ArgumentTypeError("compute microbatch cap must be positive")
+        return cap
+
+    parser.add_argument(
+        "--compute-microbatch-cap",
+        type=positive_int,
+        default=DEFAULT_COMPUTE_MICROBATCH_CAP,
+        help=(
+            "Maximum attribution rows per physical microbatch (default: %(default)s). "
+            "The input policy may impose a smaller limit. For finalization use "
+            "policies/<production_policy_sha256>.json under the extraction output."
+        ),
+    )
 
 
 def load_production_policy(
