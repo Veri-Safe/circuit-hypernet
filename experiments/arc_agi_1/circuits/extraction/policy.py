@@ -8,6 +8,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import ClassVar
 
+from filelock import FileLock
+
 from .batching import DEFAULT_COMPUTE_MICROBATCH_CAP, SUPPORTED_COMPUTE_MICROBATCH_POLICIES
 from .config import (
     NvarcCircuitConfig,
@@ -80,22 +82,17 @@ class ProductionPolicy:
         record = {"format": self.format, **asdict(self), "policy_sha256": identity}
         data = (json.dumps(record, indent=2, sort_keys=True) + "\n").encode("utf-8")
         destination.parent.mkdir(parents=True, exist_ok=True)
-        if destination.exists():
-            if destination.read_bytes() != data:
-                raise ValueError(f"Effective policy contents changed: {destination}")
-            return destination
-        # Workers with the same identity publish identical bytes. Each stages
-        # a complete file on the destination filesystem before atomic replace.
-        with TemporaryDirectory(dir=destination.parent) as staging:
-            staged = Path(staging) / "policy.json"
-            staged.write_bytes(data)
-            try:
-                staged.replace(destination)
-            except PermissionError:
-                # Windows may deny replacement while a concurrent reader holds
-                # the already published copy open.
-                if not destination.is_file() or destination.read_bytes() != data:
-                    raise
+        # Only the first worker publishes. Other workers verify the complete
+        # record after the atomic rename has released its Windows file handle.
+        with FileLock(str(output / ".policy-publication.lock")):
+            if destination.exists():
+                if destination.read_bytes() != data:
+                    raise ValueError(f"Effective policy contents changed: {destination}")
+                return destination
+            with TemporaryDirectory(dir=destination.parent) as staging:
+                staged = Path(staging) / "policy.json"
+                staged.write_bytes(data)
+                staged.rename(destination)
         return destination
 
     def validate(self, config: NvarcCircuitConfig) -> None:
