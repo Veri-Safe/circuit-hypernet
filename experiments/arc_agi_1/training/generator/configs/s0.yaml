@@ -4,4 +4,4 @@ training_micro_row_batch_override: 2
 loss_protocol: {name: first_pair_demonstration_only_v1, supervised_assistant_start_index: 1}
 optimization: {global_lr_multiplier: 0.5, circuit_lr_multiplier: 2.0, factor_l2: 0.0, effective_delta_l2: 1.0e-4, lora_gate_max: 0.25, lora_gate_warmup_steps: 75, base_preservation_coefficient: 0.5}
 runtime_optimization: {loss_backend: full_logits_v1, batching_mode: fixed_rows_v1, max_micro_rows: 1, padded_token_budget: 0, pg_gradient_checkpointing: false}
-output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator
+output_root: outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator

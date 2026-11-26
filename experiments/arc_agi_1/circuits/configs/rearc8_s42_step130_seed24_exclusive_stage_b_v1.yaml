@@ -1,15 +1,15 @@
 format_version: nvarc_rearc_stage_b_v1
 
 stage_a:
-  profile: ${HC_ROOT}/s3_circuit/configs/nvarc_transcoder/rearc8_union_fast128_v1.yaml
-  production_lr_policy: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/production_lr_policy.json
-  canonical_export_manifest: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/transcoder_manifest.json
+  profile: s3_circuit/configs/nvarc_transcoder/rearc8_union_fast128_v1.yaml
+  production_lr_policy: outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/production_lr_policy.json
+  canonical_export_manifest: outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/transcoder_manifest.json
 
 data:
   contract: rearc8_seed24_exclusive_v1
-  manifest_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/manifest.json
-  train_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
-  validation_path: ${HC_ROOT}/datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
+  manifest_path: datasets/nvarc/derived/rearc8_union_fast128_v1/manifest.json
+  train_path: datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
+  validation_path: datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
   expected_train_rows: 3200
   expected_train_puzzles: 400
   expected_train_events: 20826
@@ -46,7 +46,7 @@ audit:
   noninferiority_ratio: 0.9
 
 artifacts:
-  output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive
+  output_root: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive
   num_work_units: 1024
   payload_target_bytes: 536870912
   final_events_per_shard: 4096

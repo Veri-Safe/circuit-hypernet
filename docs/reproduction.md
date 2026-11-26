@@ -22,6 +22,6 @@ After [installing the dependencies](../README.md#cpu-checks), run commands from 
 python experiments/run.py experiments/lean/evaluation/evaluate_performance_completion.py --help
 ```
 
-The launcher prepares a local `.circuit-workspace/` with the paths recorded by the original scripts and runs the selected script there. Generated outputs and relative data paths resolve inside that directory. For a full run, use `--workspace /path/to/workspace` before the script name and restore the assets listed in the relevant experiment guide there. Use a separate workspace for each independent run that writes to the same output paths.
+The launcher runs experiments in `.circuit-workspace/` by default. A data path such as `datasets/arc_agi_1/` and an output path such as `outputs/nvarc/` are relative to that workspace. To use a sibling directory, pass `--workspace ../circuit-run` before the script name and restore the assets listed in the experiment guide under `../circuit-run/`. Use a separate workspace for each independent run that writes to the same outputs.
 
 The [path map](../experiments/paths.tsv) lists the original and current locations of the released experiment files. The [release manifest](source-files.tsv) lists the SHA-256 of every tracked file except the manifest itself.

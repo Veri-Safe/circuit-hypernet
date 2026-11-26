@@ -32,7 +32,7 @@ from .checkpoint import (
     save_rank_rng,
 )
 from .checkpoint_schedule import RecoveryCheckpointSchedule
-from .config import load_config
+from .config import load_config, workspace_relative_path
 from .contracts import (
     CHECKPOINT_FORMAT,
     TRAIN_RUN_FORMAT,
@@ -92,6 +92,15 @@ def _inspect_base_checkpoint_once(context: Any, s2: Any) -> dict[str, Any]:
     if context.is_rank_zero:
         print("base_checkpoint_inspection=complete rank=0", flush=True)
     return manifest
+
+
+def _portable_base_manifest(manifest: dict[str, Any], base: Any) -> dict[str, Any]:
+    record = manifest.copy()
+    for key in ("source_run_manifest", "hf_checkpoint", "tokenizer"):
+        if record[key] is not None:
+            # Keep the configured workspace alias when the asset is a symlink.
+            record[key] = workspace_relative_path(getattr(base, key))
+    return record
 
 
 def _append_jsonl(path: Path, value: Any) -> None:
@@ -275,7 +284,7 @@ def run_training(
             )
             if context.is_rank_zero:
                 print(
-                    f"training_initialization=parent checkpoint={Path(initialize_from).resolve()} "
+                    f"training_initialization=parent checkpoint={workspace_relative_path(initialize_from)} "
                     f"parent_step={parent.global_step} optimizer=reset rng=reset",
                     flush=True,
                 )
@@ -304,7 +313,7 @@ def run_training(
             if context.is_rank_zero:
                 print(
                     "training_initialization=optimizer_preserving_continuation "
-                    f"checkpoint={Path(config.continuation.source_checkpoint).resolve()} "
+                    f"checkpoint={workspace_relative_path(config.continuation.source_checkpoint)} "
                     f"parent_step={parent.global_step} scheduler=constant_lr_v1 "
                     f"learning_rates={json.dumps(continuation_lrs, sort_keys=True)}",
                     flush=True,
@@ -386,9 +395,10 @@ def run_training(
                 raise FileExistsError(f"S4 training output is not empty: {output_root}")
             output_root.mkdir(parents=True, exist_ok=True)
             log_root.mkdir(parents=True, exist_ok=True)
-            _write_json_atomic(
-                output_root / "base_checkpoint_manifest.json", base_manifest
-            )
+            # Existing trainer states verify the native, path-bearing identity.
+            # Publish the portable record with its own independently verifiable digest.
+            portable_base = _portable_base_manifest(base_manifest, s2_static.base)
+            _write_json_atomic(output_root / "base_checkpoint_manifest.json", portable_base)
             _write_json_atomic(
                 output_root / "run_manifest.json",
                 {
@@ -404,6 +414,7 @@ def run_training(
                     "fresh_init_sha256": fresh_manifest["aggregate_sha256"],
                     "attention_backend": attention_backend_identity(),
                     "base_manifest_sha256": base_manifest_sha256,
+                    "portable_base_manifest_sha256": semantic_sha256(portable_base),
                     "start_step": start_step,
                     "target_step": final_step,
                     "world_size": context.world_size,
@@ -518,10 +529,8 @@ def run_training(
                         None
                         if config.continuation is None
                         else {
-                            "source_checkpoint": (
-                                config.continuation.source_checkpoint
-                            ),
-                            "source_config": config.continuation.source_config,
+                            "source_checkpoint": workspace_relative_path(config.continuation.source_checkpoint),
+                            "source_config": workspace_relative_path(config.continuation.source_config),
                             "source_step": config.continuation.source_step,
                             "scheduler": config.continuation.scheduler,
                             "trunk_lr_scale": (config.continuation.trunk_lr_scale),

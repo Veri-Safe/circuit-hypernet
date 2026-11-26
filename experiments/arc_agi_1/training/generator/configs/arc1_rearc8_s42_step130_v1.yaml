@@ -5,8 +5,8 @@ base:
   runtime: hf_separated
   source_kind: nvarc_rearc8_s42_fullft
   source_step: 130
-  hf_checkpoint: ${HC_ROOT}/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
-  tokenizer: ${HC_ROOT}/base_models/qwen/Qwen3-4B-Thinking-2507-16t
+  hf_checkpoint: outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
+  tokenizer: base_models/qwen/Qwen3-4B-Thinking-2507-16t
 
 method:
   input_dim: 2560
@@ -21,10 +21,10 @@ method:
 
 data:
   train_paths:
-    - ${HC_ROOT}/datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/hf/train
+    - datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/hf/train
   dev_path: ""
-  split_manifest: ${HC_ROOT}/datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/manifest.json
-  audit_manifest: ${HC_ROOT}/outputs/nvarc/pg_data_audits/rearc8_pg_s24_excl_base_s42_v1/training_data_audit.json
+  split_manifest: datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/manifest.json
+  audit_manifest: outputs/nvarc/pg_data_audits/rearc8_pg_s24_excl_base_s42_v1/training_data_audit.json
   max_sequence_length: 16384
   expected_rows: 3200
   expected_puzzles: 400
@@ -47,9 +47,9 @@ training:
   log_every: 1
 
 evaluation:
-  protocol_config: ${HC_ROOT}/s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json
-  challenges: ${HC_ROOT}/datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json
-  solutions: ${HC_ROOT}/datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json
+  protocol_config: s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json
+  challenges: datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json
+  solutions: datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json
   milestone_steps: [130, 260, 390, 520, 650]
   modes: [frozen, matched, shuffled]
   shuffle_seed: 42

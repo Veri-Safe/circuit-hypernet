@@ -11,4 +11,4 @@ optimization:
   lora_gate_warmup_steps: 75
   base_preservation_coefficient: 0.5
 runtime_optimization: {loss_backend: full_logits_v1, batching_mode: fixed_rows_v1, max_micro_rows: 1, padded_token_budget: 0, pg_gradient_checkpointing: false}
-output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/skip_b1_train_control_v3_t08_gate025_dw1_bp050
+output_root: outputs/nvarc/circuit_stage_c/r1_rearc8_step130/skip_b1_train_control_v3_t08_gate025_dw1_bp050

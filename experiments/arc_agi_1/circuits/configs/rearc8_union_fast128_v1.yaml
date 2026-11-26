@@ -4,8 +4,8 @@ base:
   label: rearc8_s42_e10_step130
   run_name: rearc8_seed42_base
   source_step: 130
-  hf_checkpoint: ${HC_ROOT}/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
-  tokenizer: ${HC_ROOT}/base_models/qwen/Qwen3-4B-Thinking-2507-16t
+  hf_checkpoint: outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
+  tokenizer: base_models/qwen/Qwen3-4B-Thinking-2507-16t
   aggregate_sha256: b74bcb895fe162511ab8d047648a9d3cbba110fead5f3d58b9a24e9456d0084c
   expected_files:
     config.json: 8f9eb61dafc23ada43f53cf929bd40b9943bab7befb866840b05fa7107a18aaf
@@ -18,8 +18,8 @@ base:
   token_mapping_sha256: e1bb75693da1236d6b5b240b3fce6e03a7975c80812d54c1d3e7e30b634a4884
 
 data:
-  train_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
-  validation_path: ${HC_ROOT}/datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
+  train_path: datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
+  validation_path: datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
   expected_train_rows: 13523
   expected_train_puzzles: 800
   expected_train_events: 48692
@@ -30,15 +30,15 @@ data:
   seed: 24
 
 traces:
-  train_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/train
-  validation_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/validation
+  train_root: outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/train
+  validation_root: outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/validation
   max_new_tokens: 1024
   rows_per_file: 16
 
 model:
-  public_transcoder_root: ${HC_ROOT}/base_models/sae/mwhanna/qwen3-4b-transcoders
-  native_model: ${HC_ROOT}/base_models/qwen/Qwen3-4B
-  output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders
+  public_transcoder_root: base_models/sae/mwhanna/qwen3-4b-transcoders
+  native_model: base_models/qwen/Qwen3-4B
+  output_root: outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders
   d_model: 2560
   d_feature: 163840
   num_layers: 36

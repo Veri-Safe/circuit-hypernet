@@ -1,6 +1,6 @@
 format_version: nvarc_s4_r1_config_v1
 training_micro_row_batch_override: 1
-s2_config: ${HC_ROOT}/s2_hypernet/configs/nvarc_pg/arc1_rearc8_s42_step130_v1.yaml
+s2_config: s2_hypernet/configs/nvarc_pg/arc1_rearc8_s42_step130_v1.yaml
 base_aggregate_sha256: b74bcb895fe162511ab8d047648a9d3cbba110fead5f3d58b9a24e9456d0084c
 vector_schema: nvarc_qwen3_36l_joint_signed_span_mean_59d_v1
 vector_dim: 59
@@ -8,20 +8,20 @@ seed: 42
 
 artifacts:
   train:
-    catalog_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/catalog
-    final_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/training_circuits/final
-    root_manifest: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/training_circuits/final/root_manifest.json
+    catalog_root: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/catalog
+    final_root: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/training_circuits/final
+    root_manifest: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/training_circuits/final/root_manifest.json
     root_manifest_sha256: ${S4_TRAIN_ROOT_SHA256}
     expected_events: 20826
   evaluation:
-    catalog_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/catalog
-    final_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/eval_circuits/final
-    root_manifest: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/eval_circuits/final/root_manifest.json
+    catalog_root: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/catalog
+    final_root: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/eval_circuits/final
+    root_manifest: outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/eval_circuits/final/root_manifest.json
     root_manifest_sha256: ${S4_EVAL_ROOT_SHA256}
     expected_events: 7123
 
-fresh_init_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/common_init_v1
-batch_manifest: ${HC_ROOT}/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/manifests/logical_batches_v1.safetensors
+fresh_init_root: outputs/nvarc/circuit_stage_c/r1_rearc8_step130/common_init_v1
+batch_manifest: outputs/nvarc/circuit_stage_c/r1_rearc8_step130/manifests/logical_batches_v1.safetensors
 
 fusion:
   pg_hidden_dim: 1280

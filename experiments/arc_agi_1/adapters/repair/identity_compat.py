@@ -21,9 +21,9 @@ ARCHIVE_SHA256 = {
     "checkpoint_identity.json": "6826dee753ee16aa1b45e5f5df6cac96ab27e520acb7b779f508b504658aa7f4",
     "base_checkpoint_manifest.json": "5d5887c6be2f93d8d7e7c693891f6827a493729db7d3d83022ef5a21e0fa8567",
     "training_run_manifest.json": "55b50dc883655df5834e7a3ad8de556af5dab2ee614f2c77faeb70a88e88e6dd",
-    "source_config.yaml": "19bc6b34f60f2cb7f47d2bf94cbb83fcf14db559a79403f7f569183b21882751",
-    "common_config.yaml": "42ea630371b112a5fa28de0bce00688ea14b115b03b80fa3cfae5ce1d1e334a1",
-    "s2_config.yaml": "e1a858ef45d12a9b88d337b625d40925d9fe26daa9626080c0f6657297728411",
+    "source_config.yaml": "51dc4658b5bd51816907ece74afd8dca1fcc9274500f9c96f2d214762b5c5e8c",
+    "common_config.yaml": "fd61657eb3cdcb991c23646a9ff9e59e52afa12072747abadaaf7c6a1bd05e79",
+    "s2_config.yaml": "371bd37bc8f787740a13427e39d2880014d443b89ad71bb0ce99a8991e7d8828",
 }
 CHECKPOINT_RELATIVE = (
     "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/"

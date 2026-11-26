@@ -49,6 +49,28 @@ def _write(path: Path, data: bytes) -> None:
         Path(tmp.name).unlink(missing_ok=True)
 
 
+def _circuit_profile(data: bytes) -> bytes:
+    """Keep the original loaders and their checkpoint configuration hashes compatible."""
+    import yaml
+
+    profile = yaml.safe_load(data)
+    path_fields = {
+        "base": ("hf_checkpoint", "tokenizer"),
+        "stage_a": ("profile", "production_lr_policy", "canonical_export_manifest"),
+        "data": ("manifest_path", "train_path", "validation_path"),
+        "traces": ("train_root", "validation_root"),
+        "model": ("public_transcoder_root", "native_model", "output_root"),
+        "artifacts": ("output_root",),
+    }
+    for section, keys in path_fields.items():
+        fields = profile.get(section, {})
+        for key in keys:
+            path = fields.get(key)
+            if path and not Path(path).is_absolute() and not path.startswith("$"):
+                fields[key] = "${HC_ROOT}/" + path
+    return yaml.safe_dump(profile, sort_keys=False).encode("utf-8")
+
+
 def prepare_workspace(workspace: Path | None = None) -> Path:
     """Prepare only mapped release files. Leave user-supplied banks and runs in place."""
     from filelock import FileLock
@@ -69,6 +91,8 @@ def prepare_workspace(workspace: Path | None = None) -> Path:
                 raise ValueError(f"Release path outside checkout: {released}")
             dst = _destination(workspace, original)
             data = src.read_bytes()
+            if src.parent == ROOT / "experiments/arc_agi_1/circuits/configs" and src.suffix == ".yaml":
+                data = _circuit_profile(data)
             current[original] = digest = hashlib.sha256(data).hexdigest()
             if dst.exists():
                 if original not in owned:
@@ -131,7 +155,8 @@ def main(argv=None) -> int:
     if args.test is not None:
         command = ["-m", "pytest", "-c", str(ROOT / "pytest.ini"), f"--rootdir={workspace}",
                    f"--confcutdir={workspace}", *TEST_TARGETS, *args.test]
-    return subprocess.call([sys.executable, *command], cwd=workspace)
+    env = {**os.environ, "HC_ROOT": str(workspace)}
+    return subprocess.call([sys.executable, *command], cwd=workspace, env=env)
 
 
 if __name__ == "__main__":

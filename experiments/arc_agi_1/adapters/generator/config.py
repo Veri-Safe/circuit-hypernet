@@ -21,6 +21,16 @@ def _required(mapping: Mapping[str, Any], key: str) -> Any:
     return mapping[key]
 
 
+def workspace_path(value: str) -> str:
+    """Anchor a config path without resolving mount aliases used in checkpoint hashes."""
+    value = value.removeprefix("${HC_ROOT}/")
+    if not value or Path(value).anchor or value.startswith("$"):
+        return value
+    root = os.environ.get("HC_ROOT") or os.getcwd()
+    # Keep the slash spelling used by archived configs, including on Windows.
+    return f"{root}/{value}"
+
+
 def _expand_environment(value: Any) -> Any:
     if isinstance(value, str):
         return os.path.expandvars(value)
@@ -51,9 +61,9 @@ class BaseCheckpointConfig:
             runtime=str(_required(value, "runtime")),
             source_kind=str(_required(value, "source_kind")),
             source_step=int(_required(value, "source_step")),
-            hf_checkpoint=str(_required(value, "hf_checkpoint")),
-            tokenizer=str(_required(value, "tokenizer")),
-            source_run_manifest=str(value.get("source_run_manifest", "")),
+            hf_checkpoint=workspace_path(str(_required(value, "hf_checkpoint"))),
+            tokenizer=workspace_path(str(_required(value, "tokenizer"))),
+            source_run_manifest=workspace_path(str(value.get("source_run_manifest", ""))),
         )
         if result.runtime not in {"hf_only", "hf_separated"}:
             raise ValueError("NVARC PG requires an HF checkpoint runtime")
@@ -97,14 +107,14 @@ class DataConfig:
         if not isinstance(raw_train_paths, (list, tuple)) or not raw_train_paths:
             raise ValueError("train_paths must be a non-empty sequence")
         result = cls(
-            train_paths=tuple(str(path) for path in raw_train_paths),
-            dev_path=str(value.get("dev_path", "")),
-            split_manifest=str(_required(value, "split_manifest")),
+            train_paths=tuple(workspace_path(str(path)) for path in raw_train_paths),
+            dev_path=workspace_path(str(value.get("dev_path", ""))),
+            split_manifest=workspace_path(str(_required(value, "split_manifest"))),
             max_sequence_length=int(_required(value, "max_sequence_length")),
             expected_rows=int(_required(value, "expected_rows")),
             expected_puzzles=int(_required(value, "expected_puzzles")),
             seed=int(_required(value, "seed")),
-            audit_manifest=str(value.get("audit_manifest", "")),
+            audit_manifest=workspace_path(str(value.get("audit_manifest", ""))),
             num_workers=int(value.get("num_workers", 4)),
         )
         if (
@@ -254,11 +264,11 @@ class EvaluationConfig:
         profile: ExperimentProfile,
     ) -> "EvaluationConfig":
         result = cls(
-            protocol_config=str(_required(value, "protocol_config")),
+            protocol_config=workspace_path(str(_required(value, "protocol_config"))),
             milestone_steps=tuple(int(item) for item in _required(value, "milestone_steps")),
             modes=tuple(str(item) for item in _required(value, "modes")),
-            challenges=str(value.get("challenges", "")),
-            solutions=str(value.get("solutions", "")),
+            challenges=workspace_path(str(value.get("challenges", ""))),
+            solutions=workspace_path(str(value.get("solutions", ""))),
             shuffle_seed=int(value.get("shuffle_seed", 24)),
             protocol_kind=profile.protocol_kind,
         )

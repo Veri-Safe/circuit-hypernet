@@ -37,7 +37,7 @@ from .arc59_interventions import (
 )
 from .batches import validate_logical_batch_manifest
 from .checkpoint import S4TrainerState, attention_backend_identity
-from .config import load_config
+from .config import load_config, workspace_relative_path
 from .contracts import (
     AUTHOR4_VALIDATION_QUERY_COUNT,
     CANONICAL_VALIDATION_QUERY_COUNT,
@@ -628,7 +628,7 @@ def run_evaluation(
                     "variant_id": config.variant_id,
                     "experiment_label": experiment_label,
                     "mode": mode,
-                    "checkpoint": str(Path(checkpoint).resolve()),
+                    "checkpoint": workspace_relative_path(checkpoint),
                     "checkpoint_step": int(checkpoint_state["global_step"]),
                     "logical_checkpoint_step": logical_checkpoint_step,
                     "config_sha256": config.semantic_sha256,

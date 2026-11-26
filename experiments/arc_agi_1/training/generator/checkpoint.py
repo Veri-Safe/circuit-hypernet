@@ -150,6 +150,9 @@ def finalize_checkpoint(
     world_size: int,
 ) -> None:
     path = Path(checkpoint)
+    root = Path(output_root)
+    if path.resolve().parent != (root / "checkpoints").resolve():
+        raise ValueError(f"Checkpoint is outside the run's checkpoints directory: {path}")
     missing = [
         rank
         for rank in range(world_size)
@@ -162,8 +165,8 @@ def finalize_checkpoint(
         {"status": "complete", "world_size": world_size},
     )
     _write_json_atomic(
-        Path(output_root) / "latest.json",
-        {"status": "complete", "checkpoint": str(path.resolve())},
+        root / "latest.json",
+        {"status": "complete", "checkpoint": f"checkpoints/{path.name}"},
     )
 
 
@@ -339,7 +342,7 @@ def resolve_latest(output_root: str | Path) -> Path | None:
     if latest.is_file():
         try:
             value = json.loads(latest.read_text(encoding="utf-8"))
-            checkpoint = Path(str(value["checkpoint"])).resolve()
+            checkpoint = (root / str(value["checkpoint"])).resolve()
             if checkpoint.parent != checkpoint_root:
                 raise ValueError(
                     f"Latest checkpoint pointer escaped its output root: {checkpoint}"
@@ -363,7 +366,7 @@ def resolve_latest(output_root: str | Path) -> Path | None:
             latest,
             {
                 "status": "complete",
-                "checkpoint": str(checkpoint),
+                "checkpoint": f"checkpoints/{checkpoint.name}",
                 "recovered_by_scan": True,
                 "global_step": step,
             },

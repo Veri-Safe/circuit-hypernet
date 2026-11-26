@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Mapping
@@ -21,6 +22,11 @@ from .contracts import (
     expand_environment,
     semantic_sha256,
 )
+
+
+def workspace_relative_path(value: str | Path) -> str:
+    """Record the configured path relative to the launcher's working directory."""
+    return Path(os.path.relpath(value)).as_posix()
 
 
 def _required(value: Mapping[str, Any], key: str) -> Any:
@@ -51,10 +57,12 @@ class ArtifactBankConfig:
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any]) -> "ArtifactBankConfig":
+        from s2_hypernet.nvarc_pg.config import workspace_path
+
         return cls(
-            catalog_root=str(_required(value, "catalog_root")),
-            final_root=str(_required(value, "final_root")),
-            root_manifest=str(_required(value, "root_manifest")),
+            catalog_root=workspace_path(str(_required(value, "catalog_root"))),
+            final_root=workspace_path(str(_required(value, "final_root"))),
+            root_manifest=workspace_path(str(_required(value, "root_manifest"))),
             root_manifest_sha256=str(_required(value, "root_manifest_sha256")),
             expected_events=int(_required(value, "expected_events")),
         )
@@ -75,11 +83,13 @@ class ContinuationConfig:
     def from_mapping(
         cls, value: Mapping[str, Any] | None
     ) -> "ContinuationConfig | None":
+        from s2_hypernet.nvarc_pg.config import workspace_path
+
         if value is None:
             return None
         return cls(
-            source_checkpoint=str(_required(value, "source_checkpoint")),
-            source_config=str(_required(value, "source_config")),
+            source_checkpoint=workspace_path(str(_required(value, "source_checkpoint"))),
+            source_config=workspace_path(str(_required(value, "source_config"))),
             source_step=int(_required(value, "source_step")),
             scheduler=str(_required(value, "scheduler")),
             trunk_lr_scale=float(_required(value, "trunk_lr_scale")),
@@ -512,12 +522,14 @@ class S4R1Config:
         *,
         source_path: str | Path,
     ) -> "S4R1Config":
+        from s2_hypernet.nvarc_pg.config import workspace_path
+
         artifacts = _required(value, "artifacts")
         fusion = _required(value, "fusion")
         result = cls(
             format_version=str(_required(value, "format_version")),
             variant_id=str(_required(value, "variant_id")),
-            s2_config=str(_required(value, "s2_config")),
+            s2_config=workspace_path(str(_required(value, "s2_config"))),
             base_aggregate_sha256=str(_required(value, "base_aggregate_sha256")),
             vector_schema=str(_required(value, "vector_schema")),
             vector_dim=int(_required(value, "vector_dim")),
@@ -527,9 +539,9 @@ class S4R1Config:
             eval_artifacts=ArtifactBankConfig.from_mapping(
                 _required(artifacts, "evaluation")
             ),
-            output_root=str(_required(value, "output_root")),
-            fresh_init_root=str(_required(value, "fresh_init_root")),
-            batch_manifest=str(_required(value, "batch_manifest")),
+            output_root=workspace_path(str(_required(value, "output_root"))),
+            fresh_init_root=workspace_path(str(_required(value, "fresh_init_root"))),
+            batch_manifest=workspace_path(str(_required(value, "batch_manifest"))),
             fusion_hidden_dim=int(_required(fusion, "pg_hidden_dim")),
             circuit_encoder_hidden_dim=int(_required(fusion, "encoder_hidden_dim")),
             fusion_dropout=float(_required(fusion, "dropout")),

@@ -3,6 +3,7 @@
 import os
 
 import pytest
+import yaml
 
 from experiments import run
 
@@ -53,3 +54,20 @@ def test_refresh_keeps_local_edits_and_unmapped_assets(release):
         run.prepare_workspace(workspace)
     assert copy.read_text() == "local edit"
     assert user_asset.read_text() == "restored model"
+
+
+def test_circuit_profile_binds_only_relative_paths_to_the_workspace(tmp_path):
+    checkpoint = str(tmp_path / "my checkpoint")
+    source = {
+        "base": {"hf_checkpoint": checkpoint, "tokenizer": "${TOKENIZER_DIR}"},
+        "stage_a": {"profile": "s3_circuit/configs/stage-a.yaml"},
+        "data": {"train_path": "custom banks/train", "seed": 24},
+        "model": {"output_root": "outputs/run", "num_layers": 36},
+    }
+    result = yaml.safe_load(run._circuit_profile(yaml.safe_dump(source).encode()))
+    assert result == {
+        "base": source["base"],
+        "stage_a": {"profile": "${HC_ROOT}/s3_circuit/configs/stage-a.yaml"},
+        "data": {"train_path": "${HC_ROOT}/custom banks/train", "seed": 24},
+        "model": {"output_root": "${HC_ROOT}/outputs/run", "num_layers": 36},
+    }

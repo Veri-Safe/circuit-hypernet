@@ -10,7 +10,7 @@ import os
 import platform
 import sys
 import time
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any, Callable, Sequence
 
 from arc_eval_protocol import (
@@ -93,6 +93,11 @@ def _read_json_object(path: Path, label: str) -> dict[str, Any]:
     if not isinstance(payload, dict):
         raise ValueError(f"Expected {label} to contain a JSON object: {path}")
     return payload
+
+
+def _manifest_path(path: Path) -> str:
+    """Record the path from the launch workspace, preserving local link names."""
+    return Path(os.path.relpath(path, Path.cwd())).as_posix()
 
 
 def _hash_artifact_set(root: Path, paths: Sequence[Path]) -> dict[str, Any]:
@@ -624,11 +629,16 @@ def _merge_and_score(
     tokenizer_config_path = args.tokenizer / "tokenizer_config.json"
     print("rank=0 phase=artifact_hashing_start", flush=True)
     model_artifacts = hash_hf_model_artifacts(args.model)
-    adapter_artifacts = (
-        hash_lora_adapter_artifacts(args.adapter)
-        if args.adapter is not None
-        else None
-    )
+    model_artifacts["root"] = _manifest_path(args.model)
+    adapter_artifacts = None
+    if args.adapter is not None:
+        adapter_artifacts = hash_lora_adapter_artifacts(args.adapter)
+        adapter_artifacts["root"] = _manifest_path(args.adapter)
+        metadata = adapter_artifacts["metadata"]
+        # A checkpoint can carry an absolute base path from another machine.
+        # The evaluator has already checked its model name against --model.
+        if PureWindowsPath(metadata["base_model_name_or_path"]).anchor:
+            metadata["base_model_name_or_path"] = model_artifacts["root"]
     evaluator_artifacts = {
         "eval_nvarc_internal.py": sha256_file(Path(__file__)),
         "arc_eval_protocol.py": sha256_file(Path(__file__).with_name("arc_eval_protocol.py")),
@@ -641,21 +651,21 @@ def _merge_and_score(
     print("rank=0 phase=artifact_hashing_complete", flush=True)
     manifest = {
         "protocol_version": protocol_version,
-        "config_path": str(args.config.resolve()),
+        "config_path": _manifest_path(args.config),
         "config_sha256": config_sha256,
         "model_source": "hf_plus_native_lora" if args.adapter is not None else "hf",
-        "model_path": str(args.model.resolve()),
+        "model_path": model_artifacts["root"],
         "model_label": args.model_label,
-        "tokenizer_path": str(args.tokenizer.resolve()),
+        "tokenizer_path": _manifest_path(args.tokenizer),
         "model_config_sha256": sha256_file(model_config_path),
         "model_artifacts": model_artifacts,
         "tokenizer_config_sha256": sha256_file(tokenizer_config_path),
-        "adapter_path": str(args.adapter.resolve()) if args.adapter is not None else None,
+        "adapter_path": adapter_artifacts["root"] if adapter_artifacts is not None else None,
         "adapter_artifacts": adapter_artifacts,
         "adapter_runtime": adapter_runtime,
         "evaluator_artifacts": evaluator_artifacts,
-        "challenge_path": str(args.challenges.resolve()),
-        "solution_path": str(args.solutions.resolve()),
+        "challenge_path": _manifest_path(args.challenges),
+        "solution_path": _manifest_path(args.solutions),
         "dataset_identity": full_identity,
         "token_contract": token_contract,
         "world_size": world_size,

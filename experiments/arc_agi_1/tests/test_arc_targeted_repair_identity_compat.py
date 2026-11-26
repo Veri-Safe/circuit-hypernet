@@ -35,6 +35,32 @@ def test_packaged_archive_matches_release_digest_and_rejects_edits(tmp_path, nam
         read_archive_bytes(tmp_path, name)
 
 
+def test_relative_generator_configs_preserve_archive_mount(tmp_path, monkeypatch):
+    from s4_circuit.config import load_config
+
+    root = Path(__file__).resolve().parents[2]
+    alias = tmp_path / "moved workspace"
+    make_mount_alias(alias, root)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv("HC_ROOT", str(alias))
+    config = load_config(root / "s4_circuit/configs/selected/s0.yaml")
+    s2 = config.load_s2_config()
+    for value in (config.s2_config, config.output_root, config.batch_manifest,
+                  config.train_artifacts.root_manifest, config.eval_artifacts.final_root,
+                  s2.base.hf_checkpoint, s2.base.tokenizer, s2.data.train_path,
+                  s2.data.audit_manifest, s2.evaluation.protocol_config):
+        assert value.startswith(f"{alias}/")
+    assert s2.data.dev_path == ""
+
+    monkeypatch.delenv("HC_ROOT")
+    monkeypatch.chdir(root)
+    relocated = load_config(root / "s4_circuit/configs/selected/s0.yaml")
+    assert Path(relocated.s2_config).samefile(config.s2_config)
+    assert Path(relocated.load_s2_config().evaluation.protocol_config).samefile(
+        s2.evaluation.protocol_config
+    )
+
+
 def test_unknown_archive_path_is_rejected(tmp_path):
     with pytest.raises(ValueError, match="Unknown S0 archive file"):
         read_archive_bytes(tmp_path, "../checkpoint_identity.json")
