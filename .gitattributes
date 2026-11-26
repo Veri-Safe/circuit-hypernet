@@ -1,8 +1,8 @@
 # Preserve evidence and imported sources at their recorded byte representation.
 * -text
 *.sh text eol=lf
-logs/eval/2026-11-05/section4-results-completion-v1/arc/*.json text eol=lf
-logs/eval/2026-11-05/section4-results-completion-v1/arc/*.yaml text eol=lf
-s4_circuit/configs/selected/s0.yaml text eol=lf
-s4_circuit/configs/r1_rearc8_step130_common_v1.yaml text eol=lf
-s2_hypernet/configs/nvarc_pg/arc1_rearc8_s42_step130_v1.yaml text eol=lf
+experiments/arc_agi_1/results/direct_inference/circuit_hypernet/*.json text eol=lf
+experiments/arc_agi_1/results/direct_inference/circuit_hypernet/*.yaml text eol=lf
+experiments/arc_agi_1/training/generator/configs/s0.yaml text eol=lf
+experiments/arc_agi_1/training/generator/configs/r1_rearc8_step130_common_v1.yaml text eol=lf
+experiments/arc_agi_1/training/generator/configs/arc1_rearc8_s42_step130_v1.yaml text eol=lf
