@@ -1,5 +1,5 @@
 {
-  "checkpoint": "/mnt/kbei/HyperCombine/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300",
+  "checkpoint": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300",
   "accessible_path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300",
   "step": 300,
   "files": [

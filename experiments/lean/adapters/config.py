@@ -114,9 +114,8 @@ VECTOR397_INPUT_TREATMENTS = (
 )
 
 # Paths are provenance and launch-location metadata, not immutable artifact
-# identity.  The same shared volume is mounted as /volume/llm-research on the
-# control host and as /mnt inside a SiFlow pod.  Hashes and the frozen step are
-# the fields that must agree across that mount boundary.
+# identity. The same volume may have different mount points on training and
+# preparation hosts. Hashes and the frozen step must agree across mounts.
 BASE_CONTENT_IDENTITY_FIELDS = (
     "checkpoint_sha256",
     "model_state_sha256",

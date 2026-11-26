@@ -35,11 +35,10 @@ def write_json(path, value):
 
 
 def relocate(path):
-    text = str(path)
-    for prefix in ("/mnt/kbei/HyperCombine/", "/volume/llm-research/kbei/HyperCombine/"):
-        if text.startswith(prefix):
-            return ROOT / text[len(prefix):]
-    return Path(text) if Path(text).is_absolute() else ROOT / text
+    path = Path(path)
+    if path.anchor and not path.is_relative_to(ROOT) and "HyperCombine" in path.parts:
+        return ROOT.joinpath(*path.parts[path.parts.index("HyperCombine") + 1:])
+    return path if path.is_absolute() else ROOT / path
 
 
 def load_graph(record):

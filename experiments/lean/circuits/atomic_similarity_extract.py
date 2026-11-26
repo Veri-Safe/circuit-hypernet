@@ -189,7 +189,7 @@ def run(args):
     torch.set_num_interop_threads(1)
     torch.manual_seed(42)
     device = torch.device('cuda:0')
-    require(torch.cuda.is_available(), 'This worker must run in an authorized SiFlow GPU job')
+    require(torch.cuda.is_available(), 'This worker requires a CUDA device')
     source = protocol['source_model']
     model, model_identity = load_frozen_source_model(
         load_config(ROOT / source['architecture_config']), ROOT / source['checkpoint'], device=device,

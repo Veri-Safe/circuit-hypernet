@@ -76,7 +76,7 @@ def build_training_system(
         find_unused_parameters=find_unused_parameters,
         # Every rank loads the immutable common trunk and deterministically
         # constructs the variant fusion weights. Re-broadcasting this multi-GB
-        # state is redundant and has repeatedly stalled on Siflow nodes.
+        # state is redundant and can stall startup on distributed workers.
         init_sync=False,
     )
     _emit_training_stage(context, "ddp_wrap_complete")

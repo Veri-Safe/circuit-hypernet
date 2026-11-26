@@ -50,10 +50,9 @@ class DirectRuntime:
 
 def _workspace_path(root: Path, value: str | Path) -> Path:
     path = Path(value)
-    for old_root in (Path("/mnt/kbei/HyperCombine"), Path("/volume/llm-research/kbei/HyperCombine")):
-        if path.is_relative_to(old_root):
-            path = root / path.relative_to(old_root)
-            break
+    if path.anchor and not path.is_relative_to(root) and "HyperCombine" in path.parts:
+        # Older external manifests include the checkout name after the mount.
+        path = root.joinpath(*path.parts[path.parts.index("HyperCombine") + 1:])
     if not path.is_absolute():
         path = root / path
     path = path.resolve()

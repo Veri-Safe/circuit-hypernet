@@ -41,6 +41,8 @@ python experiments/run.py experiments/arc_agi_1/circuits/extract_nvarc_circuit_p
 
 For a full run, pass `--workspace PATH` before the script name. Restore the trained weights, tokenizer, transcoders and matching join indices there. TTFT also requires the task data, precomputed circuits and the upstream notebook at `ref_repo/NVARC/ARC-AGI1/002_ivan_arc1.ipynb`. Supply the original circuit artifacts and generator checkpoint under the paths for `training_circuits`, `eval_circuits` and `selected_generator`. The S0 loader verifies these artifacts. [S0 identity records](results/direct_inference/circuit_hypernet) · [Pinned NVARC notebook](https://github.com/1ytic/NVARC/blob/846d0198efa752534594e321fc3289fc0a06c657/ARC-AGI1/002_ivan_arc1.ipynb)
 
+For an archived S0 checkpoint whose identity includes absolute paths, restore the trainer’s original base checkpoint manifest alongside its checkpoint directory or set `ARC_ARCHIVE_ROOT` to its original mount alias for the workspace.
+
 For distributed training, the launcher supplies `WORLD_SIZE` and `LOCAL_WORLD_SIZE`. For TTFT, set `ARC_TTFT_WORKERS` to the desired concurrency. `ARC_TTFT_LOCAL_WORKERS` optionally sets local concurrency for generated initialization.
 
 Components derived from HY-WU carry the [Tencent Hunyuan Community License Agreement](licenses/HY-WU/LICENSE) and [notice](licenses/HY-WU/Notice.txt).

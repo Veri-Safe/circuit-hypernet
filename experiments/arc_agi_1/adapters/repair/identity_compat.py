@@ -11,20 +11,20 @@ from copy import deepcopy
 from dataclasses import asdict, is_dataclass
 import hashlib
 import json
+import os
 from pathlib import Path
 from typing import Any, Mapping
 
 ARCHIVE_PATH = "logs/eval/2026-11-05/section4-results-completion-v1/arc"
 # Release file digests. Checkpoint, parameter and training-identity digests inside the records remain pinned.
 ARCHIVE_SHA256 = {
-    "checkpoint_identity.json": "dabe269d23bf53b4a7cab44f0b654e75f29d5e61b2c674bb6e3ccb8267f073e8",
-    "base_checkpoint_manifest.json": "5dd0671ed5eb703a347a11c012249dd51ae0584d5ecc670d1c69585a26e9f481",
+    "checkpoint_identity.json": "6826dee753ee16aa1b45e5f5df6cac96ab27e520acb7b779f508b504658aa7f4",
+    "base_checkpoint_manifest.json": "5d5887c6be2f93d8d7e7c693891f6827a493729db7d3d83022ef5a21e0fa8567",
     "training_run_manifest.json": "55b50dc883655df5834e7a3ad8de556af5dab2ee614f2c77faeb70a88e88e6dd",
     "source_config.yaml": "19bc6b34f60f2cb7f47d2bf94cbb83fcf14db559a79403f7f569183b21882751",
     "common_config.yaml": "42ea630371b112a5fa28de0bce00688ea14b115b03b80fa3cfae5ce1d1e334a1",
     "s2_config.yaml": "e1a858ef45d12a9b88d337b625d40925d9fe26daa9626080c0f6657297728411",
 }
-HISTORICAL_ROOT = "/mnt/kbei/HyperCombine"
 CHECKPOINT_RELATIVE = (
     "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/"
     "train/checkpoints/step_00000300"
@@ -57,9 +57,30 @@ def read_archive_bytes(repo_root: Path, name: str) -> bytes:
     return data
 
 
+def archived_mount(root: Path) -> Path:
+    """Locate the path spelling embedded in the restored S0 checkpoint identity."""
+    override = os.environ.get("ARC_ARCHIVE_ROOT")
+    if override:
+        alias = Path(override)
+    else:
+        alias = root
+        # This original trainer output is adjacent to the checkpoint directory.
+        native_manifest = (root / CHECKPOINT_RELATIVE).parents[1] / "base_checkpoint_manifest.json"
+        if native_manifest.is_file():
+            native = json.loads(native_manifest.read_bytes())
+            published = json.loads(read_archive_bytes(root, "base_checkpoint_manifest.json"))
+            suffix = Path(published["hf_checkpoint"]).parts
+            original = Path(native["hf_checkpoint"])
+            if original.is_absolute() and original.parts[-len(suffix):] == suffix:
+                alias = original.parents[len(suffix) - 1]
+    if not alias.is_absolute() or not alias.is_dir() or not alias.samefile(root):
+        raise ValueError("Set ARC_ARCHIVE_ROOT to the original checkpoint mount alias of this workspace")
+    return alias
+
+
 def rebind_mount_fields(
     value: Mapping[str, Any], *, fields: tuple[tuple[str, ...], ...],
-    current_root: str | Path, historical_root: str | Path = HISTORICAL_ROOT,
+    current_root: str | Path, historical_root: str | Path | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Only rebind listed path fields, proving both names are the same resource.
 
@@ -67,7 +88,7 @@ def rebind_mount_fields(
     arbitrary recursive string replacement nor new-default stripping is allowed.
     """
     current = Path(current_root).resolve(strict=True)
-    historical = Path(historical_root)
+    historical = Path(historical_root) if historical_root is not None else archived_mount(current)
     if not historical.exists() or historical.resolve(strict=True) != current:
         raise ValueError("Historical/current mount roots do not resolve to the same directory")
     result = deepcopy(dict(value))
@@ -156,9 +177,12 @@ def validate_archive_mount_compatibility(
     if state.get("global_step") != 300 or state.get("variant_id") != "f3_independent_attention":
         raise ValueError("Compatibility is restricted to S0 step300")
 
+    alias = archived_mount(root)
     legacy_base, base_changes = rebind_mount_fields(
-        base_manifest, fields=BASE_PATH_FIELDS, current_root=root)
-    archived_base = archive["base_checkpoint_manifest.json"]
+        base_manifest, fields=BASE_PATH_FIELDS, current_root=root, historical_root=alias)
+    archived_base = dict(archive["base_checkpoint_manifest.json"])
+    for (field,) in BASE_PATH_FIELDS:
+        archived_base[field] = str(alias / archived_base[field])
     if legacy_base != archived_base:
         raise ValueError("Base identity differs beyond the two approved mount paths")
     base_hash = semantic_sha256(legacy_base)
@@ -166,7 +190,7 @@ def validate_archive_mount_compatibility(
     if base_hash != state["base_manifest_sha256"] or base_hash != train_run["base_manifest_sha256"]:
         raise ValueError("Archived Base manifest hash does not match checkpoint and run identities")
     legacy_training, training_changes = rebind_mount_fields(
-        training_semantic, fields=TRAINING_PATH_FIELDS, current_root=root)
+        training_semantic, fields=TRAINING_PATH_FIELDS, current_root=root, historical_root=alias)
     training_hash = semantic_sha256(legacy_training)
     if not all(training_hash == ref for ref in (
         state["training_config_sha256"], train_run["training_config_sha256"],

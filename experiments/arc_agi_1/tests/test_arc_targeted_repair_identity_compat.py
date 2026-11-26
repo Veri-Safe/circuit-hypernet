@@ -1,13 +1,15 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 import sys
 
 import pytest
 
 from s4_circuit.arc_targeted_repair_v1.identity_compat import (
-    ARCHIVE_PATH, ARCHIVE_SHA256, read_archive_bytes, rebind_mount_fields, semantic_sha256,
+    ARCHIVE_PATH, ARCHIVE_SHA256, CHECKPOINT_RELATIVE, archived_mount,
+    read_archive_bytes, rebind_mount_fields, semantic_sha256,
 )
 
 
@@ -36,6 +38,28 @@ def test_packaged_archive_matches_release_digest_and_rejects_edits(tmp_path, nam
 def test_unknown_archive_path_is_rejected(tmp_path):
     with pytest.raises(ValueError, match="Unknown S0 archive file"):
         read_archive_bytes(tmp_path, "../checkpoint_identity.json")
+
+
+def test_mount_is_discovered_from_restored_native_manifest(tmp_path, monkeypatch):
+    monkeypatch.delenv("ARC_ARCHIVE_ROOT", raising=False)
+    root = tmp_path / "workspace"
+    root.mkdir()
+    alias = tmp_path / "original-mount"
+    make_mount_alias(alias, root)
+    data = read_archive_bytes(Path(__file__).resolve().parents[2], "base_checkpoint_manifest.json")
+    published = root / ARCHIVE_PATH / "base_checkpoint_manifest.json"
+    published.parent.mkdir(parents=True)
+    published.write_bytes(data)
+    native = json.loads(data)
+    assert not Path(native["hf_checkpoint"]).anchor
+    native["hf_checkpoint"] = str(alias / native["hf_checkpoint"])
+    restored = (root / CHECKPOINT_RELATIVE).parents[1] / published.name
+    restored.parent.mkdir(parents=True)
+    restored.write_text(json.dumps(native))
+    assert archived_mount(root) == alias
+    monkeypatch.setenv("ARC_ARCHIVE_ROOT", str(tmp_path))
+    with pytest.raises(ValueError, match="mount alias"):
+        archived_mount(root)
 
 
 def test_mount_rebinding_preserves_semantics_and_requires_same_resource(tmp_path):

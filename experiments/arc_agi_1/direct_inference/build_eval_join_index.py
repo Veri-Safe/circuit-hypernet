@@ -95,7 +95,7 @@ def main() -> None:
             **identity,
         )
     except FileExistsError:
-        # Siflow jobs can run on different hosts, where flock on the shared
+        # Jobs can run on different hosts, where flock on the shared
         # mount does not reliably serialize the final commit. A concurrent
         # winner is reusable only after its full bundle and records validate.
         deadline = time.monotonic() + 60.0

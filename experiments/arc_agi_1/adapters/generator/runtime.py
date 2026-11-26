@@ -92,11 +92,11 @@ def resolve_process_group_timeout_seconds(
 
 
 def _emit_runtime_event(stage: str, **fields: Any) -> None:
+    if os.environ.get("RANK", "0") != "0":
+        return
     payload = {
         "event": "nvarc_pg_runtime",
         "stage": stage,
-        "rank": os.environ.get("RANK", "0"),
-        "local_rank": os.environ.get("LOCAL_RANK", "0"),
         **fields,
     }
     print(json.dumps(payload, sort_keys=True, default=str), flush=True)
@@ -129,23 +129,13 @@ def setup_distributed(
     world_size = int(os.environ.get("WORLD_SIZE", "1"))
     rank = int(os.environ.get("RANK", "0"))
     local_rank = int(os.environ.get("LOCAL_RANK", "0"))
-    _emit_runtime_event(
-        "distributed_env",
-        expected_world_size=expected_world_size,
-        world_size=world_size,
-        backend=backend,
-        cuda_visible_devices=os.environ.get("CUDA_VISIBLE_DEVICES", ""),
-    )
+    _emit_runtime_event("distributed_env", backend=backend)
     if world_size != expected_world_size:
         raise RuntimeError(
             f"Expected world size {expected_world_size}, found {world_size}"
         )
     torch.cuda.set_device(local_rank)
-    _emit_runtime_event(
-        "cuda_device_bound",
-        device_index=local_rank,
-        device_name=torch.cuda.get_device_name(local_rank),
-    )
+    _emit_runtime_event("cuda_device_bound")
     timeout_seconds = (
         _validate_process_group_timeout_seconds(
             process_group_timeout_seconds,
@@ -199,7 +189,7 @@ def set_reproducible_seed(seed: int, *, rank: int = 0) -> None:
 
 
 def load_tokenizer(config: NvarcPGConfig) -> Any:
-    _emit_runtime_event("tokenizer_load_start", tokenizer=config.base.tokenizer)
+    _emit_runtime_event("tokenizer_load_start")
     tokenizer = AutoTokenizer.from_pretrained(
         config.base.tokenizer,
         use_fast=True,
@@ -209,9 +199,7 @@ def load_tokenizer(config: NvarcPGConfig) -> Any:
         raise ValueError(
             f"Expected the NVARC 16-token tokenizer, found {len(tokenizer)} tokens"
         )
-    _emit_runtime_event(
-        "tokenizer_load_complete", tokenizer=config.base.tokenizer, tokens=16
-    )
+    _emit_runtime_event("tokenizer_load_complete", tokens=16)
     return tokenizer
 
 
@@ -223,8 +211,6 @@ def load_frozen_qwen(
 ) -> torch.nn.Module:
     _emit_runtime_event(
         "frozen_model_load_start",
-        hf_checkpoint=config.base.hf_checkpoint,
-        device=str(device),
         for_training=for_training,
         attention_implementation=_attention_implementation(),
     )
@@ -250,8 +236,6 @@ def load_frozen_qwen(
     model.train(for_training)
     _emit_runtime_event(
         "frozen_model_load_complete",
-        hf_checkpoint=config.base.hf_checkpoint,
-        device=str(device),
         for_training=for_training,
     )
     return model
@@ -301,25 +285,13 @@ def build_evaluation_system(
     context: DistributedContext,
     parameter_generator_checkpoint: str | Path | None,
 ) -> tuple[FrozenQwenPerQueryLoRA, Any]:
-    _emit_runtime_event(
-        "evaluation_system_build_start",
-        rank=context.rank,
-        local_rank=context.local_rank,
-        pg_checkpoint=str(parameter_generator_checkpoint)
-        if parameter_generator_checkpoint is not None
-        else None,
-    )
+    _emit_runtime_event("evaluation_system_build_start")
     tokenizer = load_tokenizer(config)
     base_model = load_frozen_qwen(config, device=context.device, for_training=False)
     if parameter_generator_checkpoint is None:
         parameter_generator: torch.nn.Module = torch.nn.Identity()
     else:
-        _emit_runtime_event(
-            "parameter_generator_load_start",
-            rank=context.rank,
-            local_rank=context.local_rank,
-            pg_checkpoint=str(parameter_generator_checkpoint),
-        )
+        _emit_runtime_event("parameter_generator_load_start")
         parameter_generator = NvarcParameterGenerator(
             config.build_parameter_generator_config()
         )
@@ -331,23 +303,14 @@ def build_evaluation_system(
         parameter_generator.load_state_dict(state, strict=True)
         parameter_generator.to(device=context.device, dtype=torch.bfloat16)
         parameter_generator.eval()
-        _emit_runtime_event(
-            "parameter_generator_load_complete",
-            rank=context.rank,
-            local_rank=context.local_rank,
-            pg_checkpoint=str(parameter_generator_checkpoint),
-        )
+        _emit_runtime_event("parameter_generator_load_complete")
     system = FrozenQwenPerQueryLoRA(
         base_model,
         parameter_generator,
         target_keys=config.target_layout.target_keys,
     )
     base_model.eval()
-    _emit_runtime_event(
-        "evaluation_system_build_complete",
-        rank=context.rank,
-        local_rank=context.local_rank,
-    )
+    _emit_runtime_event("evaluation_system_build_complete")
     return system, tokenizer
 
 

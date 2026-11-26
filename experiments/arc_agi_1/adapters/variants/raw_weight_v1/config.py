@@ -318,8 +318,7 @@ def raw_weight_architecture_identity(
 ) -> dict[str, Any]:
     """Return the portable identity of a raw-weight conditioner architecture.
 
-    The cache content hash is part of the identity; its absolute path is not because
-    the same shared volume is mounted as /volume on login nodes and /mnt in Siflow.
+    The cache content hash identifies the artifact across different mount points.
     """
 
     normalized = value.to_dict() if isinstance(value, RawWeightConditioningConfig) else dict(value)

@@ -282,7 +282,7 @@ def run(args: argparse.Namespace) -> int:
 
     try:
         # Keep paths lexical under the snapshot: outputs/datasets are shared-volume
-        # symlinks in Siflow pods, and resolving them would break portable
+        # symlinks on worker hosts, and resolving them would break portable
         # provenance paths even though the target files are valid.
         visible_path = REPO_ROOT / str(config.data["validation_bank"])
         atomic_path = REPO_ROOT / str(config.data["atomic_bank"])

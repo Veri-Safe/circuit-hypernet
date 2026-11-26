@@ -2,8 +2,8 @@
   "adapter_artifacts": null,
   "adapter_path": null,
   "adapter_runtime": null,
-  "challenge_path": "/mnt/kbei/HyperCombine/datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json",
-  "config_path": "/mnt/kbei/HyperCombine/s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json",
+  "challenge_path": "datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json",
+  "config_path": "s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json",
   "config_sha256": "54037b1baac229754a7f372b1de887025482733f39941184ada0afa6877d235e",
   "dataset_identity": {
     "bundle_semantic_sha256": "173c6096d70d4893c4ef7562db45483a0be1bb9b77f2ab12cbe950b7605078eb",
@@ -46,18 +46,18 @@
         "size_bytes": 34422
       }
     },
-    "root": "/mnt/kbei/HyperCombine/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
+    "root": "outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
     "weight_file_count": 3
   },
   "model_config_sha256": "8f9eb61dafc23ada43f53cf929bd40b9943bab7befb866840b05fa7107a18aaf",
   "model_label": "scale-r8_s42-step130",
-  "model_path": "/mnt/kbei/HyperCombine/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
+  "model_path": "outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
   "model_source": "hf",
   "predictions_sha256": "5c551a8aa47e272843ca81aa848f6e403e0ceec587f6a66c8674729bd577bc52",
   "primary_metric": "selected_exact@2",
   "protocol_version": "arc_agi1_nvarc_public_validation_v1",
   "python_version": "3.12.13",
-  "solution_path": "/mnt/kbei/HyperCombine/datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json",
+  "solution_path": "datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json",
   "submission_sha256": "1d7c9c14f4a568437952e237db0415c61e78e05f31273b28acbc330437a5b414",
   "token_contract": {
     "assistant_token_id": 12,
@@ -81,6 +81,6 @@
     "vocab_size": 16
   },
   "tokenizer_config_sha256": "d59ac739ba44b2da01725336896a608daa107880811a086e015cf2843ae4d83d",
-  "tokenizer_path": "/mnt/kbei/HyperCombine/base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "tokenizer_path": "base_models/qwen/Qwen3-4B-Thinking-2507-16t",
   "transformers_version": "4.55.4"
 }

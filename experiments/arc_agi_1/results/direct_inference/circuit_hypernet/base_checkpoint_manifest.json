@@ -19,7 +19,7 @@
       "size": 34422
     }
   },
-  "hf_checkpoint": "/mnt/kbei/HyperCombine/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
+  "hf_checkpoint": "outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
   "model_config_sha256": "8f9eb61dafc23ada43f53cf929bd40b9943bab7befb866840b05fa7107a18aaf",
   "model_contract": {
     "head_dim": 128,
@@ -42,6 +42,6 @@
   "source_step": 130,
   "target_layout_sha256": "a4b18fac3ac74c415d954dd32ad6932ee05cb5786c51ea67f213d8c289138592",
   "token_mapping_sha256": "e1bb75693da1236d6b5b240b3fce6e03a7975c80812d54c1d3e7e30b634a4884",
-  "tokenizer": "/mnt/kbei/HyperCombine/base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "tokenizer": "base_models/qwen/Qwen3-4B-Thinking-2507-16t",
   "tokenizer_config_sha256": "d59ac739ba44b2da01725336896a608daa107880811a086e015cf2843ae4d83d"
 }

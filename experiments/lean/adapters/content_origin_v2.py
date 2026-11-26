@@ -135,7 +135,7 @@ def atomic_bank(bank):
          'derived_source_indices': indices, 'derived_event_count': 200, 'derived_task_counts': dict(counts)})
 
 
-def prepare(*, root, output):
+def prepare(*, root, output, failure_receipt=None, launcher_source=None):
     from .config import load_run_config, write_run_config
     from .packed_cache import PackedTokenizedVector397Dataset
     from . import formal_training  # Import actual transitive runtime dependencies for receipts.
@@ -150,11 +150,22 @@ def prepare(*, root, output):
     mean = training_mean(dataset.payload['vectors'])
     if digest(mean) != 'a07e1199d0a24eda924b4f28b1eabd0df660cd802335f573544d03450151823e':
         raise ValueError('Mean differs from independent CPU audit')
+    # Older layouts named these files for their launch environment.
+    def locate(explicit, pattern):
+        if explicit is not None:
+            return (root / explicit).relative_to(root)
+        matches = list(root.glob(pattern))
+        if len(matches) != 1:
+            raise ValueError(f'Expected one archived input matching {pattern}; supply its path explicitly')
+        return matches[0].relative_to(root)
+
+    failed = locate(failure_receipt, 'logs/server/2026-10-19/s5-content-origin-*-deployment-v1/matched/attempt-failure.json')
+    launcher = locate(launcher_source, 'temp_s/s5_content_origin_*_20261019_v2.py')
     shared = root / 'outputs/s5_lean_circuit/content_origin_v2/shared'
     shared.mkdir(parents=True, exist_ok=False)
     mean_path = shared / 'train_mean.pt'
     with mean_path.open('xb') as f: torch.save({'mean': mean, 'count': len(dataset), 'already_fixed_log1p': True}, f)
-    files = {'previous_failed_attempt': file(root / 'logs/server/2026-10-19/s5-content-origin-ydao-deployment-v1/matched/attempt-failure.json'),
+    files = {'previous_failed_attempt': file(root / failed),
         'previous_frozen_plan': file(root / 'logs/train/2026-10-19/s5_content_origin_v1/plan.json'),
         'anchor_config': file(anchor_path), 'training_mean': file(mean_path),
         'packed_cache': file(dataset.path), 'packed_cache_metadata': file(str(dataset.path) + '.json'),
@@ -184,7 +195,7 @@ def prepare(*, root, output):
                 '4server/s5_content_origin_v2/permuted.yml',
                 '4server/s5_content_origin_v2/mean.yml',
                 'temp_s/s5_project_gpu_budget_20261019.py',
-                'temp_s/s5_content_origin_ydao_siflow_20261019_v2.py',
+                launcher.as_posix(),
                 's5_lean_circuit/scripts/chunk_log_stream.py',
                 '4server/0713/nvarc_lora/activate_nvarc_conda.sh'):
         files['launcher:' + rel] = file(root / rel)

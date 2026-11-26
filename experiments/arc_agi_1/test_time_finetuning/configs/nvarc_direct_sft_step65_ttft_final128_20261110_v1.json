@@ -5,7 +5,7 @@
   "source_step": 65,
   "model_label": "rearc8-s42-step130-to-s24-skip-b1-lr1e5-step65",
   "base_identity_manifest": "logs/eval/2026-08-19/0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1_step65/eval_manifest.json",
-  "base_identity_manifest_sha256": "33a27382361eaa2dd485cd9e0156bb6a96d5436b1cc3112320aaa9e9dca12f44",
+  "base_identity_manifest_sha256": "9e6162255a48a098b66366a5be7d4feed8ddeaa0902da36706c57eeba6dc3a82",
   "expected_model_aggregate_sha256": "1ed554189fb1ecdced53a739a02513317d653f86685138bec75282eff4acc237",
   "evaluation": {
     "protocol_config": "s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json",

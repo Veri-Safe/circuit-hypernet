@@ -17,7 +17,7 @@ from typing import Any, Mapping, Sequence
 import torch
 
 from s4_circuit.arc_targeted_repair_v1.identity_compat import (
-    ARCHIVE_PATH, read_archive_bytes, validate_archive_mount_compatibility,
+    ARCHIVE_PATH, archived_mount, read_archive_bytes, validate_archive_mount_compatibility,
 )
 from s4_circuit.contracts import semantic_sha256, sha256_file, token_ids_sha256
 
@@ -25,22 +25,12 @@ from s4_circuit.contracts import semantic_sha256, sha256_file, token_ids_sha256
 SOURCE_CONFIG = "s4_circuit/configs/selected/s0.yaml"
 SOURCE_CHECKPOINT = "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300"
 MANIFESTS = "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/manifests"
-HISTORICAL_ROOT = Path("/mnt/kbei/HyperCombine")
 LARGE_FILE_BYTES = 16 * 1024 * 1024
 
 
 def _path(root: Path, value: str | Path) -> Path:
-    path = Path(value)
-    for prefix in (HISTORICAL_ROOT, Path("/volume/llm-research/kbei/HyperCombine")):
-        if path.is_relative_to(prefix):
-            path = root / path.relative_to(prefix)
-            break
-    if not path.is_absolute():
-        path = root / path
-    path = path.resolve()
-    if not path.is_relative_to(root):
-        raise ValueError("S0 asset is outside the workspace")
-    return path
+    from .direct_runtime import _workspace_path
+    return _workspace_path(root, value)
 
 
 def _warmstart(root: Path, cfg: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -56,9 +46,8 @@ def _warmstart(root: Path, cfg: Mapping[str, Any]) -> Mapping[str, Any]:
 @contextmanager
 def _historical_environment(root: Path):
     """Retain the physical source's original path-bearing native identities."""
-    if not HISTORICAL_ROOT.is_dir() or not HISTORICAL_ROOT.samefile(root):
-        raise ValueError("Historical S0 mount is not the same physical workspace")
-    values = {"HC_ROOT": str(HISTORICAL_ROOT), "NVARC_ATTENTION_IMPLEMENTATION": "sdpa"}
+    archive_root = archived_mount(root)
+    values = {"HC_ROOT": str(archive_root), "NVARC_ATTENTION_IMPLEMENTATION": "sdpa"}
     for key, rel in (
         ("S4_TRAIN_ROOT_SHA256", "outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive/training_circuits/final/root_manifest.json"),
         ("S4_EVAL_ROOT_SHA256", "outputs/nvarc/circuit_stage_b/rearc8_s42_step130_public_eval/eval_circuits/final/root_manifest.json"),
@@ -67,7 +56,7 @@ def _historical_environment(root: Path):
     previous = {key: os.environ.get(key) for key in values}
     os.environ.update(values)
     try:
-        yield
+        yield archive_root
     finally:
         for key, value in previous.items():
             if value is None:
@@ -82,13 +71,13 @@ def _load_source_config(root: Path, cfg: Mapping[str, Any]):
     _warmstart(root, cfg)
     if os.environ.get("NVARC_ATTENTION_IMPLEMENTATION", "sdpa") != "sdpa":
         raise ValueError("S0 step300 source requires its sdpa checkpoint backend")
-    with _historical_environment(root):
+    with _historical_environment(root) as archive_root:
         config = load_config(root / SOURCE_CONFIG)
         # An archived trainer hashes absolute artifact paths. Public paths may
         # be links to the restored offline archive. Canonicalize only those
         # aliases and retain the native identities of all files and settings.
         def archived_path(path):
-            return str(HISTORICAL_ROOT / _path(root, path).relative_to(root))
+            return str(archive_root / _path(root, path).relative_to(root))
 
         def archived_bank(bank):
             return replace(bank, final_root=archived_path(bank.final_root),
