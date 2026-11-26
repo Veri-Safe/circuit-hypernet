@@ -1,0 +1,105 @@
+{
+  "alpha_values": [
+    0.0,
+    0.5
+  ],
+  "banks": {
+    "atomic": {
+      "path": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/atomic_retention.pt",
+      "sha256": "7941251250bc8596301520bca17cbece99284100a89c3d544f03acffdc4ed245"
+    },
+    "visible": {
+      "path": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/visible_validation.pt",
+      "sha256": "19f5b0a2efbf132e85939fe3d8504d0843fc2885f8787285607c5ce4b410a1b9"
+    }
+  },
+  "blocks": [
+    0,
+    5,
+    10
+  ],
+  "checkpoint_sha256": "cd749589e530be32621c80f5c4cc278ce844f0d74cb90a7c9103ce08889c031e",
+  "circuit_present": true,
+  "data_authorization_sha256": "f2c5ddd69b6cc9637d4d1a84691416961d9b6aa92f06c5ffa5463bbeaad27f5d",
+  "dictionary": {
+    "0": {
+      "path": "outputs/pg_transcoder/lean-lc026-nested-or-r03-mechanism-v1/models/block00_shared5site_8192/best.pt",
+      "sha256": "a326fcc3afaa25d7a6fac30e6e5fb0d052d9f9ea0c92f19ebfd4acc764e9471e"
+    },
+    "10": {
+      "path": "outputs/pg_transcoder/lean-lc026-nested-or-r03-mechanism-v1/models/block10_shared5site_8192/best.pt",
+      "sha256": "48507223b6b670dc3127a09cbf9e11c21a1e1f4ad2ee867eee800387dea36ca4"
+    },
+    "5": {
+      "path": "outputs/pg_transcoder/lean-lc026-nested-or-r03-mechanism-v1/models/block05_shared5site_8192/best.pt",
+      "sha256": "952cb16803e8f81a3b29118dfb2151ca5de8a0e6e6e4e9cafe9ea7c115cf4618"
+    }
+  },
+  "features_per_dictionary": 8192,
+  "final_criterion": "unchanged: OOD relative accuracy decline greater than each individual ID relative decline; report every atomic task separately",
+  "formal_holdout": false,
+  "format": "lean_nested_or_r03_gradient_contrast_v1",
+  "full": "four new screen-selected groups plus two fixed anchors; all4500 questions,500/task",
+  "gate_multiplier": 0.5,
+  "gradient_feature_effect": "minus site_rms * sum_slots(z_native * (dNLL/dsite dot W_dec_feature)); positive predicts NLL increase on removal",
+  "gradient_objective": "mean token NLL of the exact native-correct first-tactic prefix; gold/native output is used only downstream of query-only PG conditioning",
+  "gradient_population": "all500/task identities; differentiate only native-correct first tactics; normalize each task by its native-correct count",
+  "group_sizes": [
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "intervention": "subtract (1-alpha) each selected feature's cached native decoded contribution from the live site output; downstream PG recomputes normally",
+  "joint_group": "topK addressed features across the three dictionaries; group size counts site-feature addresses",
+  "parent_groups_sha256": "46f38ee6f8fcd8645b98a44808642482c844402fa1bde270624f089d86c745e5",
+  "parent_screen_summary_sha256": "5f0ccc66b728fb44c32c0e86cb935712d65550816c8a25f67b863dc36e5d2809",
+  "parent_smoke_receipt_sha256": "db4be49c357cad768e39c5b3c1d8bead115ade4f20c3b94ba810db056e5fc8e0",
+  "previous_summary_sha256": "043ff69044e0a788f1dce7458c6d4d9bfd4a09f3a6f9a315eb66d627c3bf9402",
+  "questions_path": "outputs/pg_transcoder/lean_stage2_nested_or_groups_v1/relative_nodes_r03_v1/questions.json",
+  "questions_sha256": "8b176c0905307cc88761cd7fe73137b4c8a8c51757f6e1f7f9b4eaefa9df3545",
+  "random_control_claim": false,
+  "ranking_definition": {
+    "ood_only": "OOD mean",
+    "signed_all": "OOD mean minus maximum of zero and eight control-task means",
+    "signed_id": "OOD mean minus maximum of zero and four ID-task means"
+  },
+  "ranking_modes": [
+    "signed_all",
+    "signed_id",
+    "ood_only"
+  ],
+  "round": "small-feature Pareto follow-up after the 32-condition screen",
+  "same_bank_discovery_selection": true,
+  "scope": "visible500_discovery_only",
+  "scoring": "greedy max_new_tokens=50 strict_first_tactic_exact_match",
+  "screen": "same discovery questions: first200 OOD and first50 of each other task, total600; ranking and screening are not independent validation",
+  "selection": "evaluate all signed_all K=8,16 with alpha=0,0.5; retain two historical anchors",
+  "sites": [
+    "block0.residual",
+    "block5.residual",
+    "block10.residual"
+  ],
+  "slots": "all272",
+  "source_manifest_sha256": "9a17453bc99c9057b6581eea83d7e7902547b1b0cdff392c132961abfd102205",
+  "source_target_sha256": "944cb1f0b8c91b40fc1224255b5fc58a97ee69cea1b4fc2b178f6a9b9dd24b32",
+  "totals": {
+    "S_and": 500,
+    "S_id": 500,
+    "S_or_l": 500,
+    "S_or_r": 500,
+    "T_and_or": 500,
+    "T_and_or_and": 500,
+    "T_nested_and": 500,
+    "T_nested_or": 500,
+    "T_or_and": 500
+  },
+  "training_updates": false,
+  "selection_record_sha256": "0e7a64bf2c3db8a19e17d5c9933da9fe8a225d459568dd589d4c79561c7e4db5",
+  "release_code_sha256": {
+    "engine.py": "953c04cbd8acef0cb8b3d48db9dfdeb3164c2879befac6f67f7c732757fa8f83",
+    "evaluate.py": "29f025ba41b17ca11993d5ce4b3591bcdb8ec0a7288dcbf46deec20c31e32e7d",
+    "shared.py": "2caaa804ed3155c1476d55e87394a63ec86405b4d8485401952c077c0966a7d5"
+  }
+}

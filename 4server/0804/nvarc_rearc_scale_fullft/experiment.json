@@ -1,0 +1,169 @@
+{
+  "format_version": "nvarc_rearc_scale_fullft_v2",
+  "experiment_id": "0804_rearc_scale_50ep_v2",
+  "base_model": "base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "data_family": {
+    "source": "datasets/nvarc/augmented/grids_v15/rearc",
+    "source_fingerprint": "332b5af0e60bee1d",
+    "derived_root": "datasets/nvarc/derived/rearc_scale_s42",
+    "selection_algorithm": "rearc128_per_puzzle_sha256_v1",
+    "selection_seed": 42,
+    "puzzles": 400,
+    "strictly_nested": [
+      8,
+      16,
+      32,
+      64
+    ]
+  },
+  "training": {
+    "logical_epochs": 50,
+    "loader_epochs": 1,
+    "global_batch_size": 256,
+    "micro_batch_size": 1,
+    "checkpoint_period_logical_epochs": 2,
+    "validation_every_logical_epoch": true,
+    "peak_lr": 0.0001,
+    "min_lr": 1e-07,
+    "lr_decay_style": "linear",
+    "precision": "bfloat16"
+  },
+  "variants": {
+    "r8_s24": {
+      "rows_per_puzzle": 8,
+      "training_seed": 24,
+      "rows": 3200,
+      "assistant_events": 20743,
+      "steps_per_epoch": 13,
+      "max_steps": 650,
+      "warmup_steps": 4,
+      "schedule_sha256": "53561e1dcafa84493e9f227bbea0efaf351121d34de5f115e99ff3162ca2b6f7"
+    },
+    "r8_s42": {
+      "rows_per_puzzle": 8,
+      "training_seed": 42,
+      "rows": 3200,
+      "assistant_events": 20743,
+      "steps_per_epoch": 13,
+      "max_steps": 650,
+      "warmup_steps": 4,
+      "schedule_sha256": "2a98e42bb28f5be78e6c48d852d461d84b2ad4f3980100043ac3c2582f650868"
+    },
+    "r8_s123": {
+      "rows_per_puzzle": 8,
+      "training_seed": 123,
+      "rows": 3200,
+      "assistant_events": 20743,
+      "steps_per_epoch": 13,
+      "max_steps": 650,
+      "warmup_steps": 4,
+      "schedule_sha256": "62ad0c29e2495c88bb785db448ec9c61f55876db253dfb24acc0d44b1738b8c6"
+    },
+    "r16_s24": {
+      "rows_per_puzzle": 16,
+      "training_seed": 24,
+      "rows": 6400,
+      "assistant_events": 41568,
+      "steps_per_epoch": 25,
+      "max_steps": 1250,
+      "warmup_steps": 8,
+      "schedule_sha256": "b106d81642a282a500d420aeaa40f926b19f2e866c37d5110e9e660ec6ebac98"
+    },
+    "r16_s42": {
+      "rows_per_puzzle": 16,
+      "training_seed": 42,
+      "rows": 6400,
+      "assistant_events": 41568,
+      "steps_per_epoch": 25,
+      "max_steps": 1250,
+      "warmup_steps": 8,
+      "schedule_sha256": "8f00d6db5d6b1cffd0dbb2025b0283b05775f5fa2226095447f054e0e4f14d78"
+    },
+    "r16_s123": {
+      "rows_per_puzzle": 16,
+      "training_seed": 123,
+      "rows": 6400,
+      "assistant_events": 41568,
+      "steps_per_epoch": 25,
+      "max_steps": 1250,
+      "warmup_steps": 8,
+      "schedule_sha256": "215808cd2e7179832c9dab2626541f0d0d29c100ec2e234c7920247e800020a6"
+    },
+    "r32_s24": {
+      "rows_per_puzzle": 32,
+      "training_seed": 24,
+      "rows": 12800,
+      "assistant_events": 83222,
+      "steps_per_epoch": 50,
+      "max_steps": 2500,
+      "warmup_steps": 16,
+      "schedule_sha256": "557f0df9cb8576e11cd9974ad7197330336db9a70a4b45ab3d4089083541acc6"
+    },
+    "r32_s42": {
+      "rows_per_puzzle": 32,
+      "training_seed": 42,
+      "rows": 12800,
+      "assistant_events": 83222,
+      "steps_per_epoch": 50,
+      "max_steps": 2500,
+      "warmup_steps": 16,
+      "schedule_sha256": "525fc36f0b6cb63268f6f0e3a28b73b3755c609562c05e36d75fc85b27c4c70d"
+    },
+    "r32_s123": {
+      "rows_per_puzzle": 32,
+      "training_seed": 123,
+      "rows": 12800,
+      "assistant_events": 83222,
+      "steps_per_epoch": 50,
+      "max_steps": 2500,
+      "warmup_steps": 16,
+      "schedule_sha256": "a19a3cb9d42657410b0f1e9073b0051d2b0b0e5162f98677401e453bd925d424"
+    },
+    "r64_s24": {
+      "rows_per_puzzle": 64,
+      "training_seed": 24,
+      "rows": 25600,
+      "assistant_events": 166337,
+      "steps_per_epoch": 100,
+      "max_steps": 5000,
+      "warmup_steps": 32,
+      "schedule_sha256": "55ebea163aa72df99f33754c5d405ff3d2483f4ba49ec475461eaaa717fc7280"
+    },
+    "r64_s42": {
+      "rows_per_puzzle": 64,
+      "training_seed": 42,
+      "rows": 25600,
+      "assistant_events": 166337,
+      "steps_per_epoch": 100,
+      "max_steps": 5000,
+      "warmup_steps": 32,
+      "schedule_sha256": "1ca3fd9c19411ea92d27d5cf95842d9a37ce62dd5132f23428ecf896aba52065"
+    },
+    "r64_s123": {
+      "rows_per_puzzle": 64,
+      "training_seed": 123,
+      "rows": 25600,
+      "assistant_events": 166337,
+      "steps_per_epoch": 100,
+      "max_steps": 5000,
+      "warmup_steps": 32,
+      "schedule_sha256": "0501d2e1ae349d54e19a3faa0b1efe58b1558106dad2a701307ab093706de93b"
+    }
+  },
+  "selection": {
+    "canonical_training_seed": 42,
+    "primary_metric": "selected_exact@2",
+    "material_improvement": 0.0025,
+    "post_peak_epochs": 5,
+    "final_trend_epochs": 3
+  },
+  "evaluation": {
+    "protocol": "arc_agi1_nvarc_public_validation_v1",
+    "tasks": 400,
+    "test_cases": 419,
+    "temperature": 0.0,
+    "selection_views": 16,
+    "attempts": 2,
+    "test_time_fine_tuning": false
+  }
+}

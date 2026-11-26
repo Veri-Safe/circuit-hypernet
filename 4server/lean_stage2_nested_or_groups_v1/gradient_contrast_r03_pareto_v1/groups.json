@@ -1,0 +1,203 @@
+{
+  "complete": true,
+  "groups": [
+    {
+      "alpha": 0.0,
+      "id": "anchor8",
+      "origin": {
+        "group": "r03_b05_random_matched_14",
+        "kind": "reproduce_previous_best"
+      },
+      "sites": [
+        {
+          "feature_ids": [
+            6328,
+            3749,
+            8129,
+            3131,
+            6596,
+            7223,
+            3448,
+            965
+          ],
+          "site": "block5.residual",
+          "slots": null
+        }
+      ]
+    },
+    {
+      "alpha": 0.0,
+      "id": "anchor11",
+      "origin": {
+        "kind": "union_of_discovery_selected_groups",
+        "parents": [
+          "r03_b05_random_matched_14",
+          "r03_b05_random_matched_07"
+        ]
+      },
+      "sites": [
+        {
+          "feature_ids": [
+            965,
+            3032,
+            3131,
+            3448,
+            3749,
+            4000,
+            6328,
+            6596,
+            7223,
+            7325,
+            8129
+          ],
+          "site": "block5.residual",
+          "slots": null
+        }
+      ]
+    },
+    {
+      "alpha": 0.0,
+      "id": "grad_signed_all_k008_a000",
+      "origin": "joint ranking across R03 blocks0,5,10; teacher-forced diagnostic only",
+      "sites": [
+        {
+          "feature_ids": [
+            1897,
+            3030,
+            3855,
+            6950,
+            7733
+          ],
+          "site": "block0.residual"
+        },
+        {
+          "feature_ids": [
+            5159,
+            6484,
+            7093
+          ],
+          "site": "block10.residual"
+        }
+      ],
+      "size": 8
+    },
+    {
+      "alpha": 0.5,
+      "id": "grad_signed_all_k008_a050",
+      "origin": "joint ranking across R03 blocks0,5,10; teacher-forced diagnostic only",
+      "sites": [
+        {
+          "feature_ids": [
+            1897,
+            3030,
+            3855,
+            6950,
+            7733
+          ],
+          "site": "block0.residual"
+        },
+        {
+          "feature_ids": [
+            5159,
+            6484,
+            7093
+          ],
+          "site": "block10.residual"
+        }
+      ],
+      "size": 8
+    },
+    {
+      "alpha": 0.0,
+      "id": "grad_signed_all_k016_a000",
+      "origin": "joint ranking across R03 blocks0,5,10; teacher-forced diagnostic only",
+      "sites": [
+        {
+          "feature_ids": [
+            1897,
+            3030,
+            3855,
+            4709,
+            6950,
+            7733
+          ],
+          "site": "block0.residual"
+        },
+        {
+          "feature_ids": [
+            2730,
+            4376,
+            6396
+          ],
+          "site": "block5.residual"
+        },
+        {
+          "feature_ids": [
+            1481,
+            1717,
+            4260,
+            5159,
+            5491,
+            6484,
+            7093
+          ],
+          "site": "block10.residual"
+        }
+      ],
+      "size": 16
+    },
+    {
+      "alpha": 0.5,
+      "id": "grad_signed_all_k016_a050",
+      "origin": "joint ranking across R03 blocks0,5,10; teacher-forced diagnostic only",
+      "sites": [
+        {
+          "feature_ids": [
+            1897,
+            3030,
+            3855,
+            4709,
+            6950,
+            7733
+          ],
+          "site": "block0.residual"
+        },
+        {
+          "feature_ids": [
+            2730,
+            4376,
+            6396
+          ],
+          "site": "block5.residual"
+        },
+        {
+          "feature_ids": [
+            1481,
+            1717,
+            4260,
+            5159,
+            5491,
+            6484,
+            7093
+          ],
+          "site": "block10.residual"
+        }
+      ],
+      "size": 16
+    }
+  ],
+  "native_correct": [
+    112,
+    398,
+    359,
+    490,
+    362,
+    373,
+    336,
+    379,
+    423
+  ],
+  "parent_groups_sha256": "46f38ee6f8fcd8645b98a44808642482c844402fa1bde270624f089d86c745e5",
+  "population": "all500/task; effects averaged over native-correct examples only",
+  "protocol_sha256": "f48957487c82e8f7cb5bc9719264f5971655446c4355d7b01cdc2bf6a3a3fae3"
+}

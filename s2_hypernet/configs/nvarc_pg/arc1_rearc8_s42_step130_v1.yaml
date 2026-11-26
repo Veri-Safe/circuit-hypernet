@@ -1,0 +1,55 @@
+format_version: nvarc_pg_arc1_rearc8_s42_step130_v1
+variant_id: base
+
+base:
+  runtime: hf_separated
+  source_kind: nvarc_rearc8_s42_fullft
+  source_step: 130
+  hf_checkpoint: ${HC_ROOT}/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
+  tokenizer: ${HC_ROOT}/base_models/qwen/Qwen3-4B-Thinking-2507-16t
+
+method:
+  input_dim: 2560
+  d_pg: 1280
+  blocks: 12
+  head_dim: 128
+  token_dim: 1024
+  dim_accumulation: 8
+  rank: 16
+  alpha: 32
+  dropout: 0.0
+
+data:
+  train_paths:
+    - ${HC_ROOT}/datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/hf/train
+  dev_path: ""
+  split_manifest: ${HC_ROOT}/datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/manifest.json
+  audit_manifest: ${HC_ROOT}/outputs/nvarc/pg_data_audits/rearc8_pg_s24_excl_base_s42_v1/training_data_audit.json
+  max_sequence_length: 16384
+  expected_rows: 3200
+  expected_puzzles: 400
+  seed: 42
+  num_workers: 4
+
+training:
+  max_steps: 650
+  global_row_batch: 256
+  micro_row_batch: 32
+  peak_lr: 5.0e-5
+  min_lr: 5.0e-6
+  warmup_fraction: 0.03
+  weight_decay: 0.0
+  beta1: 0.9
+  beta2: 0.98
+  max_grad_norm: 0.5
+  factor_l2: 0.0
+  save_every: 65
+  log_every: 1
+
+evaluation:
+  protocol_config: ${HC_ROOT}/s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json
+  challenges: ${HC_ROOT}/datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json
+  solutions: ${HC_ROOT}/datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json
+  milestone_steps: [130, 260, 390, 520, 650]
+  modes: [frozen, matched, shuffled]
+  shuffle_seed: 42

@@ -1,0 +1,56 @@
+{
+  "attention_backend": "sdpa",
+  "base_manifest_sha256": "425e099caa6a8fb5965a1cacf8be8c773eb8aad45f403ff1396113e221f36ec3",
+  "batch_manifest_semantic_sha256": "994b22ef9c9642f5ef9e9afb455afffc69dbfb459b6b979776832cca6ba9e9c1",
+  "batch_manifest_sha256": "d9a93bb157a37d5a1e76f803419867f76c06e066d58f656a51028e55c69cde0e",
+  "checkpoint_min_free_gib": 16.0,
+  "checkpoint_schedule": {
+    "dense_every": 25,
+    "dense_until_step": 325,
+    "steady_every": 25
+  },
+  "completed_step": 390,
+  "corrupt_circuits": 0,
+  "diagnostic_logical_step_indices": [],
+  "format": "nvarc_s4_r1_train_run_v1",
+  "fresh_init_sha256": "5d21202402c79dff13a6477546dd2fdac79f0db9476f1e180a904b7fd7ea297b",
+  "join_sha256": "835b32aba21b9117004a5999c2e11f208e831aa8f749baad8848a933c1286d78",
+  "loss_protocol": {
+    "expected_skipped_train_events": 3200,
+    "expected_supervised_train_events": 17626,
+    "name": "first_pair_demonstration_only_v1",
+    "supervised_assistant_start_index": 1
+  },
+  "micro_row_batch": 2,
+  "micro_row_batch_override": 2,
+  "missing_circuits": 0,
+  "optimization": {
+    "base_preservation_coefficient": 0.5,
+    "circuit_lr_multiplier": 2.0,
+    "circuit_min_lr": 5e-06,
+    "circuit_peak_lr": 5e-05,
+    "effective_delta_l2": 0.0001,
+    "factor_l2": 0.0,
+    "global_lora_scale_initial": 1.0,
+    "global_lora_scale_max": 1.5,
+    "global_lr_multiplier": 0.5,
+    "lora_gate_max": 0.25,
+    "lora_gate_warmup_steps": 75,
+    "trainable_global_lora_scale": false,
+    "trunk_min_lr": 2.5e-06,
+    "trunk_peak_lr": 2.5e-05
+  },
+  "runtime_optimization": {
+    "batching_mode": "fixed_rows_v1",
+    "loss_backend": "full_logits_v1",
+    "max_micro_rows": 1,
+    "padded_token_budget": 0,
+    "pg_gradient_checkpointing": false
+  },
+  "start_step": 0,
+  "status": "complete",
+  "target_step": 390,
+  "trainable_parameters": 496202144,
+  "training_config_sha256": "e25a12cb0a86e60d77f40f7aece79ba0a30c82c1eb44c489f6e39bf078060625",
+  "variant_id": "f3_independent_attention"
+}

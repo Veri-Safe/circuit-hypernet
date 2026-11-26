@@ -1,0 +1,58 @@
+{
+  "format": "s5_width8_relative_selection_review_v1",
+  "status": "READY_FOR_INITIAL_FULL_BANK",
+  "circuit_config": "s5_lean_circuit/configs/s3_style_circuit_pilot_dense_bgoff_step38000_w8.json",
+  "circuit_config_sha256": "dd472bffb9ef9d9449a62c5f0184e80c51df29b6ac2c216cea24610731183013",
+  "checkpoint_inventory_sha256": "0c0250f36b94d4a79eb11dc37849a513f82e9e83f48adc61cbaecae07b1edfd7",
+  "validation_archive": "logs/eval/2026-08-23/s5-width8-validation-90-json/s5-width8-validation-90-json.tar.zst",
+  "validation_archive_sha256": "0caea6fd34ac496154e6decf5186139e5e52027fecd3f2f4589f29e79f740a28",
+  "selection_rule": "replacement_kl_paired_bootstrap_one_se_then_fvu_paired_bootstrap_one_se_then_lower_overall_l0_median",
+  "bootstrap_samples": 2000,
+  "bootstrap_seed": 42,
+  "width_multiplier": 8,
+  "production_seed": 42,
+  "full_bank_learning_rate": 2e-05,
+  "initial_training_tokens": 90000000,
+  "full_bank_missing_layers": [
+    1,
+    2,
+    4,
+    5,
+    6
+  ],
+  "audit_layer_selections": {
+    "0": {
+      "learning_rate": 2e-05,
+      "learning_rate_label": "2e-5",
+      "progress_percent": 90,
+      "progress_label": "p090",
+      "processed_tokens": 81002496,
+      "validation_relative_path": "layer_0/w8/seed42/lr2e-5/p090.json",
+      "validation_sha256": "81d1ea98a9672520c91fb15065dbe42ddf34d9473acf442df342da46dbb4796f",
+      "source_checkpoint_sha256": "61127923caa66842a1297232fa8f5719def1d51e9cc4a89ac59355168d83fd2f"
+    },
+    "3": {
+      "learning_rate": 2e-05,
+      "learning_rate_label": "2e-5",
+      "progress_percent": 100,
+      "progress_label": "p100",
+      "processed_tokens": 90000000,
+      "validation_relative_path": "layer_3/w8/seed42/lr2e-5/p100.json",
+      "validation_sha256": "1be2fa795d604048186b58daa2dda8c055770ca07e0c092513baf32206c9c0c1",
+      "source_checkpoint_sha256": "e3f5368c973f7ae7c7250d6f690d106d3df4a6f1a5b180e50d25a7cbf762d114"
+    },
+    "7": {
+      "learning_rate": 2e-05,
+      "learning_rate_label": "2e-5",
+      "progress_percent": 90,
+      "progress_label": "p090",
+      "processed_tokens": 81002496,
+      "validation_relative_path": "layer_7/w8/seed42/lr2e-5/p090.json",
+      "validation_sha256": "f378c0f88a312dd9a836088d2949db5e337c69d18cde1465f2313516ef74ee78",
+      "source_checkpoint_sha256": "0d1edba34d99781aba7fa72bd797ef9014f2ff9c6b623a0f09199f442c96b96f"
+    }
+  },
+  "budget_extension_authorized": false,
+  "absolute_fidelity_gate": null,
+  "production_900_authorized": false
+}

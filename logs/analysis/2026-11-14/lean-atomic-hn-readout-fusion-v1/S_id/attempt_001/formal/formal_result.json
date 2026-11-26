@@ -1,0 +1,256 @@
+{
+  "K": 128,
+  "attempt": "attempt_001",
+  "bootstrap": {
+    "intervals": {
+      "G": {
+        "ci95": [
+          -0.0010304987004548403,
+          0.06743732782369144
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "direct_C": {
+        "ci95": [
+          0.08490566037735849,
+          0.2178307830783077
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "direct_L": {
+        "ci95": [
+          0.4852941176470588,
+          0.7101544622425628
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "hn_C": {
+        "ci95": [
+          0.02426601008215086,
+          0.0963302752293578
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "hn_L": {
+        "ci95": [
+          0.4868421052631579,
+          0.7101449275362319
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "joint_C": {
+        "ci95": [
+          0.038461538461538464,
+          0.14705882352941177
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      },
+      "joint_L": {
+        "ci95": [
+          0.45454545454545453,
+          0.6842285508291274
+        ],
+        "undefined_resamples": 0,
+        "valid_resamples": 5000
+      }
+    },
+    "paired": true,
+    "percentile_method": "linear_interpolation_at_(n-1)*q",
+    "resamples": 5000,
+    "seed": 42,
+    "stratified_by": "task"
+  },
+  "comparison": {
+    "G": 0.03459362139917695,
+    "G_exact": "269/7776",
+    "control_reduction": 0.06481481481481481,
+    "delta_L": -0.027777777777777776,
+    "delta_R": 2.802083333333333,
+    "ratio_advantage": true,
+    "ratio_multiple": 1.6950904392764856,
+    "status": "finite_ratios"
+  },
+  "data_identity_sha256": "6e39a0a145d87391c20a21ab4e245dcbf206d9d72c5911c20591d03a8ddaf26c",
+  "direct": {
+    "C": 0.14814814814814814,
+    "L": 0.5972222222222222,
+    "L_minus_C": 0.44907407407407407,
+    "R": 4.03125,
+    "exact": {
+      "C": "4/27",
+      "L": "43/72",
+      "L_minus_C": "97/216",
+      "R": "129/32"
+    },
+    "hn_gate": true,
+    "joint_quality_goal_met": true,
+    "per_task": {
+      "S_and": {
+        "N": 100,
+        "accuracy0": 0.35,
+        "accuracy1": 0.29,
+        "n0": 35,
+        "n1": 29,
+        "net_correct_change": -6,
+        "signed_relative_drop": 0.17142857142857143
+      },
+      "S_id": {
+        "N": 100,
+        "accuracy0": 0.72,
+        "accuracy1": 0.29,
+        "n0": 72,
+        "n1": 29,
+        "net_correct_change": -43,
+        "signed_relative_drop": 0.5972222222222222
+      },
+      "S_or_l": {
+        "N": 100,
+        "accuracy0": 0.38,
+        "accuracy1": 0.34,
+        "n0": 38,
+        "n1": 34,
+        "net_correct_change": -4,
+        "signed_relative_drop": 0.10526315789473684
+      },
+      "S_or_r": {
+        "N": 100,
+        "accuracy0": 0.35,
+        "accuracy1": 0.29,
+        "n0": 35,
+        "n1": 29,
+        "net_correct_change": -6,
+        "signed_relative_drop": 0.17142857142857143
+      }
+    },
+    "status": "finite_ratio",
+    "valid": true
+  },
+  "final_lock_sha256": "a71c41ab9471f116f994b8907ae8129853b351df5992ed8486607d2411599abd",
+  "formal_source": "fresh_confirmation_only",
+  "format": "hn_readout_fusion_s_id_formal_result_v1",
+  "hypernet": {
+    "C": 0.05855855855855856,
+    "L": 0.6,
+    "L_minus_C": 0.5414414414414415,
+    "R": 10.246153846153845,
+    "exact": {
+      "C": "13/222",
+      "L": "3/5",
+      "L_minus_C": "601/1110",
+      "R": "666/65"
+    },
+    "hn_gate": true,
+    "joint_quality_goal_met": true,
+    "per_task": {
+      "S_and": {
+        "N": 100,
+        "accuracy0": 0.68,
+        "accuracy1": 0.62,
+        "n0": 68,
+        "n1": 62,
+        "net_correct_change": -6,
+        "signed_relative_drop": 0.08823529411764706
+      },
+      "S_id": {
+        "N": 100,
+        "accuracy0": 0.75,
+        "accuracy1": 0.3,
+        "n0": 75,
+        "n1": 30,
+        "net_correct_change": -45,
+        "signed_relative_drop": 0.6
+      },
+      "S_or_l": {
+        "N": 100,
+        "accuracy0": 0.76,
+        "accuracy1": 0.73,
+        "n0": 76,
+        "n1": 73,
+        "net_correct_change": -3,
+        "signed_relative_drop": 0.039473684210526314
+      },
+      "S_or_r": {
+        "N": 100,
+        "accuracy0": 0.78,
+        "accuracy1": 0.74,
+        "n0": 78,
+        "n1": 74,
+        "net_correct_change": -4,
+        "signed_relative_drop": 0.05128205128205128
+      }
+    },
+    "status": "finite_ratio",
+    "valid": true
+  },
+  "joint": {
+    "C": 0.08333333333333333,
+    "L": 0.5694444444444444,
+    "L_minus_C": 0.4861111111111111,
+    "R": 6.833333333333333,
+    "exact": {
+      "C": "1/12",
+      "L": "41/72",
+      "L_minus_C": "35/72",
+      "R": "41/6"
+    },
+    "hn_gate": true,
+    "joint_quality_goal_met": true,
+    "per_task": {
+      "S_and": {
+        "N": 100,
+        "accuracy0": 0.35,
+        "accuracy1": 0.34,
+        "n0": 35,
+        "n1": 34,
+        "net_correct_change": -1,
+        "signed_relative_drop": 0.02857142857142857
+      },
+      "S_id": {
+        "N": 100,
+        "accuracy0": 0.72,
+        "accuracy1": 0.31,
+        "n0": 72,
+        "n1": 31,
+        "net_correct_change": -41,
+        "signed_relative_drop": 0.5694444444444444
+      },
+      "S_or_l": {
+        "N": 100,
+        "accuracy0": 0.38,
+        "accuracy1": 0.36,
+        "n0": 38,
+        "n1": 36,
+        "net_correct_change": -2,
+        "signed_relative_drop": 0.05263157894736842
+      },
+      "S_or_r": {
+        "N": 100,
+        "accuracy0": 0.35,
+        "accuracy1": 0.29,
+        "n0": 35,
+        "n1": 29,
+        "net_correct_change": -6,
+        "signed_relative_drop": 0.17142857142857143
+      }
+    },
+    "status": "finite_ratio",
+    "valid": true
+  },
+  "node_provenance_complete": true,
+  "questions_sha256": "526f7cf8be8aabf44a03e8494f20c974bf691fdfe990321659dd70311c8e1769",
+  "scoring_audit_sha256": "ab459951708365fdd0f17d9c7258d940275b06c2edc92a2b82009e2228bb8fb4",
+  "stage_status": {
+    "chain_positive": true,
+    "hn_group_pass": true,
+    "interval_support": false,
+    "joint_quality_goal_met": true,
+    "ratio_advantage": true
+  },
+  "target": "S_id"
+}

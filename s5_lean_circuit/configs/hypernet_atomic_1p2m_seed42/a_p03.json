@@ -1,0 +1,81 @@
+{
+  "assignment_seed": 42,
+  "base": {
+    "architecture_config_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/resolved_config.json",
+    "checkpoint_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/best_model.pt",
+    "checkpoint_sha256": "ee2a7efdf77262ee1fbdf7d2080f930c2bedc27e45b7712537fba964ee05931c",
+    "config_sha256": "d87e874cdee838e7d07b99631d06ee64ec3466d24012a08af75d032eddf7169e",
+    "model_state_sha256": "bd0277b72e7f17f864bd9e8064e1dff989a81254c5353550c6f912944ecf1afd",
+    "step": 38000
+  },
+  "candidate_init_manifest": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/initialization/candidate_A",
+  "common_init_manifest": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/initialization/common",
+  "config_sha256": "6bd843f2c156d0ef64cf954c83c8df662d46de009565555defe544de433e9adc",
+  "data": {
+    "archive_manifest": "outputs/s5_lean_circuit/s3_style_circuit_pilot/dense_bgoff_step38000_w8/corpus_full1200000/vector397_archive/vector397_raw/manifest.json",
+    "base_ce_path": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/frozen_base_ce.pt",
+    "cache_path": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt",
+    "descriptor_schema_sha256": "e6c5528d1a06d2979babe776ff22e28ef08e40cf9a2fd9a5d69751418b337bda",
+    "input_treatment": "fixed_log1p_v1",
+    "metadata_root": null,
+    "n_ctx": 128,
+    "prefix": 1200000,
+    "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model"
+  },
+  "eval_batch_size": 8,
+  "extra": {
+    "matched_validation": {
+      "binding_path": "outputs/s5_lean_circuit/hypernet_validation_allnine_seed888888000/binding.json",
+      "condition": "matched",
+      "corpus_manifest": "outputs/s5_lean_circuit/hypernet_validation_allnine_seed888888000/corpus/manifest.json",
+      "event_count": 450,
+      "max_new_tokens": 50,
+      "samples_per_task": 50,
+      "seed_base": 888888000,
+      "suite_sha256": "49b158071dc15885f32ee988faaef6fbc02d5c1f309cffea3cf6e3eb7dcd96c8",
+      "tokenizer_sha256": "1053e327f96ee13ceca0c4ab4d9e48eefa9eb2c2eddf65359715642ec701199f",
+      "vector_manifest": "outputs/s5_lean_circuit/hypernet_validation_allnine_seed888888000/vector397_raw/manifest.json"
+    },
+    "matrix": "s5_hypernet_formal32_lr_gate_v1",
+    "max_steps": null,
+    "milestone_steps": [
+      7629,
+      15258,
+      38000
+    ],
+    "mode": "formal",
+    "pg_gradient_checkpointing": false,
+    "registration_order": 3
+  },
+  "input_treatment_identity": "e88bfcd50ba9e79323c2728735aa53f6ea64332b574727732eff898f4ca099c0",
+  "model": {
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.98,
+    "base_preservation_coefficient": 0.5,
+    "bf16": true,
+    "candidate": "A",
+    "circuit_lr_multiplier": 2.0,
+    "circuit_token_count": 1,
+    "circuit_width": 1024,
+    "cosine_min_lr_ratio": 0.1,
+    "effective_delta_l2": 0.0001,
+    "factor_l2": 0.0,
+    "gate_max": 0.5,
+    "gate_warmup_ratio": 0.2,
+    "global_batch_size": 512,
+    "group": "P03",
+    "max_grad_norm": 0.5,
+    "n_ctx": 128,
+    "pg_lr": 5e-05,
+    "query_lr_multiplier": 0.5,
+    "query_width": 1024,
+    "seed": 42,
+    "total_tokens": 2490368000,
+    "warmup_ratio": 0.03,
+    "weight_decay": 0.0
+  },
+  "output_dir": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/formal_lr_gate_r4a8/a_p03",
+  "protocol_id": "s5_hypernet_vector397_ab_fusion_v1",
+  "run_name": "s5-hn-f32-a_p03-seed42",
+  "save_every_epoch": true
+}

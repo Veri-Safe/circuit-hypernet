@@ -1,0 +1,70 @@
+{
+  "protocol_version": "arc_agi1_nvarc_public_validation_v1",
+  "frozen": true,
+  "primary_metric": "selected_exact@2",
+  "dataset": {
+    "repository": "https://github.com/fchollet/ARC-AGI",
+    "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+    "split": "evaluation",
+    "task_count": 400,
+    "test_case_count": 419,
+    "challenge_semantic_sha256": "46b27a6330e9b2dde16e33c81f80f96a3d7553d1c44b14eb712a256349fd55f5",
+    "solution_semantic_sha256": "e97693b0899f8f3fcc87d58c3891329cad63ed054489f9b0d440329de0bb9945",
+    "bundle_semantic_sha256": "173c6096d70d4893c4ef7562db45483a0be1bb9b77f2ab12cbe950b7605078eb"
+  },
+  "prompt": {
+    "formatter": "nvarc_qwen_formatter_v1",
+    "max_sequence_length": 8192,
+    "max_new_tokens": 1024,
+    "truncation": "drop_oldest_train_examples"
+  },
+  "selection_views": {
+    "count": 16,
+    "author_augment_n": 2,
+    "seed": 2,
+    "geometry": "author_dihedral_order_v1",
+    "color_permutation": "numpy_randomstate_mt19937_per_view",
+    "train_example_order": "numpy_randomstate_mt19937_after_all_color_permutations"
+  },
+  "canonical_pass": {
+    "enabled": true,
+    "included_in_selection": false
+  },
+  "decode": {
+    "method": "constrained_greedy",
+    "temperature": 0.0,
+    "grid_height_min": 1,
+    "grid_height_max": 30,
+    "grid_width_min": 1,
+    "grid_width_max": 30
+  },
+  "selection": {
+    "order": [
+      "vote_count_desc",
+      "mean_normalized_logprob_desc",
+      "canonical_serialized_grid_asc"
+    ],
+    "attempts": 2
+  },
+  "scoring": {
+    "grid_match": "shape_and_every_cell_exact",
+    "test_input_correct": "either_attempt_matches",
+    "task_score": "mean_over_test_inputs",
+    "final_score": "mean_over_400_tasks"
+  },
+  "metrics": [
+    "canonical_exact@1",
+    "selected_exact@1",
+    "selected_exact@2",
+    "oracle_view@16",
+    "valid_grid_rate",
+    "unique_candidates"
+  ],
+  "notes": [
+    "No TTFT, no gradients, no sampling, and no wall-clock search budget.",
+    "Solutions are loaded only after all model predictions and candidate selection are complete.",
+    "This ARC-AGI-1 public set is intentionally used as validation for checkpoint selection and must not be reported as untouched final evaluation.",
+    "A separate untouched benchmark or private test is required for an unbiased final generalization claim.",
+    "oracle_view@16 is diagnostic and must not be used as the primary metric."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "checkpoint": "/mnt/kbei/HyperCombine/outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300",
+  "accessible_path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300",
+  "step": 300,
+  "files": [
+    {
+      "path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300/COMPLETE",
+      "bytes": 46,
+      "sha256": "e20fe4f33959c25b43b903d84fb13f7bb3aa3c0f8b3a653cc6bc3ac0e63e2ed9"
+    },
+    {
+      "path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300/parameter_generator.pt",
+      "bytes": 993610589,
+      "sha256": "4621051045f69d5fd58390077d91332e3ee31af2e3ec70683eb946bc97b9c1d4"
+    },
+    {
+      "path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300/scheduler.pt",
+      "bytes": 1465,
+      "sha256": "deaff433f8dbf4621f2a0511fe99e1594ed56d709420cab44bb47e5ddb233795"
+    },
+    {
+      "path": "outputs/nvarc/circuit_stage_c/r1_rearc8_step130/selected_generator/train/checkpoints/step_00000300/trainer_state.json",
+      "bytes": 871,
+      "sha256": "ad2a3d3b7d01b05be150a41bfb4fa0656ebdb575181a02b1fbefdcda2e4581d5"
+    }
+  ],
+  "training_config_sha256": "e25a12cb0a86e60d77f40f7aece79ba0a30c82c1eb44c489f6e39bf078060625"
+}

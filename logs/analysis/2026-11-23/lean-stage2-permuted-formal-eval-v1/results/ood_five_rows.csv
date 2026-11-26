@@ -1,0 +1,6 @@
+task,recipe,selected_step,suite1_correct,suite1_total,suite1_accuracy_percent,suite1_delta_pp,suite2_correct,suite2_total,suite2_accuracy_percent,suite2_delta_pp,both_correct,both_total,mean_accuracy_percent,mean_delta_pp
+T_and_or,C25,10000,67,500,13.4,-28.6,90,500,18.0,-26.0,157,1000,15.7,-27.3
+T_or_and,M25,10000,0,500,0.0,-0.0,0,500,0.0,-0.0,0,1000,0.0,-0.0
+T_and_or_and,M12,8000,4,500,0.8,0.8,4,500,0.8,0.8,8,1000,0.8,0.8
+T_nested_and,C25,10000,0,500,0.0,-0.0,0,500,0.0,-0.0,0,1000,0.0,-0.0
+T_nested_or,M25,12000,96,500,19.2,-4.4,90,500,18.0,-3.8,186,1000,18.6,-4.1

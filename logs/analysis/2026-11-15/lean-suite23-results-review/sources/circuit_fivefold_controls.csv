@@ -1,0 +1,19 @@
+accuracy,aggregation,complete_folds,condition,correct,correct_available,coverage_complete,expected_total,missing_or_incomplete_folds,paper_suite,partition,required_folds,route,suite,total,total_available
+0.8035,equal_weight_mean_of_five_fold_accuracies,5,matched,8035,8035,True,10000,[],Suite 2,ID,5,circuit_a,suite2,10000,10000
+0.13119999999999998,equal_weight_mean_of_five_fold_accuracies,5,matched,328,328,True,2500,[],Suite 2,OOD,5,circuit_a,suite2,2500,2500
+0.7729,equal_weight_mean_of_five_fold_accuracies,5,matched,7729,7729,True,10000,[],Suite 2,atomic,5,circuit_a,suite2,10000,10000
+0.7979,equal_weight_mean_of_five_fold_accuracies,5,absent,7979,7979,True,10000,[],Suite 2,ID,5,circuit_a,suite2,10000,10000
+0.12079999999999999,equal_weight_mean_of_five_fold_accuracies,5,absent,302,302,True,2500,[],Suite 2,OOD,5,circuit_a,suite2,2500,2500
+0.5871999999999999,equal_weight_mean_of_five_fold_accuracies,5,absent,5872,5872,True,10000,[],Suite 2,atomic,5,circuit_a,suite2,10000,10000
+0.8042,equal_weight_mean_of_five_fold_accuracies,5,shuffled,8042,8042,True,10000,[],Suite 2,ID,5,circuit_a,suite2,10000,10000
+0.1316,equal_weight_mean_of_five_fold_accuracies,5,shuffled,329,329,True,2500,[],Suite 2,OOD,5,circuit_a,suite2,2500,2500
+0.7827,equal_weight_mean_of_five_fold_accuracies,5,shuffled,7827,7827,True,10000,[],Suite 2,atomic,5,circuit_a,suite2,10000,10000
+0.8122999999999999,equal_weight_mean_of_five_fold_accuracies,5,matched,8123,8123,True,10000,[],Suite 3,ID,5,circuit_a,suite1,10000,10000
+0.1316,equal_weight_mean_of_five_fold_accuracies,5,matched,329,329,True,2500,[],Suite 3,OOD,5,circuit_a,suite1,2500,2500
+0.7471,equal_weight_mean_of_five_fold_accuracies,5,matched,7471,7471,True,10000,[],Suite 3,atomic,5,circuit_a,suite1,10000,10000
+0.8087,equal_weight_mean_of_five_fold_accuracies,5,absent,8087,8087,True,10000,[],Suite 3,ID,5,circuit_a,suite1,10000,10000
+0.1204,equal_weight_mean_of_five_fold_accuracies,5,absent,301,301,True,2500,[],Suite 3,OOD,5,circuit_a,suite1,2500,2500
+0.5690999999999999,equal_weight_mean_of_five_fold_accuracies,5,absent,5691,5691,True,10000,[],Suite 3,atomic,5,circuit_a,suite1,10000,10000
+0.813,equal_weight_mean_of_five_fold_accuracies,5,shuffled,8130,8130,True,10000,[],Suite 3,ID,5,circuit_a,suite1,10000,10000
+0.1316,equal_weight_mean_of_five_fold_accuracies,5,shuffled,329,329,True,2500,[],Suite 3,OOD,5,circuit_a,suite1,2500,2500
+0.7529,equal_weight_mean_of_five_fold_accuracies,5,shuffled,7529,7529,True,10000,[],Suite 3,atomic,5,circuit_a,suite1,10000,10000

@@ -1,0 +1,12 @@
+# CPU review and original component tests. For CUDA runs use the matching PyTorch build.
+torch
+numpy
+safetensors
+sentencepiece
+PyYAML
+pytest
+transformers
+networkx
+filelock
+huggingface-hub
+tqdm

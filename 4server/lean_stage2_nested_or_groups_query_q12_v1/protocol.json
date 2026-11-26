@@ -1,0 +1,133 @@
+{
+  "alpha_values": [
+    0.0,
+    0.5
+  ],
+  "banks": {
+    "atomic": {
+      "path": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/atomic_retention.pt",
+      "sha256": "7941251250bc8596301520bca17cbece99284100a89c3d544f03acffdc4ed245"
+    },
+    "visible": {
+      "path": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/visible_validation.pt",
+      "sha256": "19f5b0a2efbf132e85939fe3d8504d0843fc2885f8787285607c5ce4b410a1b9"
+    }
+  },
+  "base_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/best_model.pt",
+  "base_sha256": "ee2a7efdf77262ee1fbdf7d2080f930c2bedc27e45b7712537fba964ee05931c",
+  "blocks": [
+    0,
+    5,
+    10
+  ],
+  "checkpoint_path": "outputs/s5_lean_circuit/composition_loco_query_retention20_v1/runs/T_nested_or/Q12/query_only/checkpoints/model_step002000.pt",
+  "checkpoint_sha256": "205ed7d489cf392aed4df42d962f1a639bccbc0bff949792c26ea941b68fd5d7",
+  "checkpoint_step": 2000,
+  "circuit_token_count": 0,
+  "condition_source": "query_only",
+  "condition_vector_argument": null,
+  "config_file_sha256": "238357f5ae90e37283c6dddf532225366126979314a3bb5c426b7ef1b00d906c",
+  "config_path": "s5_lean_circuit/configs/composition_loco_query_retention20_v1/T_nested_or/Q12/query_only.json",
+  "config_semantic_sha256": "a7f736de9aba89925cc9afe2b622a444daa40815556b3f20f3e1f0bf1e25f69b",
+  "data_authorization_sha256": "077bc0ea3bf4642db758688267b656aa65024d1ccc0addc4a9313cf8c8e0cf57",
+  "dictionary": {
+    "batch_size": 512,
+    "checkpoint_selection": "validation reconstruction-plus-sparsity objective only",
+    "dictionary_size": 8192,
+    "kind": "SAE",
+    "lr": 0.001,
+    "normalization": "one train-only RMS per block residual",
+    "optimizer_steps": 2000,
+    "per_block_site": "residual",
+    "seed_base": 177,
+    "slots": "all272",
+    "sparsity": 0.5,
+    "test_per_task": [
+      400,
+      500
+    ],
+    "train_per_task": [
+      0,
+      300
+    ],
+    "validation_per_task": [
+      300,
+      400
+    ],
+    "width": 1024
+  },
+  "expected_native_counts": {
+    "S_and": 389,
+    "S_id": 426,
+    "S_or_l": 337,
+    "S_or_r": 315,
+    "T_and_or": 372,
+    "T_and_or_and": 477,
+    "T_nested_and": 396,
+    "T_nested_or": 95,
+    "T_or_and": 379
+  },
+  "external_lora_multiplier": 1.0,
+  "extra_signed_all_size": 256,
+  "feature_id_transfer_from_other_models": false,
+  "formal_holdout": false,
+  "format": "lean_nested_or_query_q12_feature_search_v1",
+  "gate_multiplier": 0.5,
+  "generation": {
+    "max_new_tokens": 50,
+    "n_ctx": 128
+  },
+  "group_sizes": [
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "heldout_task": "T_nested_or",
+  "historical_ood_predictions_path": "outputs/s5_lean_circuit/composition_loco_query_retention20_v1/runs/T_nested_or/Q12/query_only/predictions/ood_dev_matched.part0000.jsonl",
+  "historical_ood_predictions_sha256": "d409d60aae58ebcc3fe07a54d5c0fcdf9b485e1037e7406e2664c18095ab1d6f",
+  "intervention": "subtract (1-alpha)*site_rms*ReLU(native_site/site_rms@W_enc.T+b_enc)[features]@W_dec[features] from the live site; preserve reconstruction residual; same members, sites and alpha for all tasks",
+  "native_code_sha256": {
+    "s2_hypernet/src/s2_hypernet/nvarc_pg/generated_lora.py": "0080f389f3bfeb6df7454941c01d99848d208988efc56265ad244dd9d22c2cb0",
+    "s5_lean_circuit/src/s5_lean_circuit/circuit/model_io.py": "876c571ecb818e825569a3fd4f8891916056126ac1edb060fc351aa53562873f",
+    "s5_lean_circuit/src/s5_lean_circuit/circuit/transcoder.py": "7c185093c43bdfbea8a302dccad959e1e0223aea523d7b1747aa188d93a3b95c",
+    "s5_lean_circuit/src/s5_lean_circuit/composition_loco.py": "5b7fc512cbbbb8ccddf14656a5a6edb5f4a420806128fca03af4c96f993dcc56",
+    "s5_lean_circuit/src/s5_lean_circuit/composition_loco_config.py": "6d4a04f23e81da0c95812c8fe9ecf7e22d09bae31a7538ba70b1a65bb6f00bc3",
+    "s5_lean_circuit/src/s5_lean_circuit/composition_loco_train.py": "78ec903c2714b306f0682d629c8a0e666824da4fbc18af93c65f75fe276bd695",
+    "s5_lean_circuit/src/s5_lean_circuit/hypernet/runtime.py": "c968e586d00bd140d55fbf63be5162748a8e1fcc9b626f53cd20440b416f1a9b",
+    "s5_lean_circuit/src/s5_lean_circuit/modeling.py": "cd8c63e175f748bc0ef3e483b44f9ddf9bfe6614b18d03b369d79c2a7782f921",
+    "s5_lean_circuit/src/s5_lean_circuit/protocol.py": "76a853a36f45712785a237493ace38ea28475ef0bf179b442173294e2da1bc68"
+  },
+  "questions_sha256": "97553b2de0d523fc3ce8b26034a324097aaf0eb179ab66f03b0a603299896b40",
+  "random_set_specificity_claim": false,
+  "ranking_modes": [
+    "signed_all",
+    "signed_id",
+    "ood_only"
+  ],
+  "scope": "visible500_discovery_only",
+  "scoring": "strict_first_tactic_exact_match",
+  "screen": {
+    "T_nested_or": 200,
+    "other_tasks_each": 50,
+    "total": 600
+  },
+  "selection": "four fixed signed_all small groups K8/16 alpha0/0.5 plus three best eligible remaining by OOD decline then worst-ID margin; fill by OOD rank if needed",
+  "slot_count": 272,
+  "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model",
+  "tokenizer_sha256": "1053e327f96ee13ceca0c4ab4d9e48eefa9eb2c2eddf65359715642ec701199f",
+  "totals": {
+    "S_and": 500,
+    "S_id": 500,
+    "S_or_l": 500,
+    "S_or_r": 500,
+    "T_and_or": 500,
+    "T_and_or_and": 500,
+    "T_nested_and": 500,
+    "T_nested_or": 500,
+    "T_or_and": 500
+  },
+  "selection_record_sha256": "879751766ea94804e5ed478dfd88b8e7227a57f720e17c3176e4a5580d5f9d74",
+  "baseline_record_sha256": "76ef1228765a2556e80b4108a3e9a6ce693a2bb9e35ea7e1d73bbc16811890e1"
+}

@@ -1,0 +1,10 @@
+{
+  "format": "s5_transcoder_target_profile_v1",
+  "target_id": "dense-bgoff-step38000",
+  "trace_config": "s5_lean_circuit/configs/s3_style_circuit_pilot_dense_bgoff_step38000.json",
+  "width8_config": "s5_lean_circuit/configs/s3_style_circuit_pilot_dense_bgoff_step38000_w8.json",
+  "selection_contract": "s5_lean_circuit/configs/s3_style_circuit_pilot_dense_bgoff_step38000_w8_selection.json",
+  "trace_base": "outputs/s5_lean_circuit/s3_style_circuit_pilot/dense_bgoff_step38000",
+  "output_base": "outputs/s5_lean_circuit/s3_style_circuit_pilot/dense_bgoff_step38000_w8",
+  "trace_generation_code_sha256": "40d30015fc209226bdec7a6ee7218fefa17f33fb9088dd5507ce9d4f4304bba3"
+}

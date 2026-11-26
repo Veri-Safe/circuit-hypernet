@@ -1,0 +1,122 @@
+# Runtime overrides select RE-ARC-{8,16,32,64} and seed {24,42,123}.
+# The trainer pre-expands all 50 logical epochs, so NeMo intentionally sees
+# one sequential loader epoch. Validation remains every logical epoch, while
+# checkpoints are retained every two logical epochs.
+sft:
+  max_num_epochs: 1
+  max_num_steps: ${oc.decode:${oc.env:NVARC_MAX_STEPS}}
+  val_period: ${oc.decode:${oc.env:NVARC_STEPS_PER_EPOCH}}
+  val_batches: 3
+  val_global_batch_size: 256
+  val_micro_batch_size: 1
+  val_at_start: true
+  seed: ${oc.decode:${oc.env:NVARC_TRAIN_SEED}}
+
+checkpointing:
+  enabled: true
+  checkpoint_dir: ${oc.env:NVARC_CHECKPOINT_DIR}
+  metric_name: val:val_loss
+  higher_is_better: false
+  keep_top_k: 25
+  save_period: ${oc.decode:${oc.env:NVARC_CHECKPOINT_PERIOD}}
+  checkpoint_must_save_by: null
+
+policy:
+  model_name: ${oc.env:NVARC_MODEL_DIR}
+  tokenizer:
+    name: ${policy.model_name}
+  train_global_batch_size: 256
+  train_micro_batch_size: 1
+  precision: bfloat16
+  offload_optimizer_for_logprob: false
+  fsdp_offload_enabled: false
+  activation_checkpointing_enabled: false
+  attn_implementation: flash_attention_2
+  dtensor_cfg:
+    enabled: false
+  megatron_cfg:
+    enabled: true
+    activation_checkpointing: true
+    context_parallel_size: 1
+    distributed_data_parallel_config:
+      average_in_collective: true
+      data_parallel_sharding_strategy: optim_grads_params
+      grad_reduce_in_fp32: true
+      overlap_grad_reduce: true
+      overlap_param_gather: true
+    empty_unused_memory_level: 1
+    expert_tensor_parallel_size: 1
+    expert_model_parallel_size: 1
+    num_layers_in_first_pipeline_stage: null
+    num_layers_in_last_pipeline_stage: null
+    optimizer:
+      adam_beta1: 0.9
+      adam_beta2: 0.98
+      adam_eps: 1.0e-8
+      bf16: true
+      clip_grad: 0.5
+      fp16: false
+      lr: 1.0e-4
+      min_lr: 1.0e-7
+      optimizer: adam
+      params_dtype: bfloat16
+      sgd_momentum: 0.9
+      use_distributed_optimizer: true
+      use_precision_aware_optimizer: false
+      optimizer_cpu_offload: false
+      optimizer_offload_fraction: 0.0
+      weight_decay: 0.1
+    pipeline_dtype: bfloat16
+    pipeline_model_parallel_size: 1
+    scheduler:
+      lr_decay_style: linear
+      lr_decay_iters: ${oc.decode:${oc.env:NVARC_MAX_STEPS}}
+      lr_warmup_init: 1.0e-6
+      lr_warmup_iters: ${oc.decode:${oc.env:NVARC_WARMUP_STEPS}}
+      start_weight_decay: 0.1
+      end_weight_decay: 0.1
+      weight_decay_incr_style: constant
+    sequence_parallel: false
+    tensor_model_parallel_size: 1
+    freeze_moe_router: true
+    moe_router_dtype: fp64
+    moe_router_load_balancing_type: none
+    moe_router_bias_update_rate: 0.0
+    moe_permute_fusion: false
+    apply_rope_fusion: true
+    bias_activation_fusion: false
+    env_vars:
+      PYTORCH_CUDA_ALLOC_CONF: expandable_segments:False
+  dynamic_batching:
+    enabled: false
+  sequence_packing:
+    enabled: true
+    train_mb_tokens: 256000
+    algorithm: modified_first_fit_decreasing
+    sequence_length_round: 64
+  make_sequence_length_divisible_by: 64
+  max_grad_norm: null
+
+data:
+  shuffle: false
+  num_workers: 0
+  train_dataset_path: ${oc.env:NVARC_SCALE_DATASET_PATH}
+  val_dataset_path: ${oc.env:NVARC_VAL_DATASET_PATH}
+
+logger:
+  log_dir: ${oc.env:NVARC_NEMO_LOG_DIR}
+  wandb_enabled: false
+  swanlab_enabled: false
+  tensorboard_enabled: false
+  mlflow_enabled: false
+  monitor_gpus: false
+  wandb:
+    project: arc1
+    name: ${oc.env:NVARC_RUN_NAME}
+  gpu_monitoring:
+    collection_interval: 10
+    flush_interval: 10
+
+cluster:
+  gpus_per_node: ${oc.decode:${oc.env:LOCAL_WORLD_SIZE,1}}
+  num_nodes: ${oc.decode:${oc.env:NNODES,1}}

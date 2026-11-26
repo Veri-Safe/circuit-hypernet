@@ -1,0 +1,155 @@
+{
+  "format": "s5_s3_style_circuit_pilot_v1",
+  "source_model": {
+    "protocol_id": "s5_narrow_atomic_only_sft_dense_bigram_off_v1",
+    "architecture_config": "s5_lean_circuit/configs/narrow_atomic_only_sft_full_dense_bigram_off_seed42.json",
+    "architecture_config_sha256": "c4d88a4c8e722804e53702990b01d84f5e267e8dffd28e9a7a4e5fa6eaefb58f",
+    "checkpoint": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/checkpoints/checkpoint_step038000.pt",
+    "checkpoint_sha256": "aee775e5691d7b386542e55d89be9fecedab0137d6d6c3e758ef66deed8bcb56",
+    "checkpoint_step": 38000,
+    "checkpoint_config_sha256": "d87e874cdee838e7d07b99631d06ee64ec3466d24012a08af75d032eddf7169e",
+    "tokenizer": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model",
+    "tokenizer_sha256": "1053e327f96ee13ceca0c4ab4d9e48eefa9eb2c2eddf65359715642ec701199f",
+    "enable_bigram_table": false
+  },
+  "generation": {
+    "decoding": "greedy_argmax",
+    "target": "self_generated_full_output",
+    "max_new_tokens": 50,
+    "context_length": 128,
+    "stop_markers": [
+      "proof complete",
+      "no goals"
+    ]
+  },
+  "traces": {
+    "tasks": [
+      "S_and",
+      "S_or_l",
+      "S_or_r",
+      "S_id",
+      "T_and_or",
+      "T_or_and",
+      "T_and_or_and",
+      "T_nested_and",
+      "T_nested_or"
+    ],
+    "train_seed_base": 555555000,
+    "validation_seed_base": 666666000,
+    "train_tokens_per_task": 10000000,
+    "max_train_tokens_per_task": 20000000,
+    "validation_tokens_per_task": 200000,
+    "balance_unit": "eligible_tokens",
+    "generation_backend": "same_length_batched_canonical_verified_v1",
+    "generation_batch_size": 128,
+    "generation_pool_size": 2048,
+    "teacher_forced_verify_all": true,
+    "canonical_regeneration_interval": 4096,
+    "formal_single_node_shards": {
+      "a": [
+        "S_and",
+        "S_or_l",
+        "S_or_r",
+        "S_id",
+        "T_and_or"
+      ],
+      "b": [
+        "T_or_and",
+        "T_and_or_and",
+        "T_nested_and",
+        "T_nested_or"
+      ]
+    },
+    "n_distractors": 2,
+    "rows_per_chunk": 512
+  },
+  "transcoder": {
+    "d_in": 2080,
+    "d_out": 2048,
+    "layers": 8,
+    "activation": "relu",
+    "width_multipliers": [
+      32,
+      64
+    ],
+    "audit_layers": [
+      0,
+      3,
+      7
+    ],
+    "production_and_audit_seeds": [
+      42,
+      43,
+      44
+    ],
+    "production_seed": 42,
+    "initialization": "random_circuit_tracer_reference",
+    "sparsity_coeff": 8.0,
+    "c_coeff": 4.0
+  },
+  "optimization": {
+    "learning_rates": [
+      5e-06,
+      1e-05,
+      2e-05
+    ],
+    "effective_tokens": 8192,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "warmup_fraction": 0.02,
+    "cooldown_fraction": 0.2,
+    "checkpoint_percent": 10
+  },
+  "graph": {
+    "operator": "joint_signed_full_output",
+    "reference_operator": "tokenwise_nonnegative_sum",
+    "feature_budgets": [
+      2048,
+      4096,
+      8192,
+      16384
+    ],
+    "node_thresholds": [
+      0.8,
+      0.9,
+      0.95
+    ],
+    "edge_thresholds": [
+      0.98,
+      0.99,
+      0.995
+    ],
+    "audit_seed_base": 777777000,
+    "audit_examples": 64,
+    "audit_escalation_examples": 256,
+    "parity_examples": 12,
+    "intervention_fraction": 0.05,
+    "random_controls": 3,
+    "noninferiority_ratio": 0.9,
+    "production_backend": "streaming_cached_exact",
+    "reference_backend": "dense_autograd_reference",
+    "queue_size": 640,
+    "row_batch_size": 8,
+    "max_cache_bytes": 137438953472,
+    "max_dense_reference_bytes": 68719476736,
+    "max_selected_dense_bytes": 68719476736
+  },
+  "artifacts": {
+    "root": "outputs/s5_lean_circuit/s3_style_circuit_pilot/dense_bgoff_step38000",
+    "payload_retention": "permanent",
+    "dense_reference_examples": 12,
+    "materialize_trails": false,
+    "per_token_attribution": false,
+    "chunking": "byte_bounded_from_audit",
+    "label_storage": "separate_analysis_join"
+  },
+  "deferred_gates": {
+    "absolute_transcoder_fidelity": null,
+    "fail_closed_production": null,
+    "action_if_budget_16384_unstable": null,
+    "production_900_authorized": false
+  }
+}

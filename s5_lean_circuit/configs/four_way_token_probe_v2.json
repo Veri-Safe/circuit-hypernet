@@ -1,0 +1,116 @@
+{
+  "format_version": 1,
+  "run_id": "lean_four_way_token_probe_v2_20261122",
+  "source_commit": "f2e4e3d75ca317d5a2b3341f762b8d09f7499456",
+  "output_root": "outputs/s5_lean_circuit/lean_four_way_token_probe_v2_20261122",
+  "log_root": "logs/analysis/2026-11-22/lean-four-way-token-probe-v2",
+  "routes": [
+    "base_query2048",
+    "circuit1024",
+    "hn_query1024",
+    "query_only_hn1024"
+  ],
+  "probe": {
+    "common_width": 2048,
+    "probe_width": 128,
+    "hidden_width": 128,
+    "num_classes": 4,
+    "input_adapter": "parameter_free_right_zero_padding",
+    "type": "four_query_token_attention",
+    "capacity_note": "Identical registered head parameter counts; native information widths and token counts differ. Single circuit-token attention has weight one."
+  },
+  "training": {
+    "rows": 1200000,
+    "rows_per_atomic_task": 300000,
+    "epochs": 1,
+    "batch_size": 256,
+    "encoder_batch_size": 32,
+    "seed": 42,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.001,
+    "optimizer": "AdamW",
+    "loss": "mse_one_hot",
+    "selection": "fixed_final_step",
+    "shuffle": true,
+    "query_treatment": "original",
+    "encoder_updates": 0,
+    "evaluation_before_freeze": false
+  },
+  "data": {
+    "train_cache": {
+      "path": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt",
+      "sha256": "73782a87a1139e4687da94ea7370d2e1fddea29fdd1b58072310f349d3b5f8b4"
+    },
+    "atomic_bank": {
+      "path": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/atomic_retention.pt",
+      "sha256": "7941251250bc8596301520bca17cbece99284100a89c3d544f03acffdc4ed245"
+    },
+    "composition_bank": {
+      "path": "outputs/s5_lean_circuit/performance_completion_20261103_v1/banks/suite2.pt",
+      "sha256": "b9a32b1e7fcbdefa0633966626b81be349e7e1ab7ee0e754c5b0a979479f3941"
+    },
+    "clean_composition_bank": {
+      "path": "outputs/s5_lean_circuit/lean_atomic_probe_clean_suite1_v1_20261119/clean_query_bank.pt",
+      "sha256": "1397bcbef5a8ffbf57296a8dbd80ed77b90aef03c2c72993722d08a7f8398d05"
+    },
+    "clean_composition_circuits": {
+      "path": "outputs/s5_lean_circuit/lean_atomic_probe_clean_suite1_v1_20261119/clean_circuit_bank.pt",
+      "sha256": "0162597e78681ce4e40dfc24a8de7786c17f5524a20dd0594fcd2b77739afac8"
+    },
+    "atomic_rows": {
+      "path": "logs/analysis/2026-11-21/lean-atomic-probe-id-matrix-v1/atomic_evaluation_rows.jsonl",
+      "sha256": "267a7af351a32feeae605d6a857b267a94e3163247c8693ae72e918b829e4c10"
+    },
+    "composition_rows": {
+      "path": "logs/analysis/2026-11-19/lean-atomic-probe-clean-suite1-v1/evaluation_rows.jsonl",
+      "sha256": "1a567184f8bd36ff76bcef6d4c2018328a795e7f44ba3fd8fc74e491abc2fef0"
+    }
+  },
+  "control": {
+    "type": "mean_linear_ridge_frozen",
+    "source_manifest": {
+      "path": "logs/analysis/2026-11-21/lean-four-way-probe-id-matrix-v1/summary.json",
+      "sha256": "c1a768512a46ad8a0fb9778a982f10821c39d5f765fea51a97c473c18f34c67b"
+    },
+    "relabel_existing_scores": true,
+    "overwrite_source": false
+  },
+  "labels": {
+    "rule": "target_and_plus_proof_or_v2",
+    "order": [
+      "And.intro",
+      "Or.inl",
+      "Or.inr",
+      "Identity"
+    ],
+    "and_relevance": "Reference proof contains And.intro OR target contains conjunction; includes an unchosen branch.",
+    "or_relevance": "Reference proof actually uses Or.inl and/or Or.inr; do not add an unused Or direction.",
+    "identity_policy": "Preserve the historical condition-specific Identity policy."
+  },
+  "evaluation": {
+    "formal_suite": "Suite 1 (physical suite2.pt, seed730000000000)",
+    "rows_per_family": 500,
+    "composition_rows": 2500,
+    "atomic_rows": 2000,
+    "forward_rows_per_route": 7000,
+    "new_atomic_clean_evaluation": false,
+    "atomic_conditions": [
+      "original_legacy_top1",
+      "original_identity_distractor"
+    ],
+    "composition_conditions": [
+      "original_identity_distractor",
+      "original_no_identity",
+      "clean_four_candidates",
+      "clean_no_identity"
+    ],
+    "primary_condition": "clean_no_identity",
+    "metrics": [
+      "strict_relevance_ranking_success",
+      "mean_per_question_auc"
+    ],
+    "test_set_model_selection": false,
+    "new_graph_extraction": false,
+    "bank_generation": false
+  }
+}

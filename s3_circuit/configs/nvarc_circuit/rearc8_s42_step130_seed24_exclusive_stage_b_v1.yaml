@@ -1,0 +1,56 @@
+format_version: nvarc_rearc_stage_b_v1
+
+stage_a:
+  profile: ${HC_ROOT}/s3_circuit/configs/nvarc_transcoder/rearc8_union_fast128_v1.yaml
+  production_lr_policy: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/production_lr_policy.json
+  canonical_export_manifest: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders/frozen_v1/transcoder_manifest.json
+
+data:
+  contract: rearc8_seed24_exclusive_v1
+  manifest_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/manifest.json
+  train_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
+  validation_path: ${HC_ROOT}/datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
+  expected_train_rows: 3200
+  expected_train_puzzles: 400
+  expected_train_events: 20826
+  max_sequence_length: 16384
+  seed: 24
+  source_names: [rearc8_pg_s24_excl_base_s42_v1]
+
+generation:
+  max_new_tokens: 1024
+  batch_candidates: [1, 4, 8, 16]
+  dtype: bfloat16
+  attention_backend: flash_attention_2
+  decoder: constrained_greedy_full_softmax_v1
+
+attribution:
+  operator: joint_signed_span
+  reference_operator: tokenwise_nonnegative_sum
+  backend: streaming_cached_pipeline_vjp_hotloop_exact_v2
+  reference_backend: codecircuit_autograd_reference_v1
+  feature_budget_candidates: [8192, 16384, 32768]
+  node_threshold_candidates: [0.8, 0.9, 0.95]
+  edge_threshold_candidates: [0.98, 0.99, 0.995]
+  row_batch_size: 160
+  attribute_update_interval: 4
+  path_epsilon: 1.0e-12
+
+audit:
+  master_events: 64
+  parity_events: 12
+  escalation_events: 256
+  fidelity_events: 64
+  intervention_fraction: 0.05
+  random_controls: 3
+  noninferiority_ratio: 0.9
+
+artifacts:
+  output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_b/rearc8_s42_step130_seed24_exclusive
+  num_work_units: 1024
+  payload_target_bytes: 536870912
+  final_events_per_shard: 4096
+  max_trails: 8
+  payload_schema: nvarc_qwen3_joint_span_compact_v1
+  vector_schema: nvarc_qwen3_36l_joint_signed_span_mean_59d_v1
+  trail_schema: nvarc_qwen3_joint_span_trails_v1

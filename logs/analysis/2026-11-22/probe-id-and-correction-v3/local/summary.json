@@ -1,0 +1,2481 @@
+{
+  "status": "local_recomputation_complete_server_sweep_pending",
+
+  "results": [
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 1292,
+      "pct": 64.6,
+      "auc": 0.90175
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 351,
+      "pct": 70.2,
+      "auc": 0.9235
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 209,
+      "pct": 41.8,
+      "auc": 0.8345
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 232,
+      "pct": 46.4,
+      "auc": 0.849
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 599,
+      "pct": 23.96,
+      "auc": 0.4486
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 36,
+      "pct": 7.2,
+      "auc": 0.258
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 61,
+      "pct": 12.2,
+      "auc": 0.386
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 152,
+      "pct": 30.4,
+      "auc": 0.509
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 303,
+      "pct": 60.6,
+      "auc": 0.762
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 47,
+      "pct": 9.4,
+      "auc": 0.328
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 948,
+      "pct": 37.92,
+      "auc": 0.6184666666666667
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 103,
+      "pct": 20.6,
+      "auc": 0.402
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 95,
+      "pct": 19.0,
+      "auc": 0.458
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 401,
+      "pct": 80.2,
+      "auc": 0.9495
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 185,
+      "pct": 37.0,
+      "auc": 0.6695
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 164,
+      "pct": 32.8,
+      "auc": 0.6133333333333334
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 829,
+      "pct": 41.45,
+      "auc": 0.752625
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 127,
+      "pct": 25.4,
+      "auc": 0.664
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 486,
+      "pct": 97.2,
+      "auc": 0.984
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 139,
+      "pct": 27.8,
+      "auc": 0.7165
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 77,
+      "pct": 15.4,
+      "auc": 0.646
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 1032,
+      "pct": 41.28,
+      "auc": 0.575
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 166,
+      "pct": 33.2,
+      "auc": 0.507
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 148,
+      "pct": 29.6,
+      "auc": 0.503
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 276,
+      "pct": 55.2,
+      "auc": 0.692
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 327,
+      "pct": 65.4,
+      "auc": 0.787
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 115,
+      "pct": 23.0,
+      "auc": 0.386
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 377,
+      "pct": 15.08,
+      "auc": 0.4745333333333333
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 130,
+      "pct": 26.0,
+      "auc": 0.5273333333333333
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 69,
+      "pct": 13.8,
+      "auc": 0.4126666666666666
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 65,
+      "pct": 13.0,
+      "auc": 0.592
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 47,
+      "pct": 9.4,
+      "auc": 0.4966666666666667
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 66,
+      "pct": 13.2,
+      "auc": 0.344
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 942,
+      "pct": 47.1,
+      "auc": 0.788625
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 331,
+      "pct": 66.2,
+      "auc": 0.8945
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 37,
+      "pct": 7.4,
+      "auc": 0.591
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 74,
+      "pct": 14.8,
+      "auc": 0.669
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 1270,
+      "pct": 50.8,
+      "auc": 0.6744
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 245,
+      "pct": 49.0,
+      "auc": 0.681
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 173,
+      "pct": 34.6,
+      "auc": 0.567
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 467,
+      "pct": 93.4,
+      "auc": 0.963
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 303,
+      "pct": 60.6,
+      "auc": 0.799
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 82,
+      "pct": 16.4,
+      "auc": 0.362
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 646,
+      "pct": 25.84,
+      "auc": 0.6053
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 176,
+      "pct": 35.2,
+      "auc": 0.6693333333333333
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 133,
+      "pct": 26.6,
+      "auc": 0.6306666666666666
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 237,
+      "pct": 47.4,
+      "auc": 0.814
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 63,
+      "pct": 12.6,
+      "auc": 0.5791666666666666
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 37,
+      "pct": 7.4,
+      "auc": 0.3333333333333333
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 794,
+      "pct": 39.7,
+      "auc": 0.789625
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 151,
+      "pct": 30.2,
+      "auc": 0.7555
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 32,
+      "pct": 6.4,
+      "auc": 0.6425
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 111,
+      "pct": 22.2,
+      "auc": 0.7605
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 1195,
+      "pct": 47.8,
+      "auc": 0.6638
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 233,
+      "pct": 46.6,
+      "auc": 0.704
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 225,
+      "pct": 45.0,
+      "auc": 0.706
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 393,
+      "pct": 78.6,
+      "auc": 0.859
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 285,
+      "pct": 57.0,
+      "auc": 0.757
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 59,
+      "pct": 11.8,
+      "auc": 0.293
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 735,
+      "pct": 29.4,
+      "auc": 0.6266
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 303,
+      "pct": 60.6,
+      "auc": 0.8073333333333333
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 133,
+      "pct": 26.6,
+      "auc": 0.61
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 140,
+      "pct": 28.0,
+      "auc": 0.761
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 97,
+      "pct": 19.4,
+      "auc": 0.6873333333333334
+    },
+    {
+      "config": "fixed_v2",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "token_attention",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 62,
+      "pct": 12.4,
+      "auc": 0.2673333333333333
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 692,
+      "pct": 34.6,
+      "auc": 0.766875
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 61,
+      "pct": 12.2,
+      "auc": 0.7395
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 71,
+      "pct": 14.2,
+      "auc": 0.6675
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 60,
+      "pct": 12.0,
+      "auc": 0.6605
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 399,
+      "pct": 15.96,
+      "auc": 0.4292
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 1,
+      "pct": 0.2,
+      "auc": 0.226
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 23,
+      "pct": 4.6,
+      "auc": 0.279
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 54,
+      "pct": 10.8,
+      "auc": 0.533
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 321,
+      "pct": 64.2,
+      "auc": 0.821
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.287
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 11,
+      "pct": 0.44,
+      "auc": 0.4327
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 1,
+      "pct": 0.2,
+      "auc": 0.312
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4026666666666666
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 4,
+      "pct": 0.8,
+      "auc": 0.566
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4275
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "base_query2048",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 6,
+      "pct": 1.2,
+      "auc": 0.4553333333333333
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 776,
+      "pct": 38.8,
+      "auc": 0.7225833333333334
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 114,
+      "pct": 22.8,
+      "auc": 0.6715
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 487,
+      "pct": 97.4,
+      "auc": 0.9893333333333334
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 85,
+      "pct": 17.0,
+      "auc": 0.6095
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 90,
+      "pct": 18.0,
+      "auc": 0.62
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 1048,
+      "pct": 41.92,
+      "auc": 0.5896
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 93,
+      "pct": 18.6,
+      "auc": 0.413
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 188,
+      "pct": 37.6,
+      "auc": 0.547
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 337,
+      "pct": 67.4,
+      "auc": 0.796
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 339,
+      "pct": 67.8,
+      "auc": 0.837
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 91,
+      "pct": 18.2,
+      "auc": 0.355
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 241,
+      "pct": 9.64,
+      "auc": 0.4945
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 106,
+      "pct": 21.2,
+      "auc": 0.5526666666666666
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 37,
+      "pct": 7.4,
+      "auc": 0.5206666666666666
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 57,
+      "pct": 11.4,
+      "auc": 0.6095
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 14,
+      "pct": 2.8,
+      "auc": 0.3636666666666667
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "circuit1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 27,
+      "pct": 5.4,
+      "auc": 0.426
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 719,
+      "pct": 35.95,
+      "auc": 0.69425
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 212,
+      "pct": 42.4,
+      "auc": 0.76
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 3,
+      "pct": 0.6,
+      "auc": 0.4995
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 4,
+      "pct": 0.8,
+      "auc": 0.5175
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 972,
+      "pct": 38.88,
+      "auc": 0.5812
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 73,
+      "pct": 14.6,
+      "auc": 0.426
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 154,
+      "pct": 30.8,
+      "auc": 0.493
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 434,
+      "pct": 86.8,
+      "auc": 0.91
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 311,
+      "pct": 62.2,
+      "auc": 0.811
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.266
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4722
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.42533333333333334
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.5086666666666666
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.5005
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4445
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "hn_query1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.482
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2000,
+      "n": 2000,
+      "not_applicable": 0,
+      "correct": 725,
+      "pct": 36.25,
+      "auc": 0.69975
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 224,
+      "pct": 44.8,
+      "auc": 0.78
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_id",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 500,
+      "pct": 100.0,
+      "auc": 1.0
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_l",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 1,
+      "pct": 0.2,
+      "auc": 0.499
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "atomic",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "S_or_r",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.52
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 1097,
+      "pct": 43.88,
+      "auc": 0.6282
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 39,
+      "pct": 7.8,
+      "auc": 0.382
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 236,
+      "pct": 47.2,
+      "auc": 0.7
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 495,
+      "pct": 99.0,
+      "auc": 0.995
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 327,
+      "pct": 65.4,
+      "auc": 0.827
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "clean_no_identity",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.237
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "ALL",
+      "total": 2500,
+      "n": 2500,
+      "not_applicable": 0,
+      "correct": 2,
+      "pct": 0.08,
+      "auc": 0.4472333333333333
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 2,
+      "pct": 0.4,
+      "auc": 0.502
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_and_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4913333333333333
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.5
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_nested_or",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.4581666666666666
+    },
+    {
+      "config": "frozen_lambda_0.001",
+      "probe": "query_only_hn1024",
+      "domain": "composition",
+      "condition": "original_identity_distractor",
+      "method": "mean_linear_ridge",
+      "task_type": "T_or_and",
+      "total": 500,
+      "n": 500,
+      "not_applicable": 0,
+      "correct": 0,
+      "pct": 0.0,
+      "auc": 0.2846666666666666
+    }
+  ],
+  "recomputed_score_rows": 56000,
+  "saved_label_or_score_mismatches": [],
+  "excluded_historical_records": {
+    "original_legacy_top1": 16000,
+    "clean_four_candidates": 20000,
+    "original_no_identity": 20000
+  },
+  "sources": [
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_and.jsonl",
+      "sha256": "7412dc219590e0ad431073371ffc6a8ba14fec7a76ea7de54eb52d2dd27c73fd",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_id.jsonl",
+      "sha256": "a944206e8656cf07c11f19bdcac1fff4cdf41bc230aca09777a08b19d1652d29",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_l.jsonl",
+      "sha256": "2f6347a3730656659b3f9f35833daa80fadcf61c9ed7c36963b0a876f5e9d02a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_r.jsonl",
+      "sha256": "18cd16211099f21f916df7f8b7969fcdba33f47f38548edf0d5be46f284e16e3",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__token_attention__S_and.jsonl",
+      "sha256": "071cfcaddd5d957e216f70bc734f345d76bb04034f786227a1a08240e40904f1",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__token_attention__S_id.jsonl",
+      "sha256": "97de5bbfcd2af8dd7e4a0a3793469d23f23ab4a3fcf1bc6e54b60dfae2e4f4f5",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__token_attention__S_or_l.jsonl",
+      "sha256": "5f0a3d675f55e9874ee9a788da1d80bdb123a2d5366407626b2d6969dbdfc1c6",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\atomic__original_identity_distractor__token_attention__S_or_r.jsonl",
+      "sha256": "f560fb2a0d683e4b1ac71a28a183e621d6816a84812dc2a0b656f902c94f7cc1",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "9b3704bcf470f5c6ef05a1a0738c6c00efb65b6bcef7c1f1fafce0ba32e47a4a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "108c4ae1e2da8e8a35fff432aa397bf7931f90b0411d16f2f72a407d0012cc03",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "bcac3ec1d7ca25d587245ec28e3ab6ef4312421582a1983809b189196d54f8bb",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "08f94aa4862fc2e34a08ef41db70fd3d2ad592dcb3e18431089a0ee4164d58eb",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "16b3a382d6c11b38e353ee98fa54544a407f0857ed232d1c42aaba93dfc09809",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__token_attention__T_and_or.jsonl",
+      "sha256": "a916254438cda99ccdf6c3f55bdb27c000e1aab3265d796aa02fd99ea2dfdc61",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__token_attention__T_and_or_and.jsonl",
+      "sha256": "c01939f32d117552bdbc6edfebbede4eefc9d8fb5674c47384e7c99f2c53dacb",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__token_attention__T_nested_and.jsonl",
+      "sha256": "68cd3009b890b9dc78270559f5fe8ecdfde0c79c6f665f9821a245420e22fd1b",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__token_attention__T_nested_or.jsonl",
+      "sha256": "e5a00c860044221f2cbc90d077af7bef2a0f553988c40eed0de97f7d6571d508",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__clean_no_identity__token_attention__T_or_and.jsonl",
+      "sha256": "c690210e43ff82df978ba4061d6cbe6abdab59d7f8ba57e048eec6744b8e080c",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "354dd85c12dfb32b46e8d1ca1ddbb366a24d9ade7870b1e67e3c6a54c21d0d7d",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "6bc4e00cddd0682dabbaeb9194094a34e48afb955e7c390225cfe1293b58f55d",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "aa50a9138c7a0d3a534d71c443d4f425471b4e00e13c9870fc19335b2382b258",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "1fce673d64b98311057f937eef0eae54a2c49ac20b1d88f00a0c132dacebefdb",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "5895910237d4d1d3c9dfeac1b550248c82c20054849b3f1943fd46bf8389ab7e",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__token_attention__T_and_or.jsonl",
+      "sha256": "002de4af662a5b0f916cfa1514d87cf00bd88316c75f0bc60add38263f07c642",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__token_attention__T_and_or_and.jsonl",
+      "sha256": "bc9b2747509069d54e37cdf14134d67b46fb96acbb73a341d1b90ee4dd00eaa7",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__token_attention__T_nested_and.jsonl",
+      "sha256": "afecebd4b52d15b27187b7af4f29b3a10fdf5f2abc97e2279c24c4f9113d0c3c",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__token_attention__T_nested_or.jsonl",
+      "sha256": "81cb9f9eaf198441aeb78e80c86a88d00d3238b173159078124cf5ba64b03bd0",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\base_query2048\\per_question\\composition__original_identity_distractor__token_attention__T_or_and.jsonl",
+      "sha256": "6f2111e39c37e8de0645ee12cdb5c03f2e0c408541d3c4341621048eed9d56d3",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_and.jsonl",
+      "sha256": "c30f492213c389c4586cfeb058f4ea1465da3e963e1ab5ec525f2989d7aaf0d1",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_id.jsonl",
+      "sha256": "72a5483cf42d1de3476de9317b6f4221c09c28dac0f0e9fc2200a12a4393816f",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_l.jsonl",
+      "sha256": "57cd778cd30b809f304f1329ffd853ef3b4a04349f597329e8d38ef9af6de1e4",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_r.jsonl",
+      "sha256": "f417d0251857278c7d5f94218d0914249247bfbae9d76dfedc6e93d682d8bc3e",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__token_attention__S_and.jsonl",
+      "sha256": "32d4aef17d941da70ec87624f33551e0d61c4e26dfe21aa8a6b6cd30afee5e70",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__token_attention__S_id.jsonl",
+      "sha256": "87eecf57b285f79b0410a8f2cbb37068ed8d83d7bcce6c87b0bbdd62a2a8d150",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_l.jsonl",
+      "sha256": "303176ee72dd972a004c5a2e5e243ffe988efdd9e5ead626d4def6f9d63e1567",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_r.jsonl",
+      "sha256": "df588baacccdfb22dfefc02ca4557b63ed7e28af18f4a3f37bebb7521c2d8bdd",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "5e6f74be67dd7c1123cb2a5a448fcf62e6e0940d241098a2775272be2b7e87d1",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "094e7e12516a57a7115423206e2d732908fede5d864e3d97acf3c4f70d3a48f7",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "136379bdebd0c731fb3e6d8190cf8730adff7e67f9d453286812ff67859b30c9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "33249c643a0cdbb08da5b03351cb23a919018a8a7412b75bc53203b3e05564d9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "30b7b4cc8546e7089f943b511d999bc8fa68df371933e22c3278bb4a65f94d29",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or.jsonl",
+      "sha256": "532578d80f162cb56f7db2b1f2b40c2a9f658b7360a60ce36620213cf4337da4",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or_and.jsonl",
+      "sha256": "a7820fc3c1b08fbda1b0d46b75c437ce883b3a2edaf22b231d60961ada20164c",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_and.jsonl",
+      "sha256": "bbb70478003dc3a849e02321a43dbe7c10a8f9131f53b2def3fa67f647032529",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_or.jsonl",
+      "sha256": "ca7e077ff28b4096520d2bfd3b2ff123da3501d89c1f4df6d2513343175a9751",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__clean_no_identity__token_attention__T_or_and.jsonl",
+      "sha256": "feb8cde419c15b632759ea3d85763c387dc1e0644a2f2676ac2f022c2a90a6b2",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "6e15bb3b579f8e05e86e14a9ab20066029cd21eb7038c7112cc2491dd3f27673",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "131039c17a6ea3bb0e0a075de04a49f110319d5b212d4cb689935a0bb2fd4c52",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "61e3e2d4aca3104aea27cfb399b5c936b532219dc80a32096d98a35c9545b527",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "e0987d9c14bff63b1d79d795e4e643412d31b8c1d0ccda5dca927ba12e6daaaf",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "422d3c87b4e741d2839e359767a5e08fcfc63c039ae834244189862069316d28",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or.jsonl",
+      "sha256": "8aeddeb77001d9842e940db91d0aefb2fa732f62a941c9b60c2878e83da59e1e",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or_and.jsonl",
+      "sha256": "13e506a408fa629837b3e6c2bb72a3a3abb61a2caf0486726942cbf38f20599a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_and.jsonl",
+      "sha256": "2930c08925a6ad08db35a4d3ed8e38df86ca33acd02ff4aa549fdde72e210ea9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_or.jsonl",
+      "sha256": "ea91ac233b56b3c2b5b8bd99b9dad83dd14f870af68d6a951b66dae2a7b9d089",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\circuit1024\\per_question\\composition__original_identity_distractor__token_attention__T_or_and.jsonl",
+      "sha256": "ea30b935e4534929c741752ee6ad569989671850ab6813febea475b4794c2f41",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_and.jsonl",
+      "sha256": "76b1de692ce22b7d98506d479031a46abc623be4c483bb61912908dcf3ab8575",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_id.jsonl",
+      "sha256": "e23033748ea71f5ae5f6abf1cf1f9b4fc0a560639d8543b3bc6bfd0c2f81280b",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_l.jsonl",
+      "sha256": "230bcf8f40353fff697db14db72897b9e702e10f0e46e6231159cc8573978f5d",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_r.jsonl",
+      "sha256": "1be532f92fea00e974c6ed61e8e388cb96d68ad84bda16aaef9d566701d14d68",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__token_attention__S_and.jsonl",
+      "sha256": "7806b156da7818daf9c95894b48a6fe5c91d97b2581f8f2d26c3ce3011fd2f88",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__token_attention__S_id.jsonl",
+      "sha256": "12f0f4b8b2c4efce33d5749f3e6fb2f222aa39f32bb6120360713c1fb5c0388a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_l.jsonl",
+      "sha256": "5404b8e647d028c476265423da629a242fa8eccda2a4903c988bb54eafe5fed0",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_r.jsonl",
+      "sha256": "2d876f76341a512b4fbbe1e60cdc27ae1d68849291c5b4e5a712976c92781f97",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "bc50c759bbdd2490f5e9349685b0fe671bae9461860373c7114e786dbce57059",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "9ded91421a4e1ae9c8c3274fc364a59cf696ab03b636db0119fe983b7b1e08dd",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "a6ace0485fb13f32097779e3a258245e69ddafbbe23738ee48512d02034ca6b2",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "b547b692662c3f430f82f48d90c604d70a6fbcfbdb3fc839acc4892da9e010a3",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "d54941c21a0998c8f5d8102da1d9dd1974ea2b963cdb2f9857cb5aaeec692f6b",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or.jsonl",
+      "sha256": "e23434a7b655ac06e18bd7c58bdce354515f794aee254b358c7402a0d737647c",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or_and.jsonl",
+      "sha256": "5a1fa8b183e0f55d075dd37dff2d0b20a9f4c6a5d8f944cb8014f12391236714",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_and.jsonl",
+      "sha256": "c92cc16584a542e7feed32875272fe74e4a75bc56a9b607ef553061ac72081e8",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_or.jsonl",
+      "sha256": "c03cc95b13b19b4b79d82a3864c8c986e7d5469482c51ad0a2c740f26e890077",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__clean_no_identity__token_attention__T_or_and.jsonl",
+      "sha256": "5226cae1cda706a21bc645577ce34376f4fbfe83932b34184ada3b3af2a6190c",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "e68e3853b763324d91d38741437519fa71100ee7d4dfadbd68ab64cb674a9f97",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "50c7c6c9ddf5e5b4d88e731ae96ee010fccf252d8f0114d542a3136c4755328e",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "51d85cbe2e82fefcf7b78e662730271323c9e94292113dc0f0651a478d895659",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "593e159dbddd310a6dc8f1582da90473d15685bdada85afb98480971b0f8babb",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "721178321ab6649da96681170556a5c7ab46f3d3f6a9751a9ffd67b1b2f2f073",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or.jsonl",
+      "sha256": "e54e4cd7933f2cebfd9cd16070467650d5d5eb556d8899cce4a96bca1735cce7",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or_and.jsonl",
+      "sha256": "37545cf081c835f9cfaa95a10904a904f19610f824f747f89d571e50915c439b",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_and.jsonl",
+      "sha256": "47375fd9b9d0d990d376fca17de96a350c606da0f0ce651bfd084013859f21a3",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_or.jsonl",
+      "sha256": "9afcbc8892654686d2efc82de01ac751899ade4fa7b60212dd647d4c2790f62d",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\hn_query1024\\per_question\\composition__original_identity_distractor__token_attention__T_or_and.jsonl",
+      "sha256": "d73745958270735ce215ecd24914da65f735fce4d4923b0bd760a58c68276c07",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_and.jsonl",
+      "sha256": "49e37462814cb706616ab35a8de5a515af79d1c805dca2ec180522863eb14689",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_id.jsonl",
+      "sha256": "0373076a692aa12d15d6b6648d9222e92f13492c1dd040fdbbe029af2906bdf6",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_l.jsonl",
+      "sha256": "ba9104bd8ade4ba05789aa2166227a025529627dbac11bff91c40ede5a43a6a8",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__mean_linear_ridge__S_or_r.jsonl",
+      "sha256": "2c12a2644c9ca25dc799a89d96494be921686ce7b871d409c6d055fd07c7472e",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__token_attention__S_and.jsonl",
+      "sha256": "ed8cbe3f40672c166febf0fe7b5f02c6983a400bcb9cc03cd298f3f74b9e8ffe",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__token_attention__S_id.jsonl",
+      "sha256": "b69df1b6788bf22df29ab8edd240aac41790951c5b5867e8c2887d4f1d255c17",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_l.jsonl",
+      "sha256": "a1db74558523b91312b3d52f7aa583c3db63f9d0f0e3d41d2c62d0562374c508",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\atomic__original_identity_distractor__token_attention__S_or_r.jsonl",
+      "sha256": "0001bb47b9f58eb62d197420ab4d010905c9aa50e27b232575b756b91c856172",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "b2ddbbca550718e4be864c808591ea9a1131ee5467850594f78f66eece03d288",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "af9c5b8ad3a2141f7412e910270a935117540d3af2853cc4f1a93b7c18656a44",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "9595d9397b23e11442fdb591e4df992dcc40fde70a8649da735112bbc3f4ed43",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "3af690b7647066b1261a7b1fa699951718173ce83f954e064c1ef2f0bd3f7116",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "435303d581cc0044cbe549def3213a508f56cd662715adf6ba35e5df90c78b85",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or.jsonl",
+      "sha256": "47acea12e95b1226badb29732c2ac499e74457a66baa39f52e0ff5f5ce5b2ef9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__token_attention__T_and_or_and.jsonl",
+      "sha256": "31340eb7a8e813f3ec59caf150e6d1e4c7a1d4c8603b97173cc9b4f6d178b8ee",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_and.jsonl",
+      "sha256": "5f84c2bd5b756d53391dd5ff09a46790f08c09f49e324b1aedcd567d1a81bfb9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__token_attention__T_nested_or.jsonl",
+      "sha256": "56718229d6037dce769bf034f61c358f09c5158d8a461f4a051d716b9dbe0c96",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__clean_no_identity__token_attention__T_or_and.jsonl",
+      "sha256": "d426fd4986e0786d476f38a893d1e7447b2bf1ee226b250092b042b3c30ed5e9",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or.jsonl",
+      "sha256": "4b96c988cad0ff8f629f3b3552e986be1d98f879e24b75a79eaab462a8b6828a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_and_or_and.jsonl",
+      "sha256": "885d0fcad3540e060c841dd72374d57f1cd8f332bf17856c42596e37e2d64878",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_and.jsonl",
+      "sha256": "3c5c2f7522caf7ee029eebbbb701a2eb544992b7b97a0064421baef5f4323d33",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_nested_or.jsonl",
+      "sha256": "12032cba2b4e845d2a78d2c3ebe90a43fd0b6caec4e48e65ceab07883f28b55a",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__mean_linear_ridge__T_or_and.jsonl",
+      "sha256": "599bc07960db53be59cb82838f3305e0221e1063e63a12e7c40358f3e80332ab",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or.jsonl",
+      "sha256": "e8abe7f83dccf7f7d089bcddd8fb66ff16fa467967395aeb2d8c3b95b53ec500",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__token_attention__T_and_or_and.jsonl",
+      "sha256": "15143c4534205b8cadef1e634e1033443a76f73df3e07eca239c2fc180f8c32f",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_and.jsonl",
+      "sha256": "cf744d21317d32f91766491ca5e48f8f9ef9de187c6746e0adb17ecb320e0302",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__token_attention__T_nested_or.jsonl",
+      "sha256": "1888fdbb1c6e9dbbbe62f035f6cdc6fe9d2786be2ae19ead74f673f5f847edb1",
+      "rows": 500
+    },
+    {
+      "path": "logs\\analysis\\2026-11-22\\lean-four-way-token-probe-v2\\query_only_hn1024\\per_question\\composition__original_identity_distractor__token_attention__T_or_and.jsonl",
+      "sha256": "9192edeae7c89eafd5e426cce62f65cdc39603bf8cc45151e510fbd51bb6b9c0",
+      "rows": 500
+    }
+  ],
+  "new_attention_atomic_clean": "not_run_in_v2; no substitute or zero-filled score",
+  "historical_sources_unchanged": true
+}

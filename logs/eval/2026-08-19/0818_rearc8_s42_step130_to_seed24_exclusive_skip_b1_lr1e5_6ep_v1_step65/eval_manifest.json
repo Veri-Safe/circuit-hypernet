@@ -1,0 +1,89 @@
+{
+  "adapter_artifacts": null,
+  "adapter_path": null,
+  "adapter_runtime": null,
+  "challenge_path": "/mnt/kbei/HyperCombine/datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json",
+  "config_path": "/mnt/kbei/HyperCombine/s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json",
+  "config_sha256": "54037b1baac229754a7f372b1de887025482733f39941184ada0afa6877d235e",
+  "dataset_identity": {
+    "bundle_semantic_sha256": "173c6096d70d4893c4ef7562db45483a0be1bb9b77f2ab12cbe950b7605078eb",
+    "challenge_semantic_sha256": "46b27a6330e9b2dde16e33c81f80f96a3d7553d1c44b14eb712a256349fd55f5",
+    "solution_semantic_sha256": "e97693b0899f8f3fcc87d58c3891329cad63ed054489f9b0d440329de0bb9945",
+    "task_count": 400,
+    "test_count": 419
+  },
+  "evaluator_artifacts": {
+    "arc_eval_protocol.py": "20b27c9494ac5339f4b2988eebaf654c8a2adf2fc4eed6ba7028521fb2f70e10",
+    "eval_nvarc_internal.py": "286cd751ab7acad445601405fde3e747c0ee53ee22b8af032c0a0923d6768b30",
+    "eval_nvarc_internal_fast.py": "82e09de9c7032021bc1d06093f479acd5d2de7e0717288b50e1061e71297b463",
+    "nvarc_grid_grammar.py": "993be036be2e3b61a76ffbb6d2396f59c2c5be8b50f1c3f1ea31af59eee25274"
+  },
+  "fast_evaluator": {
+    "batch_mode": "per_test",
+    "max_batch_size": 17,
+    "max_batch_tokens": 0,
+    "performance_sha256": "1fa5123acebb1e86cce155deb1e3e3916f593ec19d462d648875a7fdf8767b63"
+  },
+  "metrics_sha256": "45ee53ad5651cb56aceb4c3ee8d9b2cb2cab56937d38d4f491127162c97d9b63",
+  "model_artifacts": {
+    "aggregate_sha256": "1ed554189fb1ecdced53a739a02513317d653f86685138bec75282eff4acc237",
+    "files": {
+      "config.json": {
+        "sha256": "68e4a53946c41a4320da565200b4f16327fe9dfbcb85b9bc67e175934a2977b3",
+        "size_bytes": 1552
+      },
+      "generation_config.json": {
+        "sha256": "976b81a522907a4ee2055be7719e194e65eb290de8a9874aa34fcee1cb99f380",
+        "size_bytes": 243
+      },
+      "model-00001-of-00002.safetensors": {
+        "sha256": "4737c727481fd6724547e37bcb147d735e5561d4e5b3fc6b80cfbef40fdca060",
+        "size_bytes": 4996836472
+      },
+      "model-00002-of-00002.safetensors": {
+        "sha256": "18338a2b1b4a5ed05b09244cf3093ea878f1032951247cf3026999ba68b97965",
+        "size_bytes": 2270397024
+      },
+      "model.safetensors.index.json": {
+        "sha256": "752bb8fde8a23b2ebc35e952ddf47e82f47282887f0b1cd644ad0e12e34828b8",
+        "size_bytes": 32913
+      }
+    },
+    "root": "/mnt/kbei/HyperCombine/outputs/nvarc/qwen3_4b_sft/rearc8_s42_to_seed24_fullft/0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1/checkpoints/step_65",
+    "weight_file_count": 2
+  },
+  "model_config_sha256": "68e4a53946c41a4320da565200b4f16327fe9dfbcb85b9bc67e175934a2977b3",
+  "model_label": "rearc8-s42-step130-to-s24-skip-b1-lr1e5-step65",
+  "model_path": "/mnt/kbei/HyperCombine/outputs/nvarc/qwen3_4b_sft/rearc8_s42_to_seed24_fullft/0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1/checkpoints/step_65",
+  "model_source": "hf",
+  "predictions_sha256": "5818f493651d12dad1cf0c170d50e386513d1afc2ffc1a6b06eec4879bc9553e",
+  "primary_metric": "selected_exact@2",
+  "protocol_version": "arc_agi1_nvarc_public_validation_v1",
+  "python_version": "3.12.13",
+  "solution_path": "/mnt/kbei/HyperCombine/datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json",
+  "submission_sha256": "dbb1d04330ccdf8572bfcd78011ccfadf7c6d96353f7be743d3b13e39cdb876b",
+  "token_contract": {
+    "assistant_token_id": 12,
+    "digit_token_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "eos_token_id": 15,
+    "im_start_token_id": 14,
+    "newline_token_id": 10,
+    "pad_token_id": 13,
+    "user_token_id": 11,
+    "vocab_size": 16
+  },
+  "tokenizer_config_sha256": "d59ac739ba44b2da01725336896a608daa107880811a086e015cf2843ae4d83d",
+  "tokenizer_path": "/mnt/kbei/HyperCombine/base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "transformers_version": "4.55.4"
+}

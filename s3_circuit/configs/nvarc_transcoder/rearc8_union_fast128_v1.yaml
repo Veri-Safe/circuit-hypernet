@@ -1,0 +1,63 @@
+format_version: nvarc_rearc_transcoder_union_v3
+
+base:
+  label: rearc8_s42_e10_step130
+  run_name: rearc8_seed42_base
+  source_step: 130
+  hf_checkpoint: ${HC_ROOT}/outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf
+  tokenizer: ${HC_ROOT}/base_models/qwen/Qwen3-4B-Thinking-2507-16t
+  aggregate_sha256: b74bcb895fe162511ab8d047648a9d3cbba110fead5f3d58b9a24e9456d0084c
+  expected_files:
+    config.json: 8f9eb61dafc23ada43f53cf929bd40b9943bab7befb866840b05fa7107a18aaf
+    generation_config.json: 976b81a522907a4ee2055be7719e194e65eb290de8a9874aa34fcee1cb99f380
+    model.safetensors.index.json: ef4b6936638b4ed6e7bb9d8e9cdc2ab9c87d719b1759c626dad8c2f739f6f339
+    model-00001-of-00003.safetensors: ec4e516185f04291800e78ad48b5f6973fd142fe8c5a62f925f4b3f3ee242b38
+    model-00002-of-00003.safetensors: e190e8f6e1f0c2834bf309aa1aca89a1ff761981e9581ba487014f2acb724410
+    model-00003-of-00003.safetensors: ccf50e3f18e1edd5de17f7761be4ce5c6b3ae7174860e72b1566f7944338e4a5
+  tokenizer_config_sha256: d59ac739ba44b2da01725336896a608daa107880811a086e015cf2843ae4d83d
+  token_mapping_sha256: e1bb75693da1236d6b5b240b3fce6e03a7975c80812d54c1d3e7e30b634a4884
+
+data:
+  train_path: ${HC_ROOT}/datasets/nvarc/derived/rearc8_union_fast128_v1/hf/train
+  validation_path: ${HC_ROOT}/datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation
+  expected_train_rows: 13523
+  expected_train_puzzles: 800
+  expected_train_events: 48692
+  expected_validation_rows: 684
+  expected_validation_puzzles: 114
+  expected_validation_events: 3006
+  max_sequence_length: 16384
+  seed: 24
+
+traces:
+  train_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/train
+  validation_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/traces/validation
+  max_new_tokens: 1024
+  rows_per_file: 16
+
+model:
+  public_transcoder_root: ${HC_ROOT}/base_models/sae/mwhanna/qwen3-4b-transcoders
+  native_model: ${HC_ROOT}/base_models/qwen/Qwen3-4B
+  output_root: ${HC_ROOT}/outputs/nvarc/circuit_stage_a/rearc8_union_fast128/transcoders
+  d_model: 2560
+  d_feature: 163840
+  num_layers: 36
+  sparsity_coeff: 8.0
+  c_coeff: 4.0
+  decoder_norm_min: 1.0e-8
+
+training:
+  effective_tokens: 8192
+  updates_per_block: 32
+  beta1: 0.9
+  beta2: 0.999
+  eps: 1.0e-8
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  warmup_fraction: 0.02
+  cooldown_fraction: 0.20
+  resumable_percent: 5
+  candidate_percent: 10
+  learning_rate_candidates: [5.0e-6, 1.0e-5, 2.0e-5]
+  activation_dtype: bfloat16
+  matrix_compute: fp32_tf32

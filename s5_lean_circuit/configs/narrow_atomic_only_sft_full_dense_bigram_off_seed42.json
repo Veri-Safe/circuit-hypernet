@@ -1,0 +1,103 @@
+{
+  "protocol_id": "s5_narrow_atomic_only_sft_dense_bigram_off_v1",
+  "upstream_commit": "4624427df151befca87eea252314ea1f6d4c4ba7",
+  "seed": 42,
+  "surface_family": "narrow",
+  "task_schedule": {
+    "type": "atomic_only"
+  },
+  "train_tasks": [
+    "S_and",
+    "S_or_l",
+    "S_or_r",
+    "S_id"
+  ],
+  "selection_tasks": [
+    "S_and",
+    "S_or_l",
+    "S_or_r",
+    "S_id",
+    "T_and_or",
+    "T_or_and",
+    "T_and_or_and",
+    "T_nested_and",
+    "T_nested_or"
+  ],
+  "test_tasks": [
+    "S_and",
+    "S_or_l",
+    "S_or_r",
+    "S_id",
+    "T_and_or",
+    "T_or_and",
+    "T_and_or_and",
+    "T_nested_and",
+    "T_nested_or"
+  ],
+  "tokenizer": {
+    "path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model",
+    "corpus_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer_corpus.txt",
+    "corpus_samples": 1000000,
+    "corpus_seed": 42,
+    "corpus_tasks": "all_nine",
+    "vocab_size": 2048,
+    "model_type": "bpe",
+    "pad_id": 0,
+    "unk_id": 1,
+    "bos_id": 2,
+    "eos_id": 3
+  },
+  "model": {
+    "block_size": 128,
+    "vocab_size": 2048,
+    "n_layer": 8,
+    "n_head": 128,
+    "d_head": 16,
+    "d_model": 2048,
+    "d_mlp": 8192,
+    "d_pos_emb": 32,
+    "dropout": 0.0,
+    "bias": true,
+    "ln_bias": true,
+    "rms_norm": true,
+    "activation_type": "gelu",
+    "residual_activation_type": "identity",
+    "grad_checkpointing": true,
+    "enable_bigram_table": false,
+    "learnable_bigram_table": false,
+    "tied_unembed": false,
+    "sink": true,
+    "flash": true,
+    "activation_keep_fraction": null,
+    "activation_sparse_locations": "attn_in,attn_out,mlp_in,mlp_out,mlp_neuron,attn_v,attn_k,attn_q"
+  },
+  "training": {
+    "total_tokens": 5000000000,
+    "global_batch_size": 512,
+    "learning_rate": 0.0003,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.95,
+    "weight_decay": 0.1,
+    "warmup_steps": 1000,
+    "schedule": "linear_warmup_then_constant",
+    "max_grad_norm": 1.0,
+    "precision": "fp16",
+    "log_interval": 50,
+    "eval_interval": 2000,
+    "checkpoint_interval": 2000,
+    "validation_samples_per_task": 50,
+    "max_new_tokens": 50,
+    "n_distractors": 2
+  },
+  "evaluation": {
+    "metric": "strict_first_tactic_exact_match",
+    "test_samples_per_task": 100,
+    "validation_suite_seed_bases": [
+      888888000
+    ],
+    "test_suite_seed_bases": [
+      999999000
+    ],
+    "suite_seed_note": "The public code exposes one validation and one test seed base."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "format_version": "nvarc_rearc8_s42_to_seed24_skip_b1_lr_tune_v1",
+  "experiment_id": "0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1",
+  "artifact_namespace": "nvarc_rearc8_s42_to_seed24_skip_b1_lr1e5",
+  "model_label_prefix": "rearc8-s42-step130-to-s24-skip-b1-lr1e5",
+  "base_model": "outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/hf/r8_s42/step_130-hf",
+  "tokenizer": "base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "loss_protocol": {
+    "name": "first_pair_demonstration_only_v1",
+    "skip_first_assistant_loss": true,
+    "supervised_assistant_start_index": 1,
+    "masked_assistant_events_per_row": 1,
+    "masked_assistant_events": 3200,
+    "supervised_assistant_events": 17626
+  },
+  "baseline": {
+    "result": "outputs/nvarc/qwen3_4b_sft/rearc_scale_coord/0804_rearc_scale_50ep_v2/results/r8_s42/step_130",
+    "eval_manifest": "logs/eval/2026-08-04/0804_rearc_scale_50ep_v2_r8_s42_step130/eval_manifest.json",
+    "model_artifact_sha256": "b74bcb895fe162511ab8d047648a9d3cbba110fead5f3d58b9a24e9456d0084c",
+    "metrics_sha256": "207cac7bce6028a7860aad4fda6048ec6ffcfb7c2ff8ac36834d53b0f7a5b719",
+    "config_sha256": "54037b1baac229754a7f372b1de887025482733f39941184ada0afa6877d235e",
+    "dataset_bundle_semantic_sha256": "173c6096d70d4893c4ef7562db45483a0be1bb9b77f2ab12cbe950b7605078eb",
+    "protocol": "arc_agi1_nvarc_public_validation_v1",
+    "selected_exact@2": 0.16375,
+    "selected_exact@1": 0.11875,
+    "canonical_exact@1": 0.06875,
+    "oracle_view@16": 0.225,
+    "valid_grid_rate": 1
+  },
+  "base_training_data": {
+    "path": "datasets/nvarc/derived/rearc_scale_s42/hf/rearc8",
+    "indices": "datasets/nvarc/derived/rearc_scale_s42/indices/rearc8.npy",
+    "selection_seed": 42,
+    "rows": 3200,
+    "indices_sha256": "17669730a429768a3a3a97e626086f132c0c82b7c12fc7daa1e9ba5e76037f7b"
+  },
+  "training_data": {
+    "dataset_id": "rearc8_pg_s24_excl_base_s42_v1",
+    "path": "datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/hf/train",
+    "manifest": "datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/manifest.json",
+    "indices": "datasets/nvarc/derived/rearc8_pg_s24_excl_base_s42_v1/indices/rearc8_pg_s24_excl_base_s42_v1.npy",
+    "selection_seed": 24,
+    "base_subset_seed": 42,
+    "rows": 3200,
+    "puzzles": 400,
+    "rows_per_puzzle": 8,
+    "assistant_events": 20826,
+    "dataset_fingerprint": "e464cacafff91296",
+    "indices_sha256": "af81733dff510c1f48592b3b8d540b21474c2cf3437d7f96e9904c253c46bfa6",
+    "semantic_sha256": "76ed97981e8823a11b006bada9081ba9770f63769b6a7d96e138f2cc39b8731e",
+    "base_overlap_rows": 0,
+    "full_50_epoch_schedule_sha256": "2a98e42bb28f5be78e6c48d852d461d84b2ad4f3980100043ac3c2582f650868"
+  },
+  "training": {
+    "backend": "huggingface_pytorch_ddp",
+    "model_only_initialization": true,
+    "reset_optimizer_and_scheduler": true,
+    "training_seed": 42,
+    "logical_epochs": 6,
+    "global_batch_size": 256,
+    "micro_batch_size": 1,
+    "steps_per_epoch": 13,
+    "max_steps": 78,
+    "warmup_steps": 4,
+    "peak_lr": 1e-05,
+    "min_lr": 1e-07,
+    "weight_decay": 0.1,
+    "loss_normalization": "global_supervised_assistant_tokens",
+    "checkpoint_steps": [
+      13,
+      26,
+      39,
+      52,
+      65,
+      78
+    ],
+    "precision": "FP32 parameters, BF16 autocast"
+  },
+  "teacher_forced_diagnostic": {
+    "dataset": "datasets/nvarc/derived/arc1_clean_sft_v1/arc1_safe_validation",
+    "used_for_primary_selection": false
+  },
+  "evaluation": {
+    "implementation": "eval_nvarc_internal_fast",
+    "batch_mode": "per_test",
+    "max_batch_size": 17,
+    "max_batch_tokens": 0,
+    "protocol": "arc_agi1_nvarc_public_validation_v1",
+    "tasks": 400,
+    "test_cases": 419,
+    "temperature": 0,
+    "selection_views": 16,
+    "attempts": 2,
+    "test_time_fine_tuning": false
+  },
+  "selection": {
+    "primary_metric": "selected_exact@2",
+    "rule": "highest_exact2_then_lowest_teacher_forced_loss_then_earliest_step"
+  }
+}

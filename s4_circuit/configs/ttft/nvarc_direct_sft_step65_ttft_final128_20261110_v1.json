@@ -1,0 +1,29 @@
+{
+  "format": "s4_nvarc_sft_ttft_v3",
+  "base_checkpoint": "outputs/nvarc/qwen3_4b_sft/rearc8_s42_to_seed24_fullft/0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1/checkpoints/step_65",
+  "tokenizer": "base_models/qwen/Qwen3-4B-Thinking-2507-16t",
+  "source_step": 65,
+  "model_label": "rearc8-s42-step130-to-s24-skip-b1-lr1e5-step65",
+  "base_identity_manifest": "logs/eval/2026-08-19/0818_rearc8_s42_step130_to_seed24_exclusive_skip_b1_lr1e5_6ep_v1_step65/eval_manifest.json",
+  "base_identity_manifest_sha256": "33a27382361eaa2dd485cd9e0156bb6a96d5436b1cc3112320aaa9e9dca12f44",
+  "expected_model_aggregate_sha256": "1ed554189fb1ecdced53a739a02513317d653f86685138bec75282eff4acc237",
+  "evaluation": {
+    "protocol_config": "s1_lora_sft/configs/nvarc_qwen3/eval_arc_agi1_public_validation_v1.json",
+    "challenges": "datasets/arc_agi_1/evaluation/arc-agi_evaluation_challenges.json",
+    "solutions": "datasets/arc_agi_1/evaluation/arc-agi_evaluation_solutions.json"
+  },
+  "output_root": "outputs/nvarc/direct_sft_ttft/step65_final128_20261110_v1",
+  "task_selection": "all",
+  "rows_per_task": 128,
+  "learning_rates": [0.0, 0.000001, 0.000002, 0.000005, 0.00001, 0.00002, 0.00005],
+  "selection_views": 16,
+  "max_new_tokens": 1024,
+  "lora_rank": 256,
+  "lora_alpha": 32,
+  "lora_dropout": 0.0,
+  "lora_use_rslora": true,
+  "lora_target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj", "embed_tokens", "lm_head"],
+  "weight_decay": 0.0,
+  "warmup_ratio": 0.1,
+  "max_grad_norm": 1.0
+}

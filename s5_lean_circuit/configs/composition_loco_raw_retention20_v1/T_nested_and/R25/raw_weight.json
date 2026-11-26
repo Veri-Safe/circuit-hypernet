@@ -1,0 +1,120 @@
+{
+  "base": {
+    "architecture_config_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/resolved_config.json",
+    "checkpoint_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/best_model.pt",
+    "checkpoint_sha256": "ee2a7efdf77262ee1fbdf7d2080f930c2bedc27e45b7712537fba964ee05931c",
+    "config_sha256": "d87e874cdee838e7d07b99631d06ee64ec3466d24012a08af75d032eddf7169e",
+    "model_state_sha256": "bd0277b72e7f17f864bd9e8064e1dff989a81254c5353550c6f912944ecf1afd",
+    "step": 38000,
+    "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model"
+  },
+  "config_sha256": "71afb4bdcf8efa545b652659dff8d695a00bfb7891b2d1441e6120a0dd25b48e",
+  "data": {
+    "atomic_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/atomic_retention.pt",
+    "atomic_replay": {
+      "cache_manifest": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt.json",
+      "cache_path": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt",
+      "expected_n_ctx": 128,
+      "expected_prefix": 1200000,
+      "expected_source_config_sha256": "6bd843f2c156d0ef64cf954c83c8df662d46de009565555defe544de433e9adc",
+      "source_config_path": "s5_lean_circuit/configs/hypernet_atomic_1p2m_seed42/a_p03.json"
+    },
+    "base_ce_path": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m_base_ce.pt",
+    "cache_manifest": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m.pt.json",
+    "cache_path": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m.pt",
+    "final_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/final_test.pt",
+    "fold_index": "outputs/s5_lean_circuit/composition_loco_sft_v1/folds/holdout_T_nested_and_indices.pt",
+    "input_treatment": "fixed_log1p_v1",
+    "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model",
+    "validation_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/visible_validation.pt"
+  },
+  "evaluation": {
+    "atomic_samples_per_task": 500,
+    "atomic_steps": [
+      0
+    ],
+    "final_samples_per_task": 2000,
+    "heldout_task": "T_nested_and",
+    "max_new_tokens": 50,
+    "metric": "strict_first_tactic_exact_match",
+    "selection_tasks": [
+      "T_and_or",
+      "T_or_and",
+      "T_and_or_and",
+      "T_nested_or"
+    ],
+    "simple_nested_diagnostic": true,
+    "visible_samples_per_task": 500
+  },
+  "fold_id": "holdout_T_nested_and",
+  "format": "s5_composition_loco_run_config_v1",
+  "heldout_task": "T_nested_and",
+  "initialization": {
+    "artifact_identity_class": "atomic_hypernet_raw_weight_retention20_v1",
+    "checkpoint_path": "outputs/s5_lean_circuit/hypernet_raw_atomic_seed42/raw_query16/rq14_p14/checkpoints/model_step0030516.pt",
+    "checkpoint_sha256": "94dfb66fc1a050a90ac542482820d626cb5f8ef2e98554c8ac13806221bf4e63",
+    "historical_raw_weight_cache_sha256": "a70eb76788bcef9c2ca301ad4a4d3febc94eb247ce1f02cf41ebdccda8bb87e1",
+    "step": 30516
+  },
+  "model": {
+    "anti_forgetting_objective": "atomic_replay_plus_response_kd",
+    "base_preservation_coefficient": 0.5,
+    "candidate": "A",
+    "condition_source": "raw_weight",
+    "effective_delta_l2": 0.0001,
+    "gate_max": 0.375,
+    "group": "P14",
+    "pg_lr": 1.875e-05,
+    "query_lr_multiplier": 0.5,
+    "raw_encoder_lr": 0.0002,
+    "raw_fusion_mode": "query_cross",
+    "raw_output_lr": 0.0005,
+    "raw_weight_cache_path": "outputs/s5_lean_circuit/hypernet_raw_weight_formal_1p2m_seed42/shared/raw_weight_cache.pt",
+    "raw_weight_cache_sha256": "886479c121f743184f5bb89eef2af30afb86a0278cb0b94dbcebfc0c98428334"
+  },
+  "output_dir": "outputs/s5_lean_circuit/composition_loco_raw_retention20_v1/runs/T_nested_and/R25/raw_weight",
+  "protocol_id": "s5_composition_loco_raw_retention20_v1",
+  "route": "raw_weight",
+  "train_tasks": [
+    "T_and_or",
+    "T_or_and",
+    "T_and_or_and",
+    "T_nested_or"
+  ],
+  "training": {
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.98,
+    "cosine_min_lr_ratio": 0.01,
+    "gate_schedule": "fixed_init",
+    "global_batch_size": 512,
+    "kd_lambda": 0.25,
+    "kd_temperature": 2.0,
+    "max_grad_norm": 0.5,
+    "n_ctx": 128,
+    "precision": "bf16",
+    "raw_retention20_group_id": "R25",
+    "replay_atomic_per_batch": 128,
+    "replay_atomic_per_task": 32,
+    "replay_composition_per_batch": 384,
+    "replay_composition_per_task": 96,
+    "save_model_every": 1000,
+    "save_resume_every": 5000,
+    "scheduler_total_steps": 38000,
+    "seed": 42,
+    "total_steps": 12000,
+    "total_tokens": 786432000,
+    "validation_steps": [
+      0,
+      1000,
+      2000,
+      4000,
+      6000,
+      8000,
+      10000,
+      12000
+    ],
+    "warmup_ratio": 0.03,
+    "warmup_steps": 1140,
+    "weight_decay": 0.0
+  }
+}

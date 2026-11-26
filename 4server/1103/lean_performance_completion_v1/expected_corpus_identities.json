@@ -1,0 +1,10 @@
+{
+  "suite1": {
+    "manifest_identity_sha256": "ac6803e87839126dd3fe74a2dbb4beaa1cdef065fb7754a59a87fadf21425cd0",
+    "samples_sha256": "03dd412b601315e175b3d39d88e4266f4a1c9387a04713f0fedd681ea0311932"
+  },
+  "suite2": {
+    "manifest_identity_sha256": "310cb19701ca8211110893fbb75aab3e78a044d1294194d40c4f85832e6da477",
+    "samples_sha256": "218372459c6c96e3a11af0f7430b71c3acf8444a2ea97260ff2940c9f251ffe0"
+  }
+}

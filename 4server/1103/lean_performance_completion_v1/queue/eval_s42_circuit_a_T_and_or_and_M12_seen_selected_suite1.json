@@ -1,0 +1,25 @@
+{
+  "id": "eval_s42_circuit_a_T_and_or_and_M12_seen_selected_suite1",
+  "stage": "evaluate",
+  "kind": "composition",
+  "suite": "suite1",
+  "config": "s5_lean_circuit/configs/composition_loco_circuit_retention20_v2/T_and_or_and/M12/circuit_a.json",
+  "checkpoint": "outputs/s5_lean_circuit/composition_loco_circuit_retention20_v2/runs/T_and_or_and/M12/circuit_a/checkpoints/model_step008000.pt",
+  "checkpoint_sha256": "20f18fb9af4cd8323d75b160695ab470ac9c705a55e71b68efe276d7cd5c0490",
+  "step": 8000,
+  "training_seed": 42,
+  "route": "circuit_a",
+  "heldout": "T_and_or_and",
+  "group": "M12",
+  "role": "main_fivefold",
+  "conditions": [
+    "matched",
+    "absent"
+  ],
+  "selection": "seen_selected",
+  "depends_on": [
+    "extract_suite1"
+  ],
+  "priority": 5,
+  "result_dir": "logs/eval/2026-11-03/lean-performance-completion-v1/eval_s42_circuit_a_T_and_or_and_M12_seen_selected_suite1"
+}

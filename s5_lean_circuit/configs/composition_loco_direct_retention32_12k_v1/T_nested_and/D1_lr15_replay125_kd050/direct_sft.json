@@ -1,0 +1,109 @@
+{
+  "base": {
+    "architecture_config_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/resolved_config.json",
+    "checkpoint_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/best_model.pt",
+    "checkpoint_sha256": "ee2a7efdf77262ee1fbdf7d2080f930c2bedc27e45b7712537fba964ee05931c",
+    "config_sha256": "d87e874cdee838e7d07b99631d06ee64ec3466d24012a08af75d032eddf7169e",
+    "model_state_sha256": "bd0277b72e7f17f864bd9e8064e1dff989a81254c5353550c6f912944ecf1afd",
+    "step": 38000,
+    "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model"
+  },
+  "config_sha256": "f6f7b0746613a03cd2cb5a92b81f2a6ff299b57072363cfada6d3604162cace7",
+  "data": {
+    "atomic_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/atomic_retention.pt",
+    "atomic_replay": {
+      "cache_manifest": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt.json",
+      "cache_path": "outputs/s5_lean_circuit/hypernet_ab_formal_1p2m_seed42/shared/packed_cache.pt",
+      "expected_n_ctx": 128,
+      "expected_prefix": 1200000,
+      "expected_source_config_sha256": "6bd843f2c156d0ef64cf954c83c8df662d46de009565555defe544de433e9adc",
+      "source_config_path": "s5_lean_circuit/configs/hypernet_atomic_1p2m_seed42/a_p03.json"
+    },
+    "base_ce_path": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m_base_ce.pt",
+    "cache_manifest": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m.pt.json",
+    "cache_path": "outputs/s5_lean_circuit/composition_loco_sft_v1/cache/composition_1p5m.pt",
+    "final_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/final_test.pt",
+    "fold_index": "outputs/s5_lean_circuit/composition_loco_sft_v1/folds/holdout_T_nested_and_indices.pt",
+    "tokenizer_path": "datasets/s5_lean_circuit/tokenizer_v1/tokenizer.model",
+    "validation_bank": "outputs/s5_lean_circuit/composition_loco_sft_v1/eval/visible_validation.pt"
+  },
+  "evaluation": {
+    "atomic_samples_per_task": 500,
+    "atomic_steps": [
+      0
+    ],
+    "final_samples_per_task": 2000,
+    "heldout_task": "T_nested_and",
+    "max_new_tokens": 50,
+    "metric": "strict_first_tactic_exact_match",
+    "selection_tasks": [
+      "T_and_or",
+      "T_or_and",
+      "T_and_or_and",
+      "T_nested_or"
+    ],
+    "simple_nested_diagnostic": true,
+    "visible_samples_per_task": 500
+  },
+  "fold_id": "holdout_T_nested_and",
+  "format": "s5_composition_loco_run_config_v1",
+  "heldout_task": "T_nested_and",
+  "initialization": {
+    "artifact_identity_class": "stage_a_base_direct_retention32_v1",
+    "checkpoint_config_sha256": "d87e874cdee838e7d07b99631d06ee64ec3466d24012a08af75d032eddf7169e",
+    "checkpoint_path": "outputs/s5_lean_circuit/atomic_only_dense_v1/dense-bgoff_attempt_20260820_200505/best_model.pt",
+    "checkpoint_sha256": "ee2a7efdf77262ee1fbdf7d2080f930c2bedc27e45b7712537fba964ee05931c",
+    "historical_direct_checkpoint": false,
+    "step": 38000
+  },
+  "model": {
+    "anti_forgetting_objective": "atomic_replay_plus_response_kd",
+    "condition_source": "none"
+  },
+  "output_dir": "outputs/s5_lean_circuit/composition_loco_direct_retention32_12k_v1/runs/T_nested_and/D1_lr15_replay125_kd050/direct_sft",
+  "protocol_id": "s5_composition_loco_direct_retention32_12k_v1",
+  "route": "direct_sft",
+  "train_tasks": [
+    "T_and_or",
+    "T_or_and",
+    "T_and_or_and",
+    "T_nested_or"
+  ],
+  "training": {
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.95,
+    "cosine_min_lr_ratio": 0.1,
+    "gate_schedule": "fixed_init",
+    "global_batch_size": 512,
+    "kd_lambda": 0.5,
+    "kd_temperature": 2.0,
+    "learning_rate": 1.5e-05,
+    "max_grad_norm": 1.0,
+    "n_ctx": 128,
+    "precision": "fp16",
+    "replay_atomic_per_batch": 64,
+    "replay_atomic_per_task": 16,
+    "replay_composition_per_batch": 448,
+    "replay_composition_per_task": 112,
+    "retention32_group_id": "D1_lr15_replay125_kd050",
+    "save_model_every": 1000,
+    "save_resume_every": 5000,
+    "scheduler_total_steps": 38000,
+    "seed": 42,
+    "total_steps": 12000,
+    "total_tokens": 786432000,
+    "validation_steps": [
+      0,
+      1000,
+      2000,
+      4000,
+      6000,
+      8000,
+      10000,
+      12000
+    ],
+    "warmup_ratio": 0.03,
+    "warmup_steps": 1140,
+    "weight_decay": 0.01
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "eval_s42_circuit_a_T_nested_or_M25_seen_selected_suite1",
+  "stage": "evaluate",
+  "kind": "composition",
+  "suite": "suite1",
+  "config": "s5_lean_circuit/configs/composition_loco_circuit_retention20_v2/T_nested_or/M25/circuit_a.json",
+  "checkpoint": "outputs/s5_lean_circuit/composition_loco_circuit_retention20_v2/runs/T_nested_or/M25/circuit_a/checkpoints/model_step008000.pt",
+  "checkpoint_sha256": "3cd6549268764a764c1e19117ae154cec7ae7a9ee656f3a55103e27cdce51542",
+  "step": 8000,
+  "training_seed": 42,
+  "route": "circuit_a",
+  "heldout": "T_nested_or",
+  "group": "M25",
+  "role": "main_fivefold",
+  "conditions": [
+    "matched",
+    "absent"
+  ],
+  "selection": "seen_selected",
+  "depends_on": [
+    "extract_suite1"
+  ],
+  "priority": 1,
+  "result_dir": "logs/eval/2026-11-03/lean-performance-completion-v1/eval_s42_circuit_a_T_nested_or_M25_seen_selected_suite1"
+}
