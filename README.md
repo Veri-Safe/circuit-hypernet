@@ -2,7 +2,11 @@
 
 A frozen model answers a query once. Circuit-HyperNet reads the query and a summary of that first attempt’s attribution graph, then generates a temporary LoRA update for the model’s second attempt on the same query.
 
-**Research blog** <https://hitzjq.github.io/Circuit-HyperNet-Blog/> · [Report PDF](https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf) · [Cite on Zenodo](https://doi.org/10.5281/zenodo.24566714)
+<p>
+  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/"><img src="docs/assets/buttons/blog.png" width="110" alt="Research blog"></a>
+  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf"><img src="docs/assets/buttons/report.png" width="95" alt="Report PDF"></a>
+  <a href="https://doi.org/10.5281/zenodo.24566714"><img src="docs/assets/buttons/cite.png" width="117" alt="Cite on Zenodo"></a>
+</p>
 
 <p align="center">
   <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/#method">
