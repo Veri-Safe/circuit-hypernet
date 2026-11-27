@@ -1,19 +1,30 @@
 # Circuit-HyperNet
 
-**Research blog**  <https://hitzjq.github.io/Circuit-HyperNet-Blog/>
+A frozen model answers a query once. Circuit-HyperNet reads the query and a summary of that first attempt’s attribution graph, then generates a temporary LoRA update for the model’s second attempt on the same query.
 
-[Report (PDF)](https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf) · [Cite this work (Zenodo)](https://doi.org/10.5281/zenodo.24566714)
+**Research blog** <https://hitzjq.github.io/Circuit-HyperNet-Blog/> · [Report PDF](https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf) · [Cite on Zenodo](https://doi.org/10.5281/zenodo.24566714)
 
-Circuit-HyperNet uses the computation behind a model’s first answer to generate a temporary LoRA update for its second attempt. The hypernetwork reads the query and a summary of the first attempt’s attribution graph.
+<p align="center">
+  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/#method">
+    <img src="blog/assets/method_overview.png" width="680" alt="In the Lean experiment, a hypernetwork reads the query and a 397-dimensional summary of the first pass, then generates a LoRA for the frozen model’s second pass.">
+  </a>
+</p>
 
-[Article in Markdown](blog/article_en.md) · [Lean experiments](experiments/lean/README.md) · [ARC-AGI-1 experiments](experiments/arc_agi_1/README.md)
+## Experiments
 
-| Question | Where to start |
-| --- | --- |
-| How does a circuit become an update? | Follow a Lean problem from the [397-dimensional circuit summary](experiments/lean/circuits/descriptor_v2_397.py) through the [LoRA generator](experiments/lean/adapters/parameter_generator.py) to the [second attempt](experiments/lean/adapters/runtime.py). |
-| Does it transfer to unseen logical compositions? | On Lean, C-HyperNet predicts the exact first tactic on **13.14%** of held-out problems, compared with **10.58%** for Raw-weight and **6.34%** for Direct SFT. Correct predictions come from two of the five held-out families. [Results and per-family counts](experiments/lean/README.md#results) |
-| How does the generated LoRA help on ARC-AGI-1? | The adapter supports [direct inference](experiments/arc_agi_1/direct_inference/evaluate.py) and [initialization for test-time fine-tuning](experiments/arc_agi_1/test_time_finetuning/warmstart.py). With the same SFT base and tuning settings, generated initialization raises accuracy from **45.875% to 47.875%**. [All six evaluations](experiments/arc_agi_1/README.md#results) |
-| Which internal features matter? | Explore the Lean [atomic probes, composition ablations and Base localization](experiments/lean/README.md#probing-ablation-and-localization). |
+| Benchmark | Evaluation | Result |
+| --- | --- | --- |
+| [Lean proof tactics](experiments/lean/README.md#results) | First-tactic exact match across five held-out composition families | **13.14%** for Circuit-HyperNet, 10.58% for Raw-weight, 6.34% for Direct SFT |
+| [ARC-AGI-1](experiments/arc_agi_1/README.md#results) | Test-time fine-tuning on 400 public validation tasks, with matched settings and the same SFT base | **47.875%** with generated initialization, 45.875% with standard initialization |
+
+On Lean, correct predictions came from two of the five held-out families. The benchmark links give the per-family breakdown and all six ARC evaluations.
+
+## Explore the implementation
+
+- **Lean.** Trace the [circuit summary](experiments/lean/circuits/descriptor_v2_397.py), [LoRA generator](experiments/lean/adapters/parameter_generator.py), and [second pass](experiments/lean/adapters/runtime.py). The [probe and ablation experiments](experiments/lean/README.md#probing-ablation-and-localization) examine which features support the predictions.
+- **ARC-AGI-1.** Follow the generated adapter into [direct inference](experiments/arc_agi_1/direct_inference/evaluate.py) or use it to [initialize test-time fine-tuning](experiments/arc_agi_1/test_time_finetuning/warmstart.py).
+
+The [article in Markdown](blog/article_en.md) is included for offline reading.
 
 ## CPU checks
 
