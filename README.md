@@ -3,9 +3,9 @@
 A frozen model answers a query once. Circuit-HyperNet reads the query and a summary of that first attempt’s attribution graph, then generates a temporary LoRA update for the model’s second attempt on the same query.
 
 <p>
-  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/" title="Read the research blog"><img src="docs/assets/buttons/blog.png" width="113" height="44" alt="Read the research blog"></a>&#8201;
-  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf" title="View the research report (PDF)"><img src="docs/assets/buttons/report.png" width="109" height="44" alt="View the research report (PDF)"></a>&#8201;
-  <a href="https://doi.org/10.5281/zenodo.24566714" title="Cite this work on Zenodo"><img src="docs/assets/buttons/cite.png" width="71" height="44" alt="Cite this work on Zenodo"></a>
+  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/" title="Read the research blog"><img src="docs/assets/buttons/blog.png" width="82" height="32" alt="Read the research blog"></a>&#8201;
+  <a href="https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf" title="View the research report (PDF)"><img src="docs/assets/buttons/report.png" width="79" height="32" alt="View the research report (PDF)"></a>&#8201;
+  <a href="https://doi.org/10.5281/zenodo.24566714" title="Cite this work on Zenodo"><img src="docs/assets/buttons/cite.png" width="106" height="32" alt="Cite this work on Zenodo"></a>
 </p>
 
 <p align="center">
