@@ -1,8 +1,12 @@
 # Circuit-HyperNet
 
+**Research blog**  <https://hitzjq.github.io/Circuit-HyperNet-Blog/>
+
+[Report (PDF)](https://hitzjq.github.io/Circuit-HyperNet-Blog/Circuit-HyperNet.pdf) · [Cite this work (Zenodo)](https://doi.org/10.5281/zenodo.24566714)
+
 Circuit-HyperNet uses the computation behind a model’s first answer to generate a temporary LoRA update for its second attempt. The hypernetwork reads the query and a summary of the first attempt’s attribution graph.
 
-[Read the research blog](blog/article_en.md) · [Lean experiments](experiments/lean/README.md) · [ARC-AGI-1 experiments](experiments/arc_agi_1/README.md)
+[Article in Markdown](blog/article_en.md) · [Lean experiments](experiments/lean/README.md) · [ARC-AGI-1 experiments](experiments/arc_agi_1/README.md)
 
 | Question | Where to start |
 | --- | --- |
